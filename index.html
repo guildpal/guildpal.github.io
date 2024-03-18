@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuildPal</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+    <div id="main_bg">
+        <video id="main_bg_video" muted preload="true">
+            <source type="video/mp4" src="./img/main_bg.mp4" >
+        </video>
+    </div>
+
+    <div class="content">
+        <img class="logo" src="./img/logo-GuildPal.svg" alt="">
+        <div class="text_area">
+            <h1>Coming Soon</h1>
+            <div class="sns_btn_area">
+                <a href="https://twitter.com/GuildPal" target="_blank">
+                    <img class="sns_tw" src="./img/icon-twitter.svg" alt="">
+                </a>
+                <a href="https://discord.com/invite/Wky7PZVZ" target="_blank">
+                    <img class="sns_dis" src="./img/icon-_discord.svg" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    var video = document.getElementById("main_bg_video");
+video.addEventListener("canplay", function() {
+  setTimeout(function() {
+    video.play();
+  }, 600);
+});
+</script>

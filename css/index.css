@@ -1,0 +1,119 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+html {
+  text-align: left;
+  color: #ffffff;
+  font-family: 'Spoqa Han Sans Neo', system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+#main_bg{
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+}
+#main_bg video{
+    width:100vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+@media screen and (max-aspect-ratio: 16/9) {
+    #main_bg video {
+        width: auto;
+        height: 100vh;
+     }
+ }
+
+ 
+.content{
+    overflow: auto;
+    padding:40px 0;
+    position: absolute; 
+    left:0; top:0; right:0; bottom: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 80px;
+}
+
+.content .logo{
+    width:400px;
+    animation-name : logo ; 
+    animation-duration : 1.4s;
+    animation-timing-function: ease-in-out;
+    animation-delay : .6s;
+    animation-fill-mode: forwards;
+}
+
+.text_area{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+.text_area h1{
+    font-size: 0;
+    animation-name : comingsoon ; 
+    animation-duration : 1.4s;
+    animation-timing-function: ease-in-out;
+    animation-delay : 1s;
+    animation-fill-mode: forwards;
+}
+.text_area .sns_btn_area{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 16px;
+}
+.text_area .sns_btn_area a{
+    width:0;
+    height:auto;
+    font-size: 0;
+    animation-name : sns_btn ; 
+    animation-duration : 1.4s;
+    animation-timing-function: ease-in-out;
+    animation-delay : 1.3s;
+    animation-fill-mode: forwards;
+}
+.text_area .sns_btn_area a img{
+    width:100%;
+    height:auto;
+}
+
+@keyframes logo {
+    0% {width: 400px;}
+    100% {width: 160px;}
+}
+
+@keyframes comingsoon {
+    0% { font-size: 0; }
+    100% { font-size: 40px; }
+}
+
+@keyframes sns_btn {
+    0% { width:0; }
+    100% { width:60px; }
+}
