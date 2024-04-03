@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="Join GuildPal, the forefront of pixel guilds, where you can use your free tree and land with just a few pixels. Dive into a vast pixel game world, building, exploring, and competing to rise among the ranks.">
+  <title>GuildPal: The Leading Pixel Guild Experience</title>
 
   <!-- Primary Meta Tags -->
   <meta name="title" content="GuildPal: The Leading Pixel Guild Experience" />
@@ -19,7 +21,8 @@
   <meta property="og:title" content="GuildPal: The Leading Pixel Guild Experience" />
   <meta property="og:description"
     content="Discover GuildPal, your gateway to becoming part of the #1 pixel guild. Use our free tree and land, and engage in the expansive pixel game universe." />
-  <meta property="og:image" content="https://guildpal.com/images/pixel-land-1.png" />
+  <meta property="og:image" content="https://guildpal.com/images/meta-og-img.jpg">
+  <meta property="og:locale" content="en_US">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
@@ -30,44 +33,658 @@
   <meta property="twitter:image" content="https://guildpal.com/images/pixel-land-1.png" />
   <meta property="twitter:site" content="https://guildpal.com" />
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/tailwindcss_3_4_3.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/section1.css"/>
+  <link rel="stylesheet" href="css/swiper-bundle_11_1_0.min.css"/>
 
-  <title>GuildPal: The Leading Pixel Guild Experience</title>
-  <link rel="stylesheet" href="./css/index.css" />
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-40GNZFGNCE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-40GNZFGNCE');
+  </script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pgaGreen: '#ABE85D',
+            pgaBlue: '#6334F4',
+            pgaBrightGreen: '#E5FF48'
+          }
+        },
+        fontFamily: {
+          pgaTitle: ['KemcoPixelBold']
+        },
+        screens: {
+          mobile: { min: '160px', max: '900px' },
+          pc: { min: '901px' }
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'KemcoPixelBold';
+      src: url('fonts/Kemco_Pixel_Bold.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .section-2-bg {
+      background: #000;
+    }
+
+    .section-4-bg {
+      background-image: url('images/bg-2.png');
+    }
+
+    .banner-background {
+      background-image: url('images/img-top-banner-pc_1.5x.jpg');
+    }
+
+    .banner-text {
+      font-family: Poppins;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 53.2px;
+      color: white;
+      -webkit-text-stroke: 2px #000;
+    }
+
+    @media all and (max-width: 900px) {
+      .banner-background {
+        background-image: url('images/img-top-banner-m_1.5x.jpg');
+      }
+
+      .banner-text {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 23.2px;
+        color: white;
+        -webkit-text-stroke: 1px #000;
+      }
+    }
+
+    #install-btn-on-banner {
+      background-image: url('images/btn-Install-Now.png');
+      width: 163px;
+      height: 60px;
+    }
+
+    #install-btn-on-banner:hover {
+      background-image: url('images/btn-Install-Now-pressed.png');
+      width: 163px;
+      height: 60px;
+    }
+
+    #install-btn-on-section1 {
+      background-image: url('images/btn-Install-Now.png');
+      width: 346px;
+      height: 128px;
+    }
+
+    #install-btn-on-section1:hover {
+      background-image: url('images/btn-Install-Now-pressed.png');
+      width: 346px;
+      height: 128px;
+    }
+
+    .section-2-text {
+      font-family: Poppins;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 33.6px;
+    }
+
+    .section-3-desc {
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22.4px;
+      color: #48754A;
+    }
+
+    .section-3-text {
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22.4px;
+    }
+
+    .section-4-item-title {
+      font-family: Poppins;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 33.6px;
+      text-align: center;
+    }
+
+    .section-4-item-text {
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22.4px;
+      text-align: center;
+    }
+
+    .section-5-text-1 {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 44.8px;
+      border-bottom-width: 4px;
+      border-bottom-color: #6334F4;
+    }
+
+    .section-5-text-2 {
+      font-family: Poppins;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 33.6px;
+      color: #48754A;
+    }
+
+    .section-5-text-3 {
+      font-family: Poppins;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 33.6px;
+    }
+
+    .section-6-title {
+      font-family: 'KemcoPixelBold';
+      /* color: #ABE85D; */
+      color: #E5FF48;
+      -webkit-text-stroke: 2px #006A26;
+      text-shadow: 0px 3px #007A2C;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 43.2px;
+      margin-bottom: 40px;
+    }
+
+    .section-6-text {
+      font-family: Poppins;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 33.6px;
+      text-align: center;
+    }
+
+    .bg-feature-title {
+      width: 90%;
+      height: 65px;
+      line-height: 65px; /* To center the text vertically */
+      text-align: center;
+      background-position: center;
+      background-image: url('images/feature-title.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    @media all and (max-width: 900px) {
+      #install-btn-on-section1 {
+        background-image: url('images/btn-Install-Now.png');
+        width: 186px;
+        height: 68px;
+      }
+
+      #install-btn-on-section1:hover {
+        background-image: url('images/btn-Install-Now-pressed.png');
+        width: 186px;
+        height: 68px;
+      }
+
+      #install-btn-on-banner {
+        background-image: url('images/btn-Install-Now.png');
+        width: 90px;
+        height: 40px;
+      }
+
+      #install-btn-on-banner:hover {
+        background-image: url('images/btn-Install-Now-pressed.png');
+        width: 90px;
+        height: 40px;
+      }
+
+      .section-2-text {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 19.6px;
+      }
+
+      .section-3-desc {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 19.6px;
+        color: #48754A;
+      }
+
+      .section-3-text {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 19.6px;
+      }
+
+      .section-4-item-title {
+        font-family: Poppins;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+        text-align: center;
+      }
+
+      .section-4-item-text {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 19.6px;
+        text-align: center;
+        color: #D5CEEC;
+      }
+
+      .section-5-text-1 {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+        border-bottom-width: 4px;
+        border-bottom-color: #6334F4;
+      }
+
+      .section-5-text-2 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22.4px;
+        color: #48754A;
+      }
+
+      .section-5-text-3 {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 22.4px;
+      }
+
+      .section-6-title {
+        font-family: 'KemcoPixelBold';
+        color: #E5FF48;
+        -webkit-text-stroke: 2px #006A26;
+        text-shadow: 0px 3px #007A2C;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 33.6px;
+        margin-bottom: 36px;
+      }
+
+      .section-6-text {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 19.6px;
+        text-align: center;
+      }
+    }
+
+    .section-6-bg {
+      background-image: url('images/section-6-bg.png');
+    }
+
+    .pgaBoxshadow {
+      box-shadow: 10px 10px 0px 0px rgba(205, 188, 255, 1);
+    }
+  </style>
 </head>
-
-<body>
-  <div id="main_bg">
-    <video id="main_bg_video" muted preload="true">
-      <source type="video/mp4" src="./img/main_bg.mp4">
-    </video>
-  </div>
-
-  <div class="content">
-    <img class="logo" src="./img/logo-GuildPal.svg" alt="">
-    <div class="text_area">
-      <h1>Coming Soon</h1>
-      <div class="sns_btn_area">
-        <a href="https://twitter.com/GuildPal" target="_blank">
-          <img class="sns_tw" src="./img/icon-twitter.svg" alt="">
+<body class="w-screen flex flex-col justify-center items-center bg-black overflow-x-hidden">
+  <!-- header -->
+  <div class="w-full h-[60px] bg-header sticky z-[9999]">
+    <div class="w-full max-w-[900px] flex justify-between items-center px-3">
+      <a href="#">
+        <img class="h-[34px]" src="./images/header-home.svg" alt="GuildPal" />
+      </a>
+      <div class="flex gap-[24px] border-0 font-[700] text-[18px] mobile:text-[15px] text-header">
+        <a href="#">
+          <span>Home</span>
         </a>
-        <a href="http://discord.gg/hk6eTJV7yK" target="_blank">
-          <img class="sns_dis" src="./img/icon-_discord.svg" alt="">
+        <a href="#about-guildpal">
+          <span>About GuildPal</span>
         </a>
       </div>
     </div>
   </div>
-</body>
 
-</html>
+  <!-- section 1 -->
+  <!-- By Yong -->
+  <div class="w-full flex flex-col justify-center items-center mt-[-60px]
+    section-1-bg bg-contain bg-no-repeat mobile:bg-cover mobile:bg-right-top
+    text-white py-[100px] mobile:py-[80px] mobile:px-[16px]">
+    <div class="max-w-[900px] flex flex-col items-center">
+      <div class="font-pgaTitle font-[700]">
+        <div class="text-center text-pgaBrightGreen text-[36px] leading-[43.2px] mobile:text-[24px] mobile:leading-[33.6px] mb-[16px] mobile:mb-[12px]">PIXELS Game ASSISTANT &lt;PGA&gt;</div>
+        <div class="text-center text-white text-[24px] leading-[33.6px] mobile:text-[16px] mobile:leading-[22.4px] mb-[80px] mobile:mb-[56px]">
+          IS NOW AVAILABLE<br>
+          ON CHROME WEB STORE!
+        </div>
+      </div>
+      <div class="w-full flex flex-col items-center gap-[28px] mobile:gap-[24px] mobile:px-[16px]">
+        <a href="https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej" target="_blank">
+          <div id="install-btn-on-section1" class="bg-contain"></div>
+        </a>
 
-<script>
-  var video = document.getElementById("main_bg_video");
-  video.addEventListener("canplay", function () {
-    setTimeout(function () {
-      video.play();
-    }, 600);
+        <div class="w-full h-[477px] mobile:w-[329px] mobile:h-[166px] swiper text-center">
+          <div class="swiper-wrapper text-pgaBlue">
+            <div class="swiper-slide flex justify-center items-center">
+              <video width="800" height="477" controls autoPlay muted >
+                <source src="videos/pga_homepage.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="swiper-slide flex justify-center items-center">
+              <img src="images/img1.png" alt="slide img1" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center">
+              <img src="images/img2.png" alt="slide img2" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center">
+              <img src="images/img3.png" alt="slide img3" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center">
+              <img src="images/img4.png" alt="slide img4" />
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+
+        <div class="flex gap-[24px] mobile:gap-[12px]">
+          <a href="https://twitter.com/GuildPal" target="_blank">
+            <img class="w-[56px] h-[56px]" src="./images/icon-twitter.svg" alt="X" />
+          </a>
+          <a href="https://discord.gg/hk6eTJV7yK" target="_blank">
+            <img class="w-[56px] h-[56px]" src="./images/icon-discord.png" alt="Discord" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- section 2 -->
+  <div class="w-full flex flex-col justify-center items-center section-2-bg text-white py-[200px] mobile:py-[80px] mobile:px-[16px]">
+    <div class="max-w-[900px] flex flex-col items-center">
+      <div class="font-pgaTitle font-[700] text-[36px] leading-[43.2px] mobile:text-[28px] mobile:leading-[33.6px]">
+        <div class="text-center">WHAT IS <span class="text-pgaBrightGreen">PGA</span>?</div>
+      </div>
+      <div class="text-center text-pgaBrightGreen font-pgaTitle font-[700] text-[24px] leading-[33.6px] mobile:text-[16px] mobile:leading-[22.4px] mb-[80px] mobile:mb-[56px]">
+        PIXELS GAME ASSISTANT
+      </div>
+      <img class="w-[688px] h-[371px] mb-[32px] mobile:w-[276px] mobile:h-[149px] mobile:mb-[24px]" src="images/img-What-is-PGA.png" alt="What is PGA?" />
+      <div class="text-center flex flex-col gap-[24px] mobile:gap-[12px] section-2-text p-4">
+        <span>PGA is a browser extension that helps Pixels gamers play more efficiently and have more fun.</span>
+        <span>PGA dramatically improves many of the frustrations of playing pixel games, making them much easier to play and helping you achieve the most in the least amount of time without using a bot.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- banner -->
+  <div class="w-full h-[63px] pc:h-[100px] bg-pgaBlue">
+    <div class="w-full h-full banner-background bg-contain bg-no-repeat bg-center flex justify-center items-center">
+      <img src="images/symbol-circle-bg-wh.svg" class="w-[36px] h-[36px] pc:w-[46px] pc:h-[46px] me-2" alt="PGA" />
+      <span class="banner-text">Pixels Game Assistant</span>
+      <a href="https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej" target="_blank" class="ml-[10px] pc:ml-[20px]">
+        <div id="install-btn-on-banner" class="bg-contain bg-no-repeat bg-center"></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- section 3 -->
+  <div class="w-full flex flex-col justify-center items-center bg-pgaGreen py-[200px] mobile:py-[80px] mobile:px-[16px]">
+    <div class="max-w-[900px] flex flex-col items-center">
+      <div class="text-center font-pgaTitle font-[700] text-[36px] leading-[43.2px] mobile:text-[28px] mobile:leading[33.6px]">
+        WHAT FEATURES ARE AVAILABLE?
+      </div>
+      <div class="text-center mb-[80px] mobile:mb-[56px] section-3-desc p-3">
+        This is a Preview Beta Version that supports only the following limited features.
+      </div>
+
+      <div class="w-full border-black border-y-2 flex flex-col justify-center items-center py-[80px] mobile:py-[56px]">
+        <img class="w-[900px] h-[634px] mobile:w-[318px] mobile:h-[224px]" src="images/img-sell-order-helper.png" alt="Sell Order Helper" />
+        <div class="bg-feature-title font-pgaTitle font-[700] text-[24px] mt-[40px] mobile:text-[18px]">
+          SELL ORDER HELPER
+        </div>
+        <div class="section-3-text text-center mt-[24px] mobile:mt-[18px]">
+          When you create a new sell order, it shows the current sell order list and autofills the bottom price and maximum quantity.
+        </div>
+      </div>
+      <div class="w-full border-black border-y-2 flex flex-col justify-center items-center py-[80px] mobile:py-[56px]">
+        <img class="w-[900px] h-[634px] mobile:w-[318px] mobile:h-[224px]" src="images/img-manual-timer.png" alt="Manual Timer" />
+        <div class="bg-feature-title font-pgaTitle font-[700] text-[24px] mt-[40px] mobile:text-[18px]">
+          MANUAL TIMER
+        </div>
+        <div class="section-3-text text-center mt-[24px] mobile:mt-[18px]">
+          You can set timers for various tasks such as VIP lounge, Grumpkin watering, and other custom timers. 
+        </div>
+      </div>
+      <div class="w-full border-black border-t-2 flex flex-col justify-center items-center pt-[80px] mobile:pt-[56px]">
+        <img class="w-[900px] h-[634px] mobile:w-[318px] mobile:h-[224px]" src="images/img-task-board-list.png" alt="Task Board List" />
+        <div class="bg-feature-title font-pgaTitle font-[700] text-[24px] mt-[40px] mobile:text-[18px]">
+          TASK BOARD LIST
+        </div>
+        <div class="section-3-text text-center mt-[24px] mobile:mt-[18px]">
+          You can see the last task board list anywhere.
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- banner -->
+  <div class="w-full h-[63px] pc:h-[100px] bg-pgaBlue">
+    <div class="w-full h-full banner-background bg-contain bg-no-repeat bg-center flex justify-center items-center">
+      <img src="images/symbol-circle-bg-wh.svg" class="w-[36px] h-[36px] pc:w-[46px] pc:h-[46px] me-2" alt="PGA" />
+      <span class="banner-text">Pixels Game Assistant</span>
+      <a href="https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej" target="_blank" class="ml-[10px] pc:ml-[20px]">
+        <div id="install-btn-on-banner" class="bg-contain bg-no-repeat bg-center"></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- section 4-->
+  <div class="relative w-full flex flex-col items-center py-[200px] mobile:py-[80px] mobile:px-[16px]">
+    <div class="z-10 absolute top-0 w-full h-full bg-black section-4-bg 
+      bg-contain bg-no-repeat bg-center
+      mobile:bg-auto mobile:bg-left-top
+    "></div>
+    <div class="z-20 absolute top-0 w-full h-full bg-black opacity-70"></div>
+    <div class="z-30">
+      <div class="max-w-[900px] flex flex-col text-white">
+        <div class="text-center font-pgaTitle font-[700] text-[36px] leading-[43.2px] mobile:text-[28px] mobile:leading-[33.6px] mb-[80px] mobile:mb-[56px]">
+          The upcoming full version will support many new awesome features.
+        </div>
+        <div class="max-w-[900px] flex flex-wrap gap-[40px] justify-center">
+          <div class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center gap-[12px]">
+            <div class="section-4-item-title">Global State Industries Tracking</div>
+            <div class="section-4-item-text">Tree, Grill, Windmill Waiting List</div>
+          </div>
+          <div class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center">
+            <div class="section-4-item-title">Land Search by Industries</div>
+          </div>
+          <div class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center gap-[12px]">
+            <div class="section-4-item-title">Intelligent Market Data</div>
+            <div class="section-4-item-text">Energy efficiency and production cost analysis</div>
+          </div>
+          <div class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center gap-[12px]">
+            <div class="section-4-item-title">Guild Integration</div>
+            <div class="section-4-item-text">Guild-only chatting, Discord integration, guild lands info, members' activity tracking, guild tasks </div>
+          </div>
+          <div class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center gap-[12px]">
+            <div class="section-4-item-title">Suggest a Daily To-do List</div>
+            <div class="section-4-item-text">Based on your levels</div>
+          </div>
+          <div class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center">
+            <div class="section-4-item-title">Storage List</div>
+          </div>
+          <div class="w-full h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center">
+            <div class="section-4-item-title">Many more advanced features based on the upcoming Pixels' major updates</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- banner -->
+  <div class="w-full h-[63px] pc:h-[100px] bg-pgaBlue">
+    <div class="w-full h-full banner-background bg-contain bg-no-repeat bg-center flex justify-center items-center">
+      <img src="images/symbol-circle-bg-wh.svg" class="w-[36px] h-[36px] pc:w-[46px] pc:h-[46px] me-2" alt="PGA" />
+      <span class="banner-text">Pixels Game Assistant</span>
+      <a href="https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej" target="_blank" class="ml-[10px] pc:ml-[20px]">
+        <div id="install-btn-on-banner" class="bg-contain bg-no-repeat bg-center"></div>
+      </a>
+    </div>
+  </div>  
+
+
+  <!-- section 5 -->
+  <div class="w-full flex flex-col justify-center items-center bg-pgaGreen py-[200px] mobile:py-[160px] mobile:px-[16px]">
+    <div class="w-[900px] mobile:w-full flex flex-col items-center">
+      <div class="text-center font-pgaTitle font-[700] text-[36px] leading-[43.2px] mobile:text-[28px] mobile:leading-[33.6px]">
+        PGA IS <span class="text-pgaBlue">FREE</span> TO USE?
+      </div>
+      <div style="font-family: Poppins;" class="mt-[80px] flex flex-col items-start gap-[24px]">
+        <div class="text-center self-center section-5-text-1">
+          This preview version is
+          <span class="text-pgaBlue">completely free</span>
+          of charge.
+        </div>
+        <div class="text-center self-center section-5-text-2">
+          The upcoming full version may have some premium features requiring paid subscription, and some advanced guild features are available only for participating guild members.
+        </div>
+        <div class="text-center self-center section-5-text-3">
+          However, even without any paid subscription, all Pixels gamers will find this utility a must to have for enjoying the Pixel game more.
+        </div>
+      </div>
+    </div>
+  </div>  
+
+
+  <!-- section 6 -->
+  <div id="about-guildpal" class="relative text-white w-full flex flex-col items-center py-[200px] mobile:py-[80px] mobile:px-[16px]">
+    <div style="background-image: url('images/section-6-bg-1.jpg')" 
+          class="z-10 absolute top-0 w-full h-1/2 bg-black
+              bg-contain bg-no-repeat bg-left-top
+              mobile:bg-cover
+            "></div>
+    <div style="background-image: url('images/section-6-bg-2.jpg')" 
+            class="z-10 absolute bottom-0 w-full h-1/2 bg-black
+                bg-contain bg-no-repeat bg-left-bottom
+                mobile:bg-cover
+              "></div>
+    <div class="z-20 absolute bottom-0 w-full h-1/2 bg-black opacity-30"></div>
+    <div class="z-30">
+      <div class="w-[900px] mobile:w-full flex flex-col items-center">
+
+        <img src="images/logo.svg" class="w-[144px] h-[168px] my-[36px]" alt="PGA" />
+
+        <div class="text-center mt-[80px] mobile:mt-[40px]">
+          <div class="section-6-title">
+            ABOUT GUILDPAL
+          </div>
+          <div class="flex flex-col gap-[24px]">
+            <div class="text-center section-6-text">
+              At GuildPal, we believe that guilds are the best vessel to capture the essence of web3 games. For guilds to thrive, a solid guild platform or protocol that can connect various chains and wallets and offer guilds to build their token model is urgently needed.
+            </div>
+            <div class="text-center section-6-text">
+              We want to describe the goal of this protocol as Guild Abstraction based on Account Abstraction and Chain Abstraction.
+            </div>
+            <div class="text-center section-6-text">
+              With Guild Abstraction,  web3 gamers can seamlessly create a decentralized collective community while maintaining full control over their gaming assets. GuildPal will be your pal on your journey to the web3 dream gaming world.
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-[200px] mobile:mt-[80px]">
+          <div class="section-6-title">
+            GUILDPAL PIXEL GUILD
+          </div>
+          <div class="flex flex-col gap-[24px]">
+            <div class="text-center section-6-text">
+              We set up a guild in the Pixel game as a showcase. We want to build a strong and helpful community in the Pixels ecosystem and we are open to all individual players and other guilds to work together.
+            </div>
+            <div class="text-center section-6-text">
+              The tools and services we build are not just for our own guild, instead they will serve the broader entire Pixel community.
+            </div>
+          </div>
+        </div>
+          <div class="text-center mt-[200px] mobile:mt-[80px]">
+          <div class="section-6-title">
+            GUILDPAL WHITE PAPER
+          </div>
+          <div class="text-center section-6-text">
+            Coming soon
+          </div>
+        </div>
+          <div class="text-center mt-[200px] mobile:mt-[80px]">
+          <div class="section-6-title">
+            GUILDPAL ROADMAP
+          </div>
+          <div class="text-center section-6-text">
+            Coming soon
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- banner -->
+  <div class="w-full h-[63px] pc:h-[100px] bg-pgaBlue">
+    <div class="w-full h-full banner-background bg-contain bg-no-repeat bg-center flex justify-center items-center">
+      <img src="images/symbol-circle-bg-wh.svg" class="w-[36px] h-[36px] pc:w-[46px] pc:h-[46px] me-2" alt="PGA" />
+      <span class="banner-text">Pixels Game Assistant</span>
+      <a href="https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej" target="_blank" class="ml-[10px] pc:ml-[20px]">
+        <div id="install-btn-on-banner" class="bg-contain bg-no-repeat bg-center"></div>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- footer -->
+  <div class="w-full flex flex-col justify-center items-center bg-black">
+    <div class="text-center h-[321px] mb-[7px] flex flex-col justify-center">
+      <div class="w-full flex justify-center gap-[24px]">
+        <a href="https://twitter.com/GuildPal" target="_blank">
+          <img class="w-[56px] h-[56px]" src="./images/icon-twitter.svg" alt="X" />
+        </a>
+        <a href="https://discord.gg/hk6eTJV7yK" target="_blank">
+          <img class="w-[56px] h-[56px]" src="./images/icon-discord.png" alt="Discord" />
+        </a>
+      </div>
+      
+      <div class="mt-[40px] text-[#AEAEAE] text-[18px] font-[500] leading-[25.2px] px-10">
+        © Copyright 2024 | Atomrigs Lab, Inc | All Rights Reserved
+      </div>
+    </div>
+  </div>
+
+  <script src="js/swiper-bundle_11_1_0.min.js"></script>
+  <script>const swiper = new Swiper('.swiper', {
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
   });
 </script>
+</body>
+</html>

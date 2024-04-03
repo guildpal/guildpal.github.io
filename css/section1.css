@@ -1,0 +1,65 @@
+.section-1-bg {
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.8)
+  ), url('../images/bg-1.png');
+  width: 100%;
+  height: auto;
+}
+
+.text-header {
+  color: #FFF;
+  border: 2px solid #000000;
+  text-shadow: 1px 1px 0px #000;
+  -webkit-text-stroke-width: 2;
+  -webkit-text-stroke-color: #000;
+  font-family: Poppins;
+}
+
+.bg-header {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.50);
+  backdrop-filter: blur(8px);
+}
+
+.swiper {
+  z-index: 0;
+}
+
+.swiper-button-prev {
+  height: 27px;
+  background-image: url(../images/arrow-left.svg);
+  background-repeat: no-repeat;
+}
+
+.swiper-button-next {
+  height: 27px;
+  background-image: url(../images/arrow-right.svg);
+  background-repeat: no-repeat;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 0 !important;
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 0px !important;
+}
+.swiper-pagination-bullet {
+  background-color: #5B5B5B;
+  border-radius: 0;
+  width: 30px;
+  height: 5px;
+  margin: 0 10px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ABE85D;
+}
