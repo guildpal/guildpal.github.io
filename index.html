@@ -87,7 +87,8 @@
     }
 
     .banner-background {
-      background-image: url('images/img-top-banner-pc_1.5x.jpg');
+      /* background-image: url('images/img-top-banner-pc_1.5x.jpg'); */
+      background-image: url('images/img-top-banner-pc.png');
     }
 
     .banner-text {
@@ -101,7 +102,8 @@
 
     @media all and (max-width: 900px) {
       .banner-background {
-        background-image: url('images/img-top-banner-m_1.5x.jpg');
+        /* background-image: url('images/img-top-banner-m_1.5x.jpg'); */
+        background-image: url('images/img-top-banner-m.png');
       }
 
       .banner-text {
@@ -199,6 +201,30 @@
       line-height: 33.6px;
     }
 
+    .banner-title {
+      font-family: 'KemcoPixelBold';
+      color: white;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 37.2px;
+      letter-spacing: -0.03em;
+      -webkit-text-stroke: 1px black;
+      text-shadow: 1px 3px black;
+    }
+
+    @media all and (max-width: 900px) {
+      .banner-title {
+        font-family: 'KemcoPixelBold';
+        color: white;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 22px;
+        letter-spacing: -0.03em;
+        -webkit-text-stroke: 1px black;
+        text-shadow: 1px 3px black;
+      }
+    }
+
     .section-6-title {
       font-family: 'KemcoPixelBold';
       /* color: #ABE85D; */
@@ -253,6 +279,17 @@
         background-image: url('images/btn-Install-Now-pressed.png');
         width: 90px;
         height: 40px;
+      }
+
+      .banner-title {
+        font-family: 'KemcoPixelBold';
+        color: white;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 22px;
+        letter-spacing: -0.03em;
+        -webkit-text-stroke: 1px black;
+        text-shadow: 1px 3px black;
       }
 
       .section-2-text {
@@ -439,10 +476,10 @@
   </div>
 
   <!-- banner -->
-  <div class="w-full h-[63px] pc:h-[100px] bg-pgaBlue">
-    <div class="w-full h-full banner-background bg-contain bg-no-repeat bg-center flex justify-center items-center">
-      <img src="images/symbol-circle-bg-wh.svg" class="w-[36px] h-[36px] pc:w-[46px] pc:h-[46px] me-2" alt="PGA" />
-      <span class="banner-text">Pixels Game Assistant</span>
+  <div class="w-full h-[63px] pc:h-[100px] bg-[#2A3424]">
+    <div class="w-full h-full banner-background bg-contain mobile:bg-cover bg-no-repeat bg-center flex justify-center items-center">
+      <span class="banner-title mobile:hidden">Work less & earn more <span class="text-pgaBrightGreen">pixels</span></span>
+      <span class="banner-title pc:hidden">Work less &<br />earn more <span class="text-pgaBrightGreen">pixels</span></span>
       <a href="https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej" target="_blank" class="ml-[10px] pc:ml-[20px]">
         <div id="install-btn-on-banner" class="bg-contain bg-no-repeat bg-center"></div>
       </a>
@@ -488,11 +525,12 @@
       </div>
     </div>
   </div>
+
   <!-- banner -->
-  <div class="w-full h-[63px] pc:h-[100px] bg-pgaBlue">
-    <div class="w-full h-full banner-background bg-contain bg-no-repeat bg-center flex justify-center items-center">
-      <img src="images/symbol-circle-bg-wh.svg" class="w-[36px] h-[36px] pc:w-[46px] pc:h-[46px] me-2" alt="PGA" />
-      <span class="banner-text">Pixels Game Assistant</span>
+  <div class="w-full h-[63px] pc:h-[100px] bg-[#2A3424]">
+    <div class="w-full h-full banner-background bg-contain mobile:bg-cover bg-no-repeat bg-center flex justify-center items-center">
+      <span class="banner-title mobile:hidden">Work less & earn more <span class="text-pgaBrightGreen">pixels</span></span>
+      <span class="banner-title pc:hidden">Work less &<br />earn more <span class="text-pgaBrightGreen">pixels</span></span>
       <a href="https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej" target="_blank" class="ml-[10px] pc:ml-[20px]">
         <div id="install-btn-on-banner" class="bg-contain bg-no-repeat bg-center"></div>
       </a>
@@ -541,16 +579,17 @@
       </div>
     </div>
   </div>
+
   <!-- banner -->
-  <div class="w-full h-[63px] pc:h-[100px] bg-pgaBlue">
-    <div class="w-full h-full banner-background bg-contain bg-no-repeat bg-center flex justify-center items-center">
-      <img src="images/symbol-circle-bg-wh.svg" class="w-[36px] h-[36px] pc:w-[46px] pc:h-[46px] me-2" alt="PGA" />
-      <span class="banner-text">Pixels Game Assistant</span>
+  <div class="w-full h-[63px] pc:h-[100px] bg-[#2A3424]">
+    <div class="w-full h-full banner-background bg-contain mobile:bg-cover bg-no-repeat bg-center flex justify-center items-center">
+      <span class="banner-title mobile:hidden">Work less & earn more <span class="text-pgaBrightGreen">pixels</span></span>
+      <span class="banner-title pc:hidden">Work less &<br />earn more <span class="text-pgaBrightGreen">pixels</span></span>
       <a href="https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej" target="_blank" class="ml-[10px] pc:ml-[20px]">
         <div id="install-btn-on-banner" class="bg-contain bg-no-repeat bg-center"></div>
       </a>
     </div>
-  </div>  
+  </div>
 
 
   <!-- section 5 -->
@@ -645,15 +684,16 @@
   </div>
 
   <!-- banner -->
-  <div class="w-full h-[63px] pc:h-[100px] bg-pgaBlue">
-    <div class="w-full h-full banner-background bg-contain bg-no-repeat bg-center flex justify-center items-center">
-      <img src="images/symbol-circle-bg-wh.svg" class="w-[36px] h-[36px] pc:w-[46px] pc:h-[46px] me-2" alt="PGA" />
-      <span class="banner-text">Pixels Game Assistant</span>
+  <div class="w-full h-[63px] pc:h-[100px] bg-[#2A3424]">
+    <div class="w-full h-full banner-background bg-contain mobile:bg-cover bg-no-repeat bg-center flex justify-center items-center">
+      <span class="banner-title mobile:hidden">Work less & earn more <span class="text-pgaBrightGreen">pixels</span></span>
+      <span class="banner-title pc:hidden">Work less &<br />earn more <span class="text-pgaBrightGreen">pixels</span></span>
       <a href="https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej" target="_blank" class="ml-[10px] pc:ml-[20px]">
         <div id="install-btn-on-banner" class="bg-contain bg-no-repeat bg-center"></div>
       </a>
     </div>
   </div>
+
 
 
   <!-- footer -->
