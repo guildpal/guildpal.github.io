@@ -100,6 +100,13 @@
       -webkit-text-stroke: 2px #000;
     }
 
+    .text-title1 {
+      font-size : clamp(1.1rem, 3.2vh, 5vh);
+    }
+    .text-title2 {
+      font-size : clamp(0.8rem, 2.2vh, 4vh);
+    }
+
     @media all and (max-width: 900px) {
       .banner-background {
         background-image: url('images/img-top-banner-m.gif');
@@ -395,8 +402,10 @@
     mobile:min-h-[500px] mobile:max-h-[600px] mobile:bg-cover mobile:bg-left-bottom mobile:px-[16px]">
     <div class="max-w-[900px] flex flex-col items-center">
       <div class="font-[700]">
-        <div class="text-center font-pgaTitle text-pgaBrightGreen text-[18px] mobile:max-w-[280px]">PIXELS Game ASSISTANT &lt;PGA&gt;</div>
-        <div class="text-center text-white text-[12px] mb-[12px]">
+        <div class="text-center font-pgaTitle text-pgaBrightGreen text-title1 mobile:max-w-[280px]">
+            PIXELS Game ASSISTANT &lt;PGA&gt;
+        </div>
+        <div class="text-center text-white text-title2 mb-[12px]">
           is now available on Chrome web store!
         </div>
       </div>
