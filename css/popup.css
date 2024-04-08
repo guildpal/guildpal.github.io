@@ -1,0 +1,39 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: auto;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* 모달 콘텐츠 스타일 */
+.modal-content {
+  background-color: #000000;
+  margin-top: 15%;
+  padding: 0px;
+  border: 1px solid #888;
+  width: 100%;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* 닫기 버튼 스타일 */
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: auto;
+}

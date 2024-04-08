@@ -39,6 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/section1.css"/>
   <link rel="stylesheet" href="css/swiper-bundle_11_1_0.min.css"/>
+  <link rel="stylesheet" href="css/popup.css"/>
   <link rel="canonical" href="https://guildpal.com/index.html">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-40GNZFGNCE"></script>
@@ -712,17 +713,46 @@
     </div>
   </div>
 
+
+
+
+  <!-- 이벤트 팝업 모달 -->
+  <div id="eventModal" class="modal w-[400px] max-w-[100%]">
+    <div class="modal-content" >
+      <span class="close-button">&times;</span>
+      <a href="javascript:goEventTargetPage()"><img src="images/popup/20240408-1.jpg" width="400" /></a>
+    </div>
+  </div>
+
   <script src="js/swiper-bundle_11_1_0.min.js"></script>
-  <script>const swiper = new Swiper('.swiper', {
+  <script>
+    const swiper = new Swiper('.swiper', {
       pagination: {
         el: '.swiper-pagination',
         clickable: true
       },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
-</script>
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    // 페이지 로드 시 모달 표시
+    window.onload = function() {
+      document.getElementById('eventModal').style.display = 'block';
+      document.getElementsByClassName('close-button')[0].onclick = function() {
+        document.getElementById('eventModal').style.display = 'none';
+      }
+    }
+
+    function goEventTargetPage() {
+      window.open('https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej');
+      document.getElementById('eventModal').style.display = 'none';
+    }    
+
+    // window.onload = function() {
+    //   window.open("/popup/20240408-1/", "event-popup", "width=400, height=467")
+    // }
+  </script>
 </body>
 </html>
