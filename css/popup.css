@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-/* 모달 콘텐츠 스타일 */
+/* modal content style */
 .modal-content {
   background-color: #000000;
   margin-top: 60px;
@@ -21,7 +21,7 @@
   pointer-events: auto;
 }
 
-/* 닫기 버튼 스타일 */
+/* close button style */
 .close-button {
   color: #aaa;
   float: right;

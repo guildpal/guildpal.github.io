@@ -922,13 +922,12 @@
       </div>
     </div>
 
-    <!-- 이벤트 팝업 모달 -->
+    <!-- event popup modal -->
     <div id="eventModal" class="modal">
       <div class="modal-content w-[400px] max-w-[80%]">
         <span class="close-button">&times;</span>
         <a href="javascript:goEventTargetPage()"
-          ><img src="images/popup/20240408-2.jpg" width="400"
-        /></a>
+          ><img src="images/popup/20240408-2.jpg" width="400"/></a>
       </div>
     </div>
 
@@ -945,7 +944,7 @@
         },
       });
 
-      // 페이지 로드 시 모달 표시
+      // Show modal on page load
       window.onload = function () {
         document.getElementById("eventModal").style.display = "block";
         document.getElementsByClassName("close-button")[0].onclick =
