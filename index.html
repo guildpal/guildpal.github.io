@@ -923,13 +923,13 @@
     </div>
 
     <!-- event popup modal -->
-    <div id="eventModal" class="modal">
+    <!-- <div id="eventModal" class="modal">
       <div class="modal-content w-[400px] max-w-[80%]">
         <span class="close-button">&times;</span>
         <a href="javascript:goEventTargetPage()"
           ><img src="images/popup/20240408-2.jpg" width="400"/></a>
       </div>
-    </div>
+    </div> -->
 
     <script src="js/swiper-bundle_11_1_0.min.js"></script>
     <script>
@@ -945,20 +945,20 @@
       });
 
       // Show modal on page load
-      window.onload = function () {
-        document.getElementById("eventModal").style.display = "block";
-        document.getElementsByClassName("close-button")[0].onclick =
-          function () {
-            document.getElementById("eventModal").style.display = "none";
-          };
-      };
+      // window.onload = function () {
+      //   document.getElementById("eventModal").style.display = "block";
+      //   document.getElementsByClassName("close-button")[0].onclick =
+      //     function () {
+      //       document.getElementById("eventModal").style.display = "none";
+      //     };
+      // };
 
-      function goEventTargetPage() {
-        window.open(
-          "https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej"
-        );
-        document.getElementById("eventModal").style.display = "none";
-      }
+      // function goEventTargetPage() {
+      //   window.open(
+      //     "https://chromewebstore.google.com/detail/pixels-game-assistant/dgoifpeldfmnlbangejfelgmgibpokej"
+      //   );
+      //   document.getElementById("eventModal").style.display = "none";
+      // }
 
       // window.onload = function() {
       //   window.open("/popup/20240408-1/", "event-popup", "width=400, height=467")
