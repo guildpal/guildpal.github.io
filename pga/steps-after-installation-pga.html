@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="Join GuildPal, the forefront of Pixels guilds, where you can use your free tree and land with just a few pixels. Dive into a vast Pixels Game world, building, exploring, and competing to rise among the ranks."
+    />
+    <title>GuildPal: PGA Guide</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="GuildPal: The Leading Pixel Guild Experience" />
+    <meta
+      name="description"
+      content="Join GuildPal, the forefront of Pixels guilds, where you can use your free tree and land with just a few pixels. Dive into a vast Pixels game world, building, exploring, and competing to rise among the ranks."
+    />
+    <meta
+      name="keywords"
+      content="Pixel Guild, GuildPal, Pixels Game, Free Land, Free Tree, Pixel Art, Blockchain Gaming, P2E, Pixels Land, Pixel Strategy Game"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://guildpal.com/" />
+    <meta
+      property="og:title"
+      content="GuildPal: The Leading Pixels Guild Experience"
+    />
+    <meta
+      property="og:description"
+      content="Discover GuildPal, your gateway to becoming part of the #1 pixels guild. Use our free tree and land, and engage in the expansive Pixels game universe."
+    />
+    <meta
+      property="og:image"
+      content="https://guildpal.com/images/meta-og-img.jpg"
+    />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://guildpal.com" />
+    <meta
+      property="twitter:title"
+      content="GuildPal: The Leading Pixel Guild Experience"
+    />
+    <meta
+      property="twitter:description"
+      content="GuildPal invites you to the ultimate Pixels Game adventure. Use our land and tree with minimal pixels and join us in our quest to be the #1 pixel guild."
+    />
+    <meta
+      property="twitter:image"
+      content="https://guildpal.com/images/pixel-land-1.png"
+    />
+    <meta property="twitter:site" content="https://guildpal.com" />
+
+    <script src="/js/tailwindcss_3_4_3.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/section1.css" />
+    <link rel="stylesheet" href="/css/popup.css" />
+    <link rel="canonical" href="https://guildpal.com/index.html" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-40GNZFGNCE"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-40GNZFGNCE");
+    </script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              pgaGreen: "#ABE85D",
+              pgaBlue: "#6334F4",
+              pgaBrightGreen: "#E5FF48",
+            },
+          },
+          fontFamily: {
+            pgaTitle: ["KemcoPixelBold"],
+          },
+          screens: {
+            mobile: { min: "160px", max: "900px" },
+            pc: { min: "901px" },
+          },
+        },
+      };
+    </script>
+    <style>
+      @font-face {
+        font-family: "KemcoPixelBold";
+        src: url("/fonts/Kemco_Pixel_Bold.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      .section-2-bg {
+        background: #000;
+      }
+
+      .section-4-bg {
+        background-image: url("/images/bg-2.png");
+      }
+
+      .banner-background {
+        background-image: url("/images/img-top-banner-pc.gif");
+      }
+
+      .banner-text {
+        font-family: Poppins;
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 53.2px;
+        color: white;
+        -webkit-text-stroke: 2px #000;
+      }
+
+      .text-title1 {
+        font-size: clamp(1.1rem, 3.2vh, 5vh);
+      }
+      .text-title2 {
+        font-size: clamp(0.8rem, 2.2vh, 4vh);
+      }
+
+      @media all and (max-width: 900px) {
+        .banner-background {
+          background-image: url("/images/img-top-banner-m.gif");
+        }
+
+        .banner-text {
+          font-family: Poppins;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 23.2px;
+          color: white;
+          -webkit-text-stroke: 1px #000;
+        }
+      }
+
+      #install-btn-on-banner {
+        background-image: url("/images/btn-Install-Now.png");
+        width: 163px;
+        height: 60px;
+      }
+
+      #install-btn-on-banner:hover {
+        background-image: url("/images/btn-Install-Now-pressed.png");
+        width: 163px;
+        height: 60px;
+      }
+
+      #install-btn-on-section1 {
+        background-image: url("/images/btn-Install-Now.png");
+        width: 118px;
+        height: 43px;
+      }
+
+      #install-btn-on-section1:hover {
+        background-image: url("/images/btn-Install-Now-pressed.png");
+        width: 118px;
+        height: 43px;
+      }
+
+      #buy-guild-shard-btn {
+        background-image: url("/images/btn-Buy-Guild-Shard.png");
+        width: 288px;
+        height: 80px;
+      }
+
+      #buy-guild-shard-btn-icon {
+        width: 32px;
+      }
+
+      #buy-guild-shard-btn-text {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: normal;
+        color: #000;
+      }
+
+      .section-2-text {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 33.6px;
+      }
+
+      .section-3-desc {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22.4px;
+        color: #48754a;
+      }
+
+      .section-3-text {
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22.4px;
+      }
+
+      .section-4-item-title {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 33.6px;
+        text-align: center;
+      }
+
+      .section-4-item-text {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22.4px;
+        text-align: center;
+      }
+
+      .section-5-text-1 {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 44.8px;
+        border-bottom-width: 4px;
+        border-bottom-color: #6334f4;
+      }
+
+      .section-5-text-2 {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 33.6px;
+        color: #48754a;
+      }
+
+      .section-5-text-3 {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 33.6px;
+      }
+
+      .banner-title {
+        font-family: "KemcoPixelBold";
+        color: white;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 37.2px;
+        letter-spacing: -0.03em;
+        -webkit-text-stroke: 1px black;
+        text-shadow: 1px 3px black;
+      }
+
+      @media all and (max-width: 900px) {
+        .banner-title {
+          font-family: "KemcoPixelBold";
+          color: white;
+          font-weight: 700;
+          font-size: 19px;
+          line-height: 22px;
+          letter-spacing: -0.03em;
+          -webkit-text-stroke: 1px black;
+          text-shadow: 1px 3px black;
+        }
+      }
+
+      .section-6-title {
+        font-family: "KemcoPixelBold";
+        /* color: #ABE85D; */
+        color: #e5ff48;
+        -webkit-text-stroke: 2px #006a26;
+        text-shadow: 0px 3px #007a2c;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 43.2px;
+        margin-bottom: 40px;
+      }
+
+      .section-6-text {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 33.6px;
+        text-align: center;
+      }
+
+      .bg-feature-title {
+        width: 90%;
+        height: 65px;
+        line-height: 65px; /* To center the text vertically */
+        text-align: center;
+        background-position: center;
+        background-image: url("/images/feature-title.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      @media all and (max-width: 900px) {
+        #install-btn-on-banner {
+          background-image: url("/images/btn-Install-Now.png");
+          width: 90px;
+          height: 40px;
+        }
+
+        #install-btn-on-banner:hover {
+          background-image: url("/images/btn-Install-Now-pressed.png");
+          width: 90px;
+          height: 40px;
+        }
+
+        #buy-guild-shard-btn {
+          background-image: url("/images/btn-Buy-Guild-Shard.png");
+          width: 230px;
+          height: 64px;
+        }
+
+        #buy-guild-shard-btn-icon {
+          width: 24px;
+        }
+
+        #buy-guild-shard-btn-text {
+          font-family: Poppins;
+          font-size: 18px;
+          font-weight: 700;
+          line-height: normal;
+          color: #000;
+        }
+
+        .banner-title {
+          font-family: "KemcoPixelBold";
+          color: white;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 22px;
+          letter-spacing: -0.03em;
+          -webkit-text-stroke: 1px black;
+          text-shadow: 1px 3px black;
+        }
+
+        .section-2-text {
+          font-family: Poppins;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 19.6px;
+        }
+
+        .section-3-desc {
+          font-family: Poppins;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 19.6px;
+          color: #48754a;
+        }
+
+        .section-3-text {
+          font-family: Poppins;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 19.6px;
+        }
+
+        .section-4-item-title {
+          font-family: Poppins;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 28px;
+          text-align: center;
+        }
+
+        .section-4-item-text {
+          font-family: Poppins;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 19.6px;
+          text-align: center;
+          color: #d5ceec;
+        }
+
+        .section-5-text-1 {
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 28px;
+          border-bottom-width: 4px;
+          border-bottom-color: #6334f4;
+        }
+
+        .section-5-text-2 {
+          font-family: Poppins;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 22.4px;
+          color: #48754a;
+        }
+
+        .section-5-text-3 {
+          font-family: Poppins;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 22.4px;
+        }
+
+        .section-6-title {
+          font-family: "KemcoPixelBold";
+          color: #e5ff48;
+          -webkit-text-stroke: 2px #006a26;
+          text-shadow: 0px 3px #007a2c;
+          font-weight: 700;
+          font-size: 28px;
+          line-height: 33.6px;
+          margin-bottom: 36px;
+        }
+
+        .section-6-text {
+          font-family: Poppins;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 19.6px;
+          text-align: center;
+        }
+      }
+
+      .section-6-bg {
+        background-image: url("/images/section-6-bg.png");
+      }
+
+      .pgaBoxshadow {
+        box-shadow: 10px 10px 0px 0px rgba(205, 188, 255, 1);
+      }
+
+      .playnow-button {
+        background-color: #e3ff37;
+        color: #000;
+        text-shadow: 0 2px 0 #ffa901;
+        font-size: 24px;
+        padding: 25px;
+        width: 60%;
+        border-radius: 10px;
+      }
+      .playnow-button:hover {
+        padding: 27px 23px 23px 27px;
+      }
+    </style>
+  </head>
+  <body
+    class="w-screen flex flex-col justify-center items-center bg-black overflow-x-hidden"
+  >
+    <!-- section 1 -->
+    <div
+      class="w-screen flex flex-col justify-center items-center section-1-bg bg-cover bg-no-repeat text-white py-[60px] mobile:bg-cover mobile:bg-left-bottom mobile:px-[16px]"
+    >
+      <div class="max-w-[900px] flex flex-col items-center">
+        <div
+          class="font-pgaTitle font-[700] text-[36px] leading-[43.2px] mobile:text-[24px] mobile:leading-[33.6px]"
+        >
+          <div class="text-center">Congratulation!</div>
+        </div>
+        <div
+          class="text-center text-pgaBrightGreen font-pgaTitle font-[700] text-[24px] leading-[33.6px] mobile:text-[16px] mobile:leading-[22.4px] mb-[80px] mobile:mb-[56px]"
+        >
+          PIXELS GAME ASSISTANT
+        </div>
+        <div
+          class="text-center flex flex-col gap-[24px] mobile:gap-[12px] section-2-text p-4"
+        >
+          <p>
+            PGA is a browser extension that helps Pixels gamers play more
+            efficiently and have more fun.
+          </p>
+
+          <p>
+            PGA dramatically improves many of the frustrations of playing Pixels
+            game, making them much easier to play and helping you achieve the
+            most in the least amount of time without using a bot.
+          </p>
+
+          <p>Let’s get started!</p>
+
+          <p class="pt-[50px]">
+            Open or reload
+            <a
+              href="https://play.pixels.xyz/"
+              style="color: rgb(229 255 72)"
+              target="_blank"
+              >https://play.pixels.xyz/</a
+            >
+            and follow the instruction.
+          </p>
+
+          <div class="text-center">
+            <button class="playnow-button font-pgaTitle">Play Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- section 2 -->
+    <div
+      class="w-full flex flex-col justify-center items-center bg-pgaGreen py-[130px] mobile:py-[80px] mobile:px-[16px]"
+    >
+      <div class="max-w-[900px] flex flex-col items-center">
+        <div
+          class="border-black border-b-2 text-center font-pgaTitle font-[700] text-[36px] leading-[43.2px] mobile:text-[28px] mobile:leading[33.6px]"
+        >
+          Here’s how to get started
+        </div>
+
+        <div
+          class="w-full flex flex-col justify-center items-center py-[80px] mobile:py-[56px]"
+        >
+          <img
+            class="w-[900px] h-[634px] mobile:w-[318px] mobile:h-[224px]"
+            src="/images/img-sell-order-helper.png"
+            alt="Sell Order Helper"
+          />
+          <div class="section-3-text text-center mt-[24px] mobile:mt-[18px]">
+            1. Enable PGA in the extension settings. Once installed, you’ll find
+            the PGA icon at the top of your browser. When you enter the PIXELS
+            game, look for the PGA button at the bottom.
+          </div>
+        </div>
+        <div
+          class="w-full flex flex-col justify-center items-center py-[80px] mobile:py-[56px]"
+        >
+          <img
+            class="w-[900px] h-[634px] mobile:w-[318px] mobile:h-[224px]"
+            src="/images/img-manual-timer.png"
+            alt="Smart Timer"
+          />
+          <div class="section-3-text text-center mt-[24px] mobile:mt-[18px]">
+            2. Enjoy an optimized gaming journey with PGA!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- section 3 -->
+    <div
+      class="w-full flex flex-col justify-center items-center bg-pgaGreen pb-[60px] mobile:px-[16px]"
+    >
+      <div class="max-w-[900px] flex flex-col items-center">
+        <div
+          class="border-black border-b-2 text-center font-pgaTitle font-[700] text-[36px] leading-[43.2px] mobile:text-[28px] mobile:leading[33.6px]"
+        >
+          🌳 What features are available?
+        </div>
+
+        <div class="py-[30px]">
+          This is a Preview Beta Version that supports only the following
+          limited features.
+        </div>
+
+        <div class="w-full flex flex-col justify-center items-center py-[40px]">
+          <div
+            class="bg-feature-title font-pgaTitle font-[700] text-[24px] mt-[20px] mobile:text-[18px]"
+          >
+            SELL ORDER HELPER
+          </div>
+          <div class="section-3-text text-center mt-[24px] mobile:mt-[18px]">
+            When you create a new sell order, it shows the current sell order
+            list and autofills the bottom price and maximum quantity.
+          </div>
+        </div>
+        <div class="w-full flex flex-col justify-center items-center py-[40px]">
+          <div
+            class="bg-feature-title font-pgaTitle font-[700] text-[24px] mt-[20px] mobile:text-[18px]"
+          >
+            Manual Timer
+          </div>
+          <div class="section-3-text text-center mt-[24px] mobile:mt-[18px]">
+            You can set timers for various tasks such as VIP lounge, Grumpkin
+            watering, and other custom timers.
+          </div>
+        </div>
+        <div class="w-full flex flex-col justify-center items-center py-[40px]">
+          <div
+            class="bg-feature-title font-pgaTitle font-[700] text-[24px] mt-[20px] mobile:text-[18px]"
+          >
+            Task Board List
+          </div>
+          <div class="section-3-text text-center mt-[24px] mobile:mt-[18px]">
+            You can see the last task board list anywhere and also it shows
+            total cost and shortfall in the backpack for each task automatically
+          </div>
+        </div>
+        <div class="w-full flex flex-col justify-center items-center py-[40px]">
+          <div
+            class="bg-feature-title font-pgaTitle font-[700] text-[24px] mt-[20px] mobile:text-[18px]"
+          >
+            Storage Management
+          </div>
+          <div class="section-3-text text-center mt-[24px] mobile:mt-[18px]">
+            You can manage the item lists of your storages including ones in
+            Speck or Farm lands
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- section 4-->
+    <div
+      class="relative w-full flex flex-col items-center py-[130px] mobile:py-[80px] mobile:px-[16px]"
+    >
+      <div
+        class="z-10 absolute top-0 w-full h-full bg-black section-4-bg bg-contain bg-no-repeat bg-center mobile:bg-auto mobile:bg-left-top"
+      ></div>
+      <div class="z-20 absolute top-0 w-full h-full bg-black opacity-70"></div>
+      <div class="z-30">
+        <div class="max-w-[900px] flex flex-col text-white">
+          <div
+            class="text-center font-pgaTitle font-[700] text-[36px] leading-[43.2px] mobile:text-[28px] mobile:leading-[33.6px] mb-[80px] mobile:mb-[56px]"
+          >
+            Coming Soon
+          </div>
+          <div class="max-w-[900px] flex flex-wrap gap-[40px] justify-center">
+            <div
+              class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center gap-[12px]"
+            >
+              <div class="section-4-item-title">
+                Global industry state tracking
+              </div>
+              <div class="section-4-item-text">
+                Waiting time of tree, grill, windmill<br />
+                Land search by industry
+              </div>
+            </div>
+            <div
+              class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center"
+            >
+              <div class="section-4-item-title">
+                Intelligent market data analytics
+              </div>
+              <div class="section-4-item-text">
+                Price trends<br />
+                Energy efficiency and production cost analysis
+              </div>
+            </div>
+            <div
+              class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center gap-[12px]"
+            >
+              <div class="section-4-item-title">Guild Integration</div>
+              <div class="section-4-item-text">
+                Guild-only chatting integrated with Discord<br />
+                Guild lands information<br />
+                Guild tasks
+              </div>
+            </div>
+            <div
+              class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center gap-[12px]"
+            >
+              <div class="section-4-item-title">Suggest a daily To-do List</div>
+              <div class="section-4-item-text">Based on your levels</div>
+            </div>
+            <div
+              class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center gap-[12px]"
+            >
+              <div class="section-4-item-title">Suggest a Daily To-do List</div>
+              <div class="section-4-item-text">Based on your levels</div>
+            </div>
+            <div
+              class="w-[430px] h-[200px] px-[24px] mobile:w-[95%] bg-pgaBlue pgaBoxshadow flex flex-col justify-center items-center"
+            >
+              <div class="section-4-item-title">...and Many More</div>
+              <div class="section-4-item-text">
+                advanced features based on the upcoming Pixels' major updates!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="w-full flex flex-col justify-center items-center bg-black">
+      <div class="text-center h-[321px] mb-[7px] flex flex-col justify-center">
+        <div class="w-full flex justify-center gap-[24px]">
+          <a href="https://twitter.com/GuildPal" target="_blank">
+            <img
+              class="w-[56px] h-[56px]"
+              src="/images/icon-twitter.svg"
+              alt="X"
+            />
+          </a>
+          <a href="https://discord.gg/hk6eTJV7yK" target="_blank">
+            <img
+              class="w-[56px] h-[56px]"
+              src="/images/icon-discord.png"
+              alt="Discord"
+            />
+          </a>
+        </div>
+
+        <div
+          class="mt-[40px] text-[#AEAEAE] text-[18px] font-[500] leading-[25.2px] px-10"
+        >
+          © Copyright 2024 | Atomrigs Lab, Inc | All Rights Reserved
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
