@@ -460,22 +460,40 @@
   >
     <!-- section 1 -->
     <div
-      class="w-screen flex flex-col justify-center items-center section-1-bg bg-cover bg-no-repeat text-white py-[60px] mobile:bg-cover mobile:bg-left-bottom mobile:px-[16px]"
+      class="w-screen flex flex-col justify-center items-center section-1-bg bg-cover bg-no-repeat text-white py-[50px] mobile:bg-cover mobile:bg-left-bottom mobile:px-[16px]"
     >
       <div class="max-w-[900px] flex flex-col items-center">
         <div
           class="font-pgaTitle font-[700] text-[36px] leading-[43.2px] mobile:text-[24px] mobile:leading-[33.6px]"
         >
-          <div class="text-center">Congratulation!</div>
+          <div class="text-center">Congratulations!</div>
         </div>
         <div
-          class="text-center text-pgaBrightGreen font-pgaTitle font-[700] text-[24px] leading-[33.6px] mobile:text-[16px] mobile:leading-[22.4px] mb-[80px] mobile:mb-[56px]"
+          class="mb-[20px] text-center text-pgaBrightGreen font-pgaTitle font-[700] text-[24px] leading-[33.6px] mobile:text-[16px] mobile:leading-[22.4px]"
         >
-          PIXELS GAME ASSISTANT
+          Pixels Game Assistant<br />has been successfully installed.
         </div>
         <div
           class="text-center flex flex-col gap-[24px] mobile:gap-[12px] section-2-text p-4"
         >
+          <p>
+            Now open or reload
+            <a
+              href="https://play.pixels.xyz/"
+              style="color: rgb(229 255 72)"
+              target="_blank"
+              >https://play.pixels.xyz/</a
+            >
+          </p>
+          <div class="text-center mb-[40px]">
+            <button
+              class="playnow-button font-pgaTitle"
+              onclick="window.open('https://play.pixels.xyz/','_blank')"
+            >
+              Play Now
+            </button>
+          </div>
+
           <p>
             PGA is a browser extension that helps Pixels gamers play more
             efficiently and have more fun.
@@ -488,26 +506,6 @@
           </p>
 
           <p>Let’s get started!</p>
-
-          <p class="pt-[50px]">
-            Open or reload
-            <a
-              href="https://play.pixels.xyz/"
-              style="color: rgb(229 255 72)"
-              target="_blank"
-              >https://play.pixels.xyz/</a
-            >
-            and follow the instruction.
-          </p>
-
-          <div class="text-center">
-            <button
-              class="playnow-button font-pgaTitle"
-              onclick="window.open('https://play.pixels.xyz/','_blank')"
-            >
-              Play Now
-            </button>
-          </div>
         </div>
       </div>
     </div>
