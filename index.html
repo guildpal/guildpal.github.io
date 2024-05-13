@@ -177,9 +177,9 @@
       }
 
       #buy-guild-shard-btn {
-      background-image: url('images/btn-Buy-Guild-Shard.png');
-      width: 288px;
-      height: 80px;
+        background-image: url("images/btn-Buy-Guild-Shard.png");
+        width: 288px;
+        height: 80px;
       }
 
       #buy-guild-shard-btn-icon {
@@ -324,7 +324,7 @@
         }
 
         #buy-guild-shard-btn {
-          background-image: url('images/btn-Buy-Guild-Shard.png');
+          background-image: url("images/btn-Buy-Guild-Shard.png");
           width: 230px;
           height: 64px;
         }
@@ -441,19 +441,99 @@
       .pgaBoxshadow {
         box-shadow: 10px 10px 0px 0px rgba(205, 188, 255, 1);
       }
+
+      .text-header {
+        color: #fff;
+        border: 2px solid #000000;
+        text-shadow: 1px 1px 0px #000;
+        -webkit-text-stroke-width: 2;
+        -webkit-text-stroke-color: #000;
+        font-family: Poppins;
+      }
+
+      .bg-header {
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+      }
+
+      nav {
+        .menu-mobile {
+          display: none;
+        }
+      }
+
+      .dimmed-menu {
+        background: rgba(0, 0, 0, 0.7);
+        top: 0;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        backdrop-filter: blur(8px);
+        padding: 1.25rem 1rem;
+        gap: 0.625rem;
+        align-items: flex-end;
+      }
+
+      @media all and (max-width: 900px) {
+        nav {
+          .menu-desktop {
+            display: none;
+          }
+
+          .menu-mobile {
+            display: flex;
+          }
+        }
+      }
     </style>
   </head>
   <body
     class="w-screen flex flex-col justify-center items-center bg-black overflow-x-hidden"
   >
     <!-- header -->
-    <div class="w-full h-[60px] bg-header sticky z-[9999]">
+    <div
+      id="fullscreen-menu"
+      class="w-full h-screen dimmed-menu fixed z-[9999]"
+    >
+      <div class="pr-[10px]">
+        <button class="menu-mobile" onclick="closeNav()">
+          <img src="/images/icon-close.svg" alt="menu-icon" />
+        </button>
+      </div>
+      <div
+        class="w-full h-full flex flex-col justify-center items-center gap-[32px] border-0 font-[700] text-[18px] text-header"
+      >
+        <button onclick="closeNav()">
+          <a href="#">
+            <span>Home</span>
+          </a>
+        </button>
+        <button onclick="closeNav()">
+          <a href="#about-guildpal">
+            <span>About GuildPal</span>
+          </a>
+        </button>
+        <button onclick="closeNav()">
+          <a href="../faq/index.html">
+            <span>FAQ</span>
+          </a>
+        </button>
+      </div>
+    </div>
+
+    <nav class="w-full h-[60px] bg-header sticky z-[9998] px-[16px]">
       <div class="w-full max-w-[900px] flex justify-between items-center px-3">
         <a href="#">
-          <img class="h-[34px]" src="./images/header-home.svg" alt="GuildPal" />
+          <img class="h-[34px]" src="/images/header-home.svg" alt="GuildPal" />
         </a>
         <div
-          class="flex gap-[24px] border-0 font-[700] text-[18px] mobile:text-[15px] text-header"
+          class="menu-desktop flex gap-[24px] border-0 font-[700] text-[18px] mobile:text-[15px] text-header"
         >
           <a href="#">
             <span>Home</span>
@@ -461,9 +541,15 @@
           <a href="#about-guildpal">
             <span>About GuildPal</span>
           </a>
+          <a href="../faq/index.html">
+            <span>FAQ</span>
+          </a>
         </div>
+        <button class="menu-mobile" onclick="openNav()">
+          <img src="/images/icon-menu.svg" alt="menu-icon" />
+        </button>
       </div>
-    </div>
+    </nav>
 
     <!-- section 1 -->
     <!-- By Yong -->
@@ -891,9 +977,19 @@
                 instead they will serve the broader entire Pixels community.
               </div>
               <div class="flex justify-center">
-                <a href="https://dashboard.pixels.xyz/guild/guildpal" target="_blank">
-                  <div id="buy-guild-shard-btn" class="bg-contain flex justify-center items-center">
-                    <img  id="buy-guild-shard-btn-icon" src="images/pixel_currency.png" alt="pixel currency icon" />
+                <a
+                  href="https://dashboard.pixels.xyz/guild/guildpal"
+                  target="_blank"
+                >
+                  <div
+                    id="buy-guild-shard-btn"
+                    class="bg-contain flex justify-center items-center"
+                  >
+                    <img
+                      id="buy-guild-shard-btn-icon"
+                      src="images/pixel_currency.png"
+                      alt="pixel currency icon"
+                    />
                     <span id="buy-guild-shard-btn-text">Buy Guild Shard</span>
                   </div>
                 </a>
@@ -1007,6 +1103,17 @@
       // window.onload = function() {
       //   window.open("/popup/20240408-1/", "event-popup", "width=400, height=467")
       // }
+    </script>
+    <script>
+      const fullscreenMenu = document.getElementById("fullscreen-menu");
+
+      function openNav() {
+        fullscreenMenu.style.display = "flex";
+      }
+
+      function closeNav() {
+        fullscreenMenu.style.display = "none";
+      }
     </script>
   </body>
 </html>
