@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="Join GuildPal, the forefront of Pixels guilds, where you can use your free tree and land with just a few pixels. Dive into a vast Pixels Game world, building, exploring, and competing to rise among the ranks."
+    />
+    <title>GuildPal: PGA Guide</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="GuildPal: The Leading Pixel Guild Experience" />
+    <meta
+      name="description"
+      content="Join GuildPal, the forefront of Pixels guilds, where you can use your free tree and land with just a few pixels. Dive into a vast Pixels game world, building, exploring, and competing to rise among the ranks."
+    />
+    <meta
+      name="keywords"
+      content="Pixel Guild, GuildPal, Pixels Game, Free Land, Free Tree, Pixel Art, Blockchain Gaming, P2E, Pixels Land, Pixel Strategy Game"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://guildpal.com/" />
+    <meta
+      property="og:title"
+      content="GuildPal: The Leading Pixels Guild Experience"
+    />
+    <meta
+      property="og:description"
+      content="Discover GuildPal, your gateway to becoming part of the #1 pixels guild. Use our free tree and land, and engage in the expansive Pixels game universe."
+    />
+    <meta
+      property="og:image"
+      content="https://guildpal.com/images/meta-og-img.jpg"
+    />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://guildpal.com" />
+    <meta
+      property="twitter:title"
+      content="GuildPal: The Leading Pixel Guild Experience"
+    />
+    <meta
+      property="twitter:description"
+      content="GuildPal invites you to the ultimate Pixels Game adventure. Use our land and tree with minimal pixels and join us in our quest to be the #1 pixel guild."
+    />
+    <meta
+      property="twitter:image"
+      content="https://guildpal.com/images/pixel-land-1.png"
+    />
+    <meta property="twitter:site" content="https://guildpal.com" />
+
+    <script src="/js/tailwindcss_3_4_3.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/section1.css" />
+    <link rel="stylesheet" href="/css/popup.css" />
+    <link rel="canonical" href="https://guildpal.com/index.html" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-40GNZFGNCE"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-40GNZFGNCE");
+    </script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              pgaGreen: "#ABE85D",
+              pgaBlue: "#6334F4",
+              pgaBrightGreen: "#E5FF48",
+            },
+          },
+          fontFamily: {
+            pgaTitle: ["KemcoPixelBold"],
+          },
+          screens: {
+            mobile: { min: "160px", max: "900px" },
+            pc: { min: "901px" },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: Poppins;
+      }
+      .section-1-bg {
+        position: absolute;
+        top: 0;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.85),
+            rgba(0, 0, 0, 0.85)
+          ),
+          url(../images/bg-1.png);
+        min-height: calc(100vh + 250px);
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          backdrop-filter: blur(8px);
+        }
+      }
+
+      .title {
+        z-index: 0;
+      }
+
+      .accordion {
+        z-index: 0;
+
+        button {
+          position: relative;
+          display: flex;
+          text-align: left;
+          width: 100%;
+          padding: 20px 0;
+          color: #fff;
+          font-size: 1.15rem;
+          font-weight: 400;
+          border: none;
+          background: none;
+          outline: none;
+          border-bottom: 1px solid #fff;
+          /* transition: border-bottom 200ms linear;
+          will-change: border-bottom; */
+        }
+
+        .accordion-icon {
+          content: url(/images/icon-chevron-down.svg);
+          display: inline-block;
+          position: absolute;
+          top: 18px;
+          right: 0;
+        }
+      }
+
+      button[aria-expanded="true"] {
+        border-bottom: none;
+        color: #abe85d;
+
+        .accordion-icon {
+          content: url(/images/icon-chevron-up.svg);
+        }
+
+        + .accordion-content {
+          border-bottom: 1px solid #abe85d;
+          opacity: 1;
+          max-height: 9em;
+          transition: all 200ms linear;
+          will-change: opacity, max-height;
+        }
+      }
+
+      .accordion-content {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 200ms linear, max-height 200ms linear;
+        will-change: opacity, max-height;
+        p {
+          padding-bottom: 28px;
+        }
+      }
+
+      .href-text {
+        color: #abe85d;
+      }
+      .footer {
+        z-index: 0;
+        background-color: #151515;
+        height: 285px;
+        bottom: 0;
+      }
+
+      .text-header {
+        color: #fff;
+        border: 2px solid #000000;
+        text-shadow: 1px 1px 0px #000;
+        -webkit-text-stroke-width: 2;
+        -webkit-text-stroke-color: #000;
+        font-family: Poppins;
+      }
+
+      .bg-header {
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+      }
+
+      nav {
+        .menu-mobile {
+          display: none;
+        }
+      }
+
+      .dimmed-menu {
+        background: rgba(0, 0, 0, 0.7);
+        top: 0;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        backdrop-filter: blur(8px);
+        padding: 1.25rem 1rem;
+        gap: 0.625rem;
+        align-items: flex-end;
+      }
+
+      @media all and (max-width: 900px) {
+        nav {
+          .menu-desktop {
+            display: none;
+          }
+
+          .menu-mobile {
+            display: flex;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="w-screen flex flex-col justify-center items-center bg-black overflow-x-hidden absolute"
+  >
+    <!-- header -->
+    <div
+      id="fullscreen-menu"
+      class="w-full h-screen dimmed-menu fixed z-[9999]"
+    >
+      <div class="pr-[10px]">
+        <button class="menu-mobile" onclick="closeNav()">
+          <img src="/images/icon-close.svg" alt="menu-icon" />
+        </button>
+      </div>
+      <div
+        class="w-full h-full flex flex-col justify-center items-center gap-[32px] border-0 font-[700] text-[18px] text-header"
+      >
+        <button onclick="closeNav()">
+          <a href="../index.html">
+            <span>Home</span>
+          </a>
+        </button>
+        <button onclick="closeNav()">
+          <a href="../index.html#about-guildpal">
+            <span>About GuildPal</span>
+          </a>
+        </button>
+        <button onclick="closeNav()">
+          <a href="../faq/index.html">
+            <span>FAQ</span>
+          </a>
+        </button>
+      </div>
+    </div>
+
+    <nav class="w-full h-[60px] bg-header sticky z-[9998] px-[16px]">
+      <div class="w-full max-w-[900px] flex justify-between items-center px-3">
+        <a href="#">
+          <img class="h-[34px]" src="/images/header-home.svg" alt="GuildPal" />
+        </a>
+        <div
+          class="menu-desktop flex gap-[24px] border-0 font-[700] text-[18px] mobile:text-[15px] text-header"
+        >
+          <a href="../index.html">
+            <span>Home</span>
+          </a>
+          <a href="../index.html#about-guildpal">
+            <span>About GuildPal</span>
+          </a>
+          <a href="../faq/index.html">
+            <span>FAQ</span>
+          </a>
+        </div>
+        <button class="menu-mobile" onclick="openNav()">
+          <img src="/images/icon-menu.svg" alt="menu-icon" />
+        </button>
+      </div>
+    </nav>
+
+    <!-- FAQ -->
+    <div
+      class="w-screen flex flex-col section-1-bg bg-cover bg-no-repeat mobile:bg-cover mobile:bg-left-bottom mobile:px-[16px]"
+    ></div>
+    <div
+      class="w-screen flex flex-col gap-[80px] justify-center items-center text-white py-[180px] mobile:bg-cover mobile:bg-left-bottom mobile:px-[16px]"
+    >
+      <div class="max-w-[900px] flex flex-col items-center">
+        <div
+          class="font-[600] text-[50px] leading-[75px] text-center title mb-[55px]"
+        >
+          FAQ
+        </div>
+
+        <div class="accordion px-[16px]">
+          <!-- <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Is this utility safe to use?
+                <span class="font-[600]"
+                  >I see it sends data to their server.</span
+                >
+                Is my personal information secure?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                It is safe to use. It does not submit any actions to the Pixels
+                game by itself. It only shows the game data that are already
+                available inside game.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                It is safe
+                <span class="font-[600]"
+                  >to use the auto fill sell feature?</span
+                >
+              </span>
+              <img class="accordion-icon" aria-hidden="true" alt="" />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">답변을 무엇으로 할까요???</p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                PGA Extension
+                <span class="font-[600]">does not open.</span>
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Please refresh the pixels game site.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                how to
+                <span class="font-[600]">join guild?</span>
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                You can purchase a shard on the guild page of the game.
+                https://dashboard.pixels.xyz/guild/guildpal
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                How to
+                <span class="font-[600]">join white list?</span>
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Guild land access is not automatically allowed even though you
+                purchase a guild shard anymore. You need to introduce yourself
+                on ⁠👋│introduce-yourself and fill out the guild member form,
+                https://forms.gle/zHSYzjYY6c1MrrKT9 . It may take up to 48 hours
+                to get access.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Can i use this entention on mobile?
+                <span class="font-[600]">this entention on mobile?</span>
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Not yet. For mobile devices, we are making an mobile app with
+                the same features.
+              </p>
+            </div>
+          </div> -->
+
+          <!-- Guild -->
+          <div
+            class="font-[600] text-[30px] leading-[75px] text-center title mb-[25px]"
+          >
+            [Guild]
+          </div>
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                How can I join a guild?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                You need to purchase a shard on guild board page,
+                <a href="https://dashboard.pixels.xyz/guild/guildpal">
+                  <span class="href-text"
+                    >https://dashboard.pixels.xyz/guild/guildpal.</span
+                  >
+                </a>
+                Then join the guild discord server at
+                <a href="https://discord.gg/hk6eTJV7yK">
+                  <span class="href-text">https://discord.gg/hk6eTJV7yK.</span>
+                </a>
+                Also you need to fill out the guild member sheet here,
+                <a href="https://forms.gle/zHSYzjYY6c1MrrKT9">
+                  <span class="href-text"
+                    >https://forms.gle/zHSYzjYY6c1MrrKT9.</span
+                  >
+                </a>
+                Without buying a guild shard, you can still join the discord
+                server and submit the guild form, and participate in the guild
+                activities. However, you can not enter some shard holder-only
+                channels.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                How can I get access to guild lands?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Until the Pixel dev team provides a better guild role and access
+                management system, GuildPal manages the guild land access
+                manually. So once you join the guild, introduce yourself on the
+                guild server and ask the guild land access. It takes up to 48
+                hours to get access grant.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                How can I get a guild role?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Guildpal will announce new guild role recruiting announcements
+                when needed. Follow the instruction how to apply on the
+                announcement.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Can I trade Coin and Pixel in the guild?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Guildpal allows Coin and Pixel trade only with other Guildpal
+                members. In the future, PGA may provide the integrated relay
+                service.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Can I participate in the Guildpal discord without buying a
+                shard?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Yes, you can join the discord server and participate in various
+                channels. You still need to fill out
+
+                <a herf="https://forms.gle/zHSYzjYY6c1MrrKT9">
+                  <span class="href-text"
+                    >https://forms.gle/zHSYzjYY6c1MrrKT9.</span
+                  ></a
+                >
+                However, you can not enter some shard holder-only channels.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Can I join another guild after joinning GuildPal?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Yes, you can. There is no restriction on how many different
+                guild shards you can purchase and how many guild discord server
+                you can join. However, in Chapter 2 of the Pixels game, you may
+                need to choose only 1 guild on certain guild-oriented contents
+                or an in-game guild role.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                What is GuildPal's vision?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                We set up a guild in the Pixels game as a showcase. We want to
+                build a strong and helpful community in the Pixels ecosystem and
+                we are open to all individual players and other guilds to work
+                together. The tools and services we build are not just for our
+                own guild, instead, they will serve the broader entire Pixels
+                community.
+              </p>
+            </div>
+          </div>
+
+          <!-- PGA -->
+          <div
+            class="font-[600] text-[30px] leading-[75px] text-center title mt-[55px] mb-[25px]"
+          >
+            [PGA]
+          </div>
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                What is PGA?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                PGA is a browser extension that helps Pixels gamers play more
+                efficiently and have more fun. PGA dramatically improves many of
+                the frustrations of playing the Pixels game, making them much
+                easier to play and helping you achieve the most in the least
+                amount of time without using a bot.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Is it safe to use PGA?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Yes, it is safe to use PGA. It does not submit any actions to
+                the Pixels game by itself. It only shows the game data that are
+                already available inside the game. Within a month since the
+                release, PGA has reached over 25,000 daily active users. The
+                current user rating on the Crome store is 4.8 out of 5.
+              </p>
+            </div>
+          </div>
+
+          <!-- <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Does PGA store any user data on its server?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                PGA stores players' Pixels game user id, user name, and wallet
+                addresses. 요 질문은 좀 생가해보고 다시 정리합시다.
+              </p>
+            </div>
+          </div> -->
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Does PGA support mobile devices?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Still waiting. For mobile devices, we are making a mobile app
+                with the same features.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Which browsers does PGA support?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                PGA currently supports desktop browsers including Chrome, Edge,
+                Brave, and Opera(GX). We are working on supporting more
+                different browsers in the future.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                After installing PGA, nothing happens. What should I do?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Please refresh the pixels game site.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                How can I open PGA?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                You can click on the PGA extension icon on the extension menu of
+                the browser while you load the Pixel game page. Or you can click
+                the PGA drawer icon on the right side bottom edge of the
+                browser.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                How can I submit a review or feedback?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Yes, you can leave a review on the Chrome store page. If you can
+                also leave feedback and reviews on GuildPal discord server,
+                <a href="https://discord.gg/hk6eTJV7yK"
+                  ><span class="href-text"
+                    >https://discord.gg/hk6eTJV7yK.</span
+                  ></a
+                >
+              </p>
+            </div>
+          </div>
+
+          <!-- <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                The extension does not work. What should I do?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                기본 트러블 슈팅 가이드 링크 또는 컨텐츠.  트러블 슈팅 동영상 (루크) 어떻게 에러 로그 스크린샷 찍는지 등등
+              </p>
+            </div>
+          </div> -->
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Can I use this extension with multiple accounts?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                Yes, PGA can work with multiple accounts on the same browser.
+                However, you need to follow all Pixels' multi-account policies.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Is it free to use PGA?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                PGA basic features are all free of charge as far as you don't
+                abuse above normal personal use.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Is there a benefit to own a Guildpal shard in using PGA?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                PGA will release premium features that require a paid
+                subscription. For GuildPal shard holders, these paid features
+                will be free of charge or heavily discounted.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                Will PGA have paid premium features on top of a basic free
+                version?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                PGA will release premium features such as real-time global
+                industry tracking that require a paid subscription. We are
+                developing many new features on both free and premium sides. The
+                free version will be still a very useful tool for most of Pixels
+                gamers.
+              </p>
+            </div>
+          </div>
+
+          <!-- <div class="accordion-item font-[400]" aria-expanded="false">
+            <button aria-expanded="false">
+              <span class="accordion-title font-[400] text-[16px]">
+                What is the relationship between the Guildpal guild and PGA?
+              </span>
+              <img
+                class="accordion-icon"
+                aria-hidden="true"
+                src="/images/icon-chevron-down.svg"
+                alt=""
+              />
+            </button>
+            <div class="accordion-content">
+              <p class="font-[400] text-[14px]">
+                좀 더 로드랩을 다듬고 답하죠.
+              </p>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="w-full flex flex-col justify-center items-center footer">
+      <div class="text-center h-[321px] mb-[7px] flex flex-col justify-center">
+        <div class="w-full flex justify-center gap-[24px]">
+          <a href="https://twitter.com/GuildPal" target="_blank">
+            <img
+              class="w-[56px] h-[56px]"
+              src="/images/icon-twitter.svg"
+              alt="X"
+            />
+          </a>
+          <a href="https://discord.gg/hk6eTJV7yK" target="_blank">
+            <img
+              class="w-[56px] h-[56px]"
+              src="/images/icon-discord.png"
+              alt="Discord"
+            />
+          </a>
+        </div>
+
+        <div
+          class="mt-[40px] text-[#AEAEAE] text-[18px] font-[500] leading-[25.2px] px-10"
+        >
+          © Copyright 2024 | Atomrigs Lab, Inc | All Rights Reserved
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const items = document.querySelectorAll(".accordion button");
+
+      function toggleAccordion() {
+        const itemToggle = this.getAttribute("aria-expanded");
+
+        if (itemToggle == "true") {
+          this.setAttribute("aria-expanded", "false");
+        }
+
+        if (itemToggle == "false") {
+          this.setAttribute("aria-expanded", "true");
+        }
+      }
+
+      items.forEach((item) => item.addEventListener("click", toggleAccordion));
+    </script>
+    <script>
+      const fullscreenMenu = document.getElementById("fullscreen-menu");
+
+      function openNav() {
+        fullscreenMenu.style.display = "flex";
+      }
+
+      function closeNav() {
+        fullscreenMenu.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
