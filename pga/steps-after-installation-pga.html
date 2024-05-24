@@ -454,6 +454,99 @@
       .playnow-button:hover {
         padding: 27px 23px 23px 27px;
       }
+
+      .opera-guide-title {
+        gap: 12px;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 33.6px;
+      }
+
+      .opera-guide-icon {
+        width: 36px;
+      }
+
+      .opera-guide-modal {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        height: 90vh;
+      }
+
+      #opera-guide-modal-image {
+        width: 100%;
+        height: 100%;
+      }
+      .opera-guide-modal {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .modal-overlay {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        height: 100%;
+      }
+
+      .modal-content {
+        display: flex;
+        background: transparent;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 36px;
+        position: relative;
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+      }
+      .modal-content > img {
+        object-fit: contain;
+      }
+
+      .modal-content > button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* width: 36px;
+        height: 36px;
+        padding: 5px;
+        border-radius: 50%;
+        background: red; */
+      }
+
+      @media all and (max-width: 900px) {
+        .opera-guide-title {
+          font-size: 16px;
+          line-height: 22.24px;
+          gap: 8px;
+        }
+
+        .opera-guide-icon {
+          width: 24px;
+          padding: 2px;
+        }
+      }
+
+      @media all and (max-width: 499px) {
+        .opera-guide-title {
+          font-size: 10px;
+        }
+
+        .opera-guide-icon {
+          width: 18px;
+        }
+      }
     </style>
   </head>
   <body
@@ -486,6 +579,7 @@
               >https://play.pixels.xyz/</a
             >
           </p>
+
           <div class="text-center mb-[40px]">
             <button
               class="playnow-button font-pgaTitle"
@@ -495,44 +589,85 @@
             </button>
           </div>
           <div>
-              <div class="flex items-center justify-center gap-[12px] mobile:gap-[4px] text-pgaRed font-pgaTitle font-[700] text-[24px] leading-[33.6px] mobile:text-[16px] mobile:leading-[22.4px]">
-                <div>Only for</div>
+            <div
+              class="flex items-center justify-center text-pgaRed font-pgaTitle opera-guide-title"
+            >
+              <div>Only for</div>
               <div class="flex items-center justify-center">
-                <div class="flex items-center justify-center w-[36px] mobile:w-[30px] p-[3px]">
-                  <img src="/images/opera.svg" />
+                <div
+                  class="flex items-center justify-center p-[3px] opera-guide-icon"
+                >
+                  <img src="/images/opera.svg" alt="opera-icon" />
                 </div>
                 opera,
               </div>
               <div class="flex items-center justify-center">
-                <div class="flex items-center justify-center w-[36px] mobile:w-[30px] p-[3px]">
-                  <img src="/images/opera-gx.svg" />
+                <div
+                  class="flex items-center justify-center p-[3px] opera-guide-icon"
+                >
+                  <img src="/images/opera-gx.svg" alt="opera-icon" />
                 </div>
                 gx
               </div>
               <div>browser users</div>
             </div>
-            <div class="text-center flex flex-col gap-[24px] section-2-text mt-[8px]">
+            <div
+              class="text-center flex flex-col gap-[24px] section-2-text mt-[8px]"
+            >
               Please check your browser’s sidebar settings before running PGA.
             </div>
             <div class="mx-[-14px]">
-            <div class="flex gap-[28px] mobile:gap-[12px] text-[18px] font-[500] leading-[25.2px] mobile:text-[12px] mobile:leading-[22.4px] my-[48px]">
-              <div class="flex flex-col gap-[16px]">
-                <img src="/images/opera-guide-1.png" />
-                <p>1. In Easy setup, set “ show sidebar” to On.</p>
+              <div
+                class="flex gap-[28px] mobile:gap-[12px] text-[18px] font-[500] leading-[25.2px] mobile:text-[12px] mobile:leading-[22.4px] my-[48px]"
+              >
+                <div class="flex flex-col gap-[16px]">
+                  <button
+                    class="modal_btn"
+                    onclick="modalOpen('/images/opera-guide-1.png')"
+                  >
+                    <img src="/images/opera-guide-1.png" alt="opera-guide1" />
+                  </button>
+                  <p>1. In Easy setup, set “ show sidebar” to On.</p>
+                </div>
+                <div class="flex flex-col gap-[16px] modal_btn">
+                  <button
+                    class="modal_btn"
+                    onclick="modalOpen('/images/opera-guide-2.png')"
+                  >
+                    <img src="/images/opera-guide-2.png" alt="opera-guide2" />
+                  </button>
+                  <p>2. In sidebar Setup, check “Pixels Game Assistant”.</p>
+                </div>
+                <div class="flex flex-col gap-[16px] modal_btn">
+                  <button
+                    class="modal_btn"
+                    onclick="modalOpen('/images/opera-guide-3.png')"
+                  >
+                    <img src="/images/opera-guide-3.png" alt="opera-guide3" />
+                  </button>
+                  <p>
+                    3. Reload
+                    <span class="text-pgaBrightGreen"
+                      >http://play.pixels.xyz.</span
+                    >
+                  </p>
+                </div>
               </div>
-              <div class="flex flex-col gap-[16px]">
-                <img src="/images/opera-guide-2.png" />
-                <p>2. In sidebar Setup, check “Pixels Game Assistant”.</p>
+              <div class="opera-guide-modal">
+                <div class="modal-overlay"></div>
+                <div class="modal-content">
+                  <img id="modal-image" src="" alt="" />
+                  <button onclick="modalClose()">
+                    <img src="/images/icon-close.svg" alt="close-button" />
+                  </button>
+                </div>
               </div>
-              <div class="flex flex-col gap-[16px]">
-                <img src="/images/opera-guide-3.png" />
-                <p>3. Reload <span class="text-pgaBrightGreen">http://play.pixels.xyz.</span></p>
+              <div
+                class="flex items-center justify-center text-pgaBrightGreen font-pgaTitle font-[700] text-[24px] leading-[33.6px] mobile:text-[16px] mobile:leading-[22.4px] mb-[40px]"
+              >
+                Now, your browser is set up to use PGA
               </div>
             </div>
-            <div class="flex items-center justify-center text-pgaBrightGreen font-pgaTitle font-[700] text-[24px] leading-[33.6px] mobile:text-[16px] mobile:leading-[22.4px] mb-[40px]">
-              Now, your browser is set up to use PGA
-            </div>
-          </div>
           </div>
           <p>
             PGA is a browser extension that helps Pixels gamers play more
@@ -766,5 +901,19 @@
         </div>
       </div>
     </div>
+
+    <script>
+      const modal = document.querySelector(".opera-guide-modal");
+      const modalImage = document.getElementById("modal-image");
+
+      function modalOpen(image_url) {
+        modalImage.src = image_url;
+        modal.style.display = "flex";
+      }
+
+      function modalClose() {
+        modal.style.display = "none";
+      }
+    </script>
   </body>
 </html>
