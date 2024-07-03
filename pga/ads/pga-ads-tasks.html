@@ -95,7 +95,13 @@
 
         setTimeout(() => {
           console.log('lets go to cointraffic');
-          location.href = '/pga/ads/pga-ads-cointraffic.html';
+          // location.href = 'https://guildpal.com/pga/ads/pga-ads-cointraffic.html';
+          const link = document.createElement("a");
+          link.referrerPolicy = "no-referrer";
+          link.rel = "noreferrer";
+
+          link.href = "https://guildpal.com/pga/ads/pga-ads-cointraffic.html";
+          link.click();
         }, 5000);
       })
 
