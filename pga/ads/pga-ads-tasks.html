@@ -82,8 +82,8 @@
     <script>
       function showPersonaAd() {
         const config = {
-          // adUnitId: "fbe98ab5-6f99-4f2f-9bfc-93a7893c3590", // "PGA-Tasks" Web App > "PGA Market Banner1"
-          adUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6", // "PGA-Tasks" Web App > "PGA Tasks Banner1"
+          adUnitId: "fbe98ab5-6f99-4f2f-9bfc-93a7893c3590", // "PGA-Tasks" Web App > "PGA Market Banner1"
+          // adUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6", // "PGA-Tasks" Web App > "PGA Tasks Banner1"
           containerId: "pga-banner-ad"
         }
         adClient.showBannerAd(config, (errorMessage) => {
@@ -108,8 +108,14 @@
   <body
     class="w-screen flex justify-center items-center overflow-x-hidden text-white"
   >
-      <div id="my-banner-ad" style="width: 321px; height:101px;"></div>
-
+      <div id="pga-banner-ad" style="width: 321px; height:101px;"></div>
+      <!-- <script>
+        adClient.showBannerAd({
+          adUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6", // An ad unit id is provided by Persona for production environment
+          containerId: "my-banner-ad" // HTML element's id where the ad needs to render on the app
+        })
+      </script> -->
+      
       <!-- <div  id="adsarea" class="border-solid border-2 border-sky-500">
         <p class="text-base">Ad area</p>
       </div> -->
