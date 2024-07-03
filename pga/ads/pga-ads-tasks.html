@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="referrer" content="no-referrer">
     <title>PGA Ad Tasks</title>
     <script src="../../js/tailwindcss_3_4_3.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -105,12 +106,10 @@
   >
       <div id="my-banner-ad" style="width: 321px; height:101px;"></div>
       <script>
-          adClient.setUserEmail('joshua@atomrigs.io') // If available in your app
-          // adClient.setWalletAddress("1Lbcfr7sAHT...."); // If available in your app
-          adClient.showBannerAd({
-              adUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6", // An ad unit id is provided by Persona for production environment
-              containerId: "my-banner-ad" // HTML element's id where the ad needs to render on the app
-          })
+        adClient.showBannerAd({
+          adUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6", // An ad unit id is provided by Persona for production environment
+          containerId: "my-banner-ad" // HTML element's id where the ad needs to render on the app
+        })
       </script>
 
       <!-- <div  id="adsarea" class="border-solid border-2 border-sky-500">
