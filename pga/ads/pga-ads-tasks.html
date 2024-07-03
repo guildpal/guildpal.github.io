@@ -77,6 +77,28 @@
       }    
      
     </style>
+
+    <script>
+      function showPersonaAd() {
+        const config = {
+          adUnitId: "fbe98ab5-6f99-4f2f-9bfc-93a7893c3590",
+          containerId: "pga-banner-ad"
+        }
+        adClient.showBannerAd(config, (errorMessage) => {
+          console.log('에러!!!', errorMessage)
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        showPersonaAd();
+
+        setTimeout(() => {
+          console.log('lets go to cointraffic');
+          location.href = '/pga/ads/pga-ads-cointraffic.html';
+        }, 20000);
+      })
+
+    </script>
   </head>
   <body
     class="w-screen flex justify-center items-center overflow-x-hidden text-white"
