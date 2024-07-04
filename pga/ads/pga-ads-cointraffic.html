@@ -71,17 +71,18 @@
       const searchParams = new URLSearchParams(window.location.search);
       const rotationValue = searchParams.get('rotation');
       
+      const adPeriod = 30000;
       document.addEventListener("DOMContentLoaded", () => {
         if (rotationValue === 'self') {
           setTimeout(() => {
             console.log('Reload');
             location.reload();
-          }, 20000);
+          }, adPeriod);
         } else {
           setTimeout(() => {
             console.log('Lets go to persona');
             location.href = 'https://guildpal.com/pga/ads/pga-ads-tasks.html';
-          }, 20000);
+          }, adPeriod);
         }
       });
     </script>

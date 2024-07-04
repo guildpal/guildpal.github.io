@@ -80,6 +80,7 @@
     </style>
 
     <script>
+      const adPeriod = 30000;
       function showPersonaAd() {
         const config = {
           adUnitId: "fbe98ab5-6f99-4f2f-9bfc-93a7893c3590", // "PGA-Tasks" Web App > "PGA Market Banner1"
@@ -98,7 +99,7 @@
         setTimeout(() => {
           console.log('Lets go to Cointraffic');
           location.href = 'https://guildpal.com/pga/ads/pga-ads-cointraffic.html';
-        }, 20000);
+        }, adPeriod);
       })
 
     </script>
