@@ -22,8 +22,8 @@
         apiKey: "persona-pub-0x3206daf2b97d0bd17bf8e10ead94dee5", // An actual API key is generated once you register an app with us.
         environment: "production", // use value 'production' when going live
       }
-      var sdk = new PersonaAdSDK.PersonaAdSDK(personaConfig);
-      var adClient = sdk.getClient()
+      // var sdk = new PersonaAdSDK.PersonaAdSDK(personaConfig);
+      // var adClient = sdk.getClient()
     </script>
 
     <script>
@@ -92,20 +92,21 @@
         });
       }
 
-      document.addEventListener("DOMContentLoaded", () => {
-        showPersonaAd();
+      // document.addEventListener("DOMContentLoaded", () => {
+      //   showPersonaAd();
 
-        setTimeout(() => {
-          console.log('Lets go to Cointraffic');
-          location.href = 'https://guildpal.com/pga/ads/pga-ads-cointraffic.html';
-        }, adPeriod);
-      })
+      //   setTimeout(() => {
+      //     console.log('Lets go to Cointraffic');
+      //     location.href = 'https://guildpal.com/pga/ads/pga-ads-cointraffic.html';
+      //   }, adPeriod);
+      // })
 
     </script>
   </head>
   <body
     class="w-screen flex justify-center items-center overflow-x-hidden text-white"
   >
-      <div id="pga-banner-ad" style="width: 321px; height:101px;"></div>
+      <!-- <div id="pga-banner-ad" style="width: 321px; height:101px;"></div> -->
+      <iframe data-aa='2337944' src='//ad.a-ads.com/2337944?size=320x100' style='width:320px; height:100px; border:1px solid white; padding:0; overflow:hidden; background-color: transparent;'></iframe>
   </body>
 </html>
