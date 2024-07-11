@@ -27,17 +27,18 @@ function showPersonaAd() {
   });
 
   const searchParams = new URLSearchParams(window.location.search);
+  const tab = searchParams.get('tab');
   const orgDisplayCount = searchParams.get('displayCount');
   const displayCount = orgDisplayCount ? Number(orgDisplayCount) : 1;
   setTimeout(() => {
-    if (displayCount <= 4) {
+    if (displayCount < 4) {
       const { origin, pathname } = window.location;
-      const url = `${origin}${pathname}?displayCount=${displayCount + 1}`;
+      const url = `${origin}${pathname}?displayCount=${displayCount + 1}&tab=${tab}`;
       // console.log('show persona!', url);
       location.href = url;
     } else {
       console.log('Lets go to Cointraffic');
-      location.href = 'https://guildpal.com/pga/ads/pga-ads-cointraffic.html';
+      location.href = `https://guildpal.com/pga/ads/pga-ad-cointraffic.html?tab=${tab}`;
     }
   }, adPeriod);
 }
