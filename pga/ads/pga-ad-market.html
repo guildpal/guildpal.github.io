@@ -17,16 +17,12 @@
     <link rel="stylesheet" href="../../css/swiper-bundle_11_1_0.min.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/@personaxyz/ad-sdk@0.0.24" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      var personaConfig = {
-        apiKey: "persona-pub-0x3206daf2b97d0bd17bf8e10ead94dee5", // An actual API key is generated once you register an app with us.
-        environment: "production", // use value 'production' when going live
-      }
-      var sdk = new PersonaAdSDK.PersonaAdSDK(personaConfig);
-      var adClient = sdk.getClient()
-    </script>
 
-    <script>
+    <script type="text/javascript" src="./common.js"></script>
+    <script type="text/javascript">
+      // ad unit under "PGA-Tasks" Web App
+      setupPersona('fbe98ab5-6f99-4f2f-9bfc-93a7893c3590');
+
       tailwind.config = {
         theme: {
           extend: {
@@ -75,33 +71,8 @@
         background: transparent;
         width: 360px;
         height: 110px;
-      }    
-     
-    </style>
-
-    <script>
-      const adPeriod = 20000;
-      function showPersonaAd() {
-        const config = {
-          adUnitId: "fbe98ab5-6f99-4f2f-9bfc-93a7893c3590", // ad unit under "PGA-Tasks" Web App
-          containerId: "pga-banner-ad"
-        }
-        adClient.showBannerAd(config, (errorMessage) => {
-          console.log('Persona error:', errorMessage);
-          location.href = 'https://guildpal.com/pga/ads/pga-ads-cointraffic.html?rotation=self';
-        });
       }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        showPersonaAd();
-
-        setTimeout(() => {
-          console.log('Lets go to Cointraffic');
-          location.href = 'https://guildpal.com/pga/ads/pga-ads-cointraffic.html';
-        }, adPeriod);
-      })
-
-    </script>
+    </style>
   </head>
   <body
     class="w-screen flex justify-center items-center overflow-x-hidden text-white"
