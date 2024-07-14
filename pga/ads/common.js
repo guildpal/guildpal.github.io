@@ -15,7 +15,7 @@ function setupPersona(adUnitId) {
   }
 }
 
-const adPeriod = 20000;
+const adPeriod = 30000;
 function showPersonaAd() {
   if (adClient === null) {
     return;
