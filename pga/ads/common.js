@@ -31,7 +31,7 @@ function showPersonaAd() {
   const orgDisplayCount = searchParams.get('displayCount');
   const displayCount = orgDisplayCount ? Number(orgDisplayCount) : 1;
   setTimeout(() => {
-    if (displayCount < 4) {
+    if (displayCount < 1) {
       const { origin, pathname } = window.location;
       const url = `${origin}${pathname}?displayCount=${displayCount + 1}&tab=${tab}`;
       // console.log('show persona!', url);
