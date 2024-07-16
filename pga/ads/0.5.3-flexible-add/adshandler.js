@@ -155,10 +155,10 @@ function showCointraffic(slot, index) {
   //   window['ctbkz3FU91fH'].reload();
   // }
 
-  const container = document.getElementById("ct_cn9L6gxT7Hq");
-  if (container === undefined || !container.hasChildNodes()) {
-    showAd(slot, index);
-  }
+  // const container = document.getElementById("ct_cn9L6gxT7Hq");
+  // if (container === undefined || !container.hasChildNodes()) {
+  //   showAd(slot, index);
+  // }
 }
 
 // pga
