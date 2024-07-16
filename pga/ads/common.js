@@ -23,7 +23,7 @@ function showPersonaAd() {
 
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
     console.log('Persona error:', errorMessage);
-    location.href = 'https://guildpal.com/pga/ads/pga-ads-cointraffic.html?rotation=self';
+    location.href = 'https://guildpal.com/pga/ads/pga-ad-cointraffic.html?rotation=self';
   });
 
   const searchParams = new URLSearchParams(window.location.search);
