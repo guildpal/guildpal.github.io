@@ -2,7 +2,7 @@ const pgaAdsConfigs = `
 {
   "home": {
     "rotation": false,
-    "allocation": ["persona", "cointraffic", "pga"],
+    "allocation": ["persona", "cointraffic", "ads", "persona", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "d126cd27-d130-425e-a332-6b33a0b947b4"
   },
@@ -38,7 +38,7 @@ const pgaAdsConfigs = `
   },
   "market": {
     "rotation": false,
-    "allocation": ["persona", "cointraffic", "pga"],
+    "allocation": ["persona", "ads", "pga"],
     "adRotationPeriod": 40,
     "personaUnitId": "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594"
   }
@@ -156,7 +156,6 @@ function showCointraffic(slot, index) {
   }
 
   const container = document.getElementById("ct_cn9L6gxT7Hq");
-
   if (container === undefined || !container.hasChildNodes()) {
     showAd(slot, index);
   }
