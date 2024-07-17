@@ -182,7 +182,7 @@ function showPGA(slot, index) {
   anchorElement.target = '_blank';
 
   let imgElement = document.createElement('img');
-  imgElement.src = './images/pga_ad_240717_1.png';
+  imgElement.src = './images/pga-ad-review-event-1.gif';
   imgElement.width = 320;
   imgElement.height = 100;
   imgElement.alt = 'PGA';
