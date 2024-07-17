@@ -88,7 +88,8 @@ function showAd(slot, index) {
 document.addEventListener("DOMContentLoaded", () => {
   // const searchParams = new URLSearchParams(window.location.search);
   // const slot = (searchParams.get("slot") || "home").toLowerCase().trim();
-  const index = Number(searchParams.get("index")) || 0;
+  // const index = Number(searchParams.get("index")) || 0;
+  const index = 0;
 
   const tokens = window.location.search.split('?');
   const slot = (() => {
