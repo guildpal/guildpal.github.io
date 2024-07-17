@@ -2,44 +2,44 @@ const pgaAdsConfigs = `
 {
   "home": {
     "rotation": false,
-    "allocation": ["persona", "cointraffic", "ads", "persona", "pga"],
+    "allocation": ["persona", "ads", "persona", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "d126cd27-d130-425e-a332-6b33a0b947b4"
   },
   "tasks": {
-    "rotation": true,
-    "allocation": ["persona", "cointraffic", "persona", "pga"],
-    "adRotationPeriod": 60,
+    "rotation": false,
+    "allocation": ["persona", "ads", "persona", "pga"],
+    "adRotationPeriod": 30,
     "personaUnitId": "e371ad57-f708-4a48-8a4c-58f89762b6e6"
   },
   "timer": {
     "rotation": false,
-    "allocation": ["persona", "ads", "pga"],
+    "allocation": ["pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "dadceda3-345b-4bb2-be73-72fb4af12165"
   },
   "storage": {
     "rotation": false,
-    "allocation": ["cointraffic", "pga"],
-    "adRotationPeriod": 40,
+    "allocation": ["persona", "ads", "persona", "pga"],
+    "adRotationPeriod": 30,
     "personaUnitId": "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4"
   },
   "note": {
     "rotation": false,
     "allocation": ["cointraffic"],
-    "adRotationPeriod": 40,
+    "adRotationPeriod": 30,
     "personaUnitId": "99db66bb-d1cb-41dd-a9a6-4710173d41b3"
   },
   "guild": {
     "rotation": false,
-    "allocation": ["ads"],
-    "adRotationPeriod": 40,
+    "allocation": ["persona", "ads", "persona", "pga"],
+    "adRotationPeriod": 30,
     "personaUnitId": "e7b6f005-3d79-4e74-bf6d-6729f33262a1"
   },
   "market": {
     "rotation": false,
-    "allocation": ["persona", "ads", "pga"],
-    "adRotationPeriod": 40,
+    "allocation": ["persona", "ads", "persona", "pga"],
+    "adRotationPeriod": 30,
     "personaUnitId": "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594"
   }
 }
@@ -79,12 +79,9 @@ function showAd(slot, index) {
       showAd(slot, index);
     }, pgaAdConfig.adRotationPeriod * timeSecond);
   } else if (index === pgaAdConfig.allocation.length && pgaAdConfig.rotation === true) {
-      console.log("rotate")
       setTimeout(() => {
         showAd(slot, 0);
       }, pgaAdConfig.adRotationPeriod * timeSecond);
-  } else {
-    console.log("not rotate, stop");
   }
 }
 
@@ -110,7 +107,6 @@ const PERSONA_SDK_CONFIG = {
 };
 
 function showPersona(adUnitId, slot, index) {
-  console.log("persona", adUnitId, slot, index);
 
   let containerDiv = document.querySelector('body > div');
   containerDiv.innerHTML = '';
@@ -136,7 +132,6 @@ function showPersona(adUnitId, slot, index) {
 // coinTraffic
 
 function showCointraffic(slot, index) {
-  console.log("cointraffic", slot, index);
 
   let containerDiv = document.querySelector('body > div');
   containerDiv.innerHTML = '';
@@ -164,7 +159,6 @@ function showCointraffic(slot, index) {
 // pga
 
 function showPGA(slot, index) {
-  console.log("pga", slot, index);
 
   let containerDiv = document.querySelector('body > div');
   containerDiv.innerHTML = '';
@@ -187,7 +181,6 @@ function showPGA(slot, index) {
 // ads
 
 function showADS(slot, index) {
-  console.log("ads", slot, index);
 
   let containerDiv = document.querySelector('body > div');
   containerDiv.innerHTML = '';
