@@ -85,25 +85,27 @@ function showAd(slot, index) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // const searchParams = new URLSearchParams(window.location.search);
-  // const slot = (searchParams.get("slot") || "home").toLowerCase().trim();
-  // const index = Number(searchParams.get("index")) || 0;
-  const index = 0;
-
-  const tokens = window.location.search.split('?');
-  const slot = (() => {
-    for (const token of tokens) {
-      if (token) {
-        const searchParams = new URLSearchParams(token);
-        if (searchParams.get('slot')) {
-          return searchParams.get('slot').toLowerCase().trim();
-        }
-      }
+function removeTabParameterFromUrl(search) {
+  const paramStart = search.indexOf('?tab=');
+  if (paramStart !== -1) {
+    const paramEnd = search.indexOf('&', paramStart);
+    if (paramEnd !== -1) {
+      // Remove the entire parameter including its value
+      return search.substring(0, paramStart) + '&' + search.substring(paramEnd + 1);
+    } else {
+      return search.substring(0, paramStart);
     }
+  }
+  return search;
+}
 
-    return 'home';
-  })();
+document.addEventListener("DOMContentLoaded", () => {
+  const search = removeTabParameterFromUrl(window.location.search);
+  console.log('search:', search);
+
+  const searchParams = new URLSearchParams(search);
+  const slot = (searchParams.get("slot") || "home").toLowerCase().trim();
+  const index = Number(searchParams.get("index")) || 0;
 
   pgaAdConfig = JSON.parse(pgaAdsConfigs)[slot];
   personaAdUnitId = pgaAdConfig.personaUnitId;
