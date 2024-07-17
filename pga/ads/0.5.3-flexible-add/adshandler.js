@@ -164,7 +164,7 @@ function showPGA(slot, index) {
   containerDiv.innerHTML = '';
 
   let anchorElement = document.createElement('a');
-  anchorElement.href = 'https://x.com/GuildPal';
+  anchorElement.href = 'https://x.com/GuildPal/status/1813211040303247402';
   anchorElement.target = '_blank';
 
   let imgElement = document.createElement('img');
