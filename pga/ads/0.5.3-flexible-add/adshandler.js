@@ -86,9 +86,23 @@ function showAd(slot, index) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const searchParams = new URLSearchParams(window.location.search);
-  const slot = (searchParams.get("slot") || "home").toLowerCase().trim();
-  const index = Number(searchParams.get("index")) || 0;
+  // const searchParams = new URLSearchParams(window.location.search);
+  // const slot = (searchParams.get("slot") || "home").toLowerCase().trim();
+  // const index = Number(searchParams.get("index")) || 0;
+
+  const tokens = window.location.search.split('?');
+  const slot = (() => {
+    for (const token of tokens) {
+      if (token) {
+        const searchParams = new URLSearchParams(token);
+        if (searchParams.get('slot')) {
+          return searchParams.get('slot').toLowerCase().trim();
+        }
+      }
+    }
+
+    return 'home';
+  })();
 
   pgaAdConfig = JSON.parse(pgaAdsConfigs)[slot];
   personaAdUnitId = pgaAdConfig.personaUnitId;
