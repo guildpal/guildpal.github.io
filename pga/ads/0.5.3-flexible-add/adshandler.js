@@ -1,14 +1,14 @@
 const pgaAdsConfigs = `
 {
   "home": {
-    "rotation": false,
-    "allocation": ["ads", "pga"],
+    "rotation": true,
+    "allocation": ["pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "d126cd27-d130-425e-a332-6b33a0b947b4"
   },
   "tasks": {
     "rotation": false,
-    "allocation": ["ads", "pga"],
+    "allocation": ["persona"],
     "adRotationPeriod": 30,
     "personaUnitId": "e371ad57-f708-4a48-8a4c-58f89762b6e6"
   },
@@ -19,8 +19,8 @@ const pgaAdsConfigs = `
     "personaUnitId": "dadceda3-345b-4bb2-be73-72fb4af12165"
   },
   "storage": {
-    "rotation": false,
-    "allocation": ["ads", "pga"],
+    "rotation": true,
+    "allocation": ["pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4"
   },
@@ -32,13 +32,13 @@ const pgaAdsConfigs = `
   },
   "guild": {
     "rotation": false,
-    "allocation": ["ads", "pga"],
+    "allocation": ["persona", "ads", "pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "e7b6f005-3d79-4e74-bf6d-6729f33262a1"
   },
   "market": {
     "rotation": true,
-    "allocation": ["pga", "pga"],
+    "allocation": ["ads", "pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594"
   }
