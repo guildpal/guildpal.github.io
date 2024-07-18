@@ -13,8 +13,8 @@ const pgaAdsConfigs = `
     "personaUnitId": "e371ad57-f708-4a48-8a4c-58f89762b6e6"
   },
   "timer": {
-    "rotation": false,
-    "allocation": ["pga"],
+    "rotation": true,
+    "allocation": ["pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "dadceda3-345b-4bb2-be73-72fb4af12165"
   },
@@ -37,8 +37,8 @@ const pgaAdsConfigs = `
     "personaUnitId": "e7b6f005-3d79-4e74-bf6d-6729f33262a1"
   },
   "market": {
-    "rotation": false,
-    "allocation": ["pga"],
+    "rotation": true,
+    "allocation": ["pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594"
   }
@@ -185,7 +185,11 @@ function showPGA(slot, index) {
   anchorElement.target = '_blank';
 
   let imgElement = document.createElement('img');
-  imgElement.src = './images/pga-ad-review-event-1.gif';
+  if (index%2 === 0) {
+    imgElement.src = './images/pga-ad-review-event-3.gif';
+  } else {
+    imgElement.src = './images/pga-ad-review-event-4.gif';
+  }
   imgElement.width = 320;
   imgElement.height = 100;
   imgElement.alt = 'PGA';
