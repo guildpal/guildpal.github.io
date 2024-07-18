@@ -143,7 +143,7 @@ function showPersona(adUnitId, slot, index) {
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
     console.log("Persona error:", errorMessage);
     if (errorMessage === "daily limit reached") {
-      showPGA(slot, index)
+      showPGA(slot, index);
     }
     // return
   });
