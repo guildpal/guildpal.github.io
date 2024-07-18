@@ -2,13 +2,13 @@ const pgaAdsConfigs = `
 {
   "home": {
     "rotation": false,
-    "allocation": ["persona", "ads", "persona", "pga"],
+    "allocation": ["ads", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "d126cd27-d130-425e-a332-6b33a0b947b4"
   },
   "tasks": {
     "rotation": false,
-    "allocation": ["persona", "ads", "persona", "pga"],
+    "allocation": ["ads", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "e371ad57-f708-4a48-8a4c-58f89762b6e6"
   },
@@ -20,7 +20,7 @@ const pgaAdsConfigs = `
   },
   "storage": {
     "rotation": false,
-    "allocation": ["persona", "ads", "persona", "pga"],
+    "allocation": ["ads", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4"
   },
@@ -32,7 +32,7 @@ const pgaAdsConfigs = `
   },
   "guild": {
     "rotation": false,
-    "allocation": ["persona", "ads", "persona", "pga"],
+    "allocation": ["ads", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "e7b6f005-3d79-4e74-bf6d-6729f33262a1"
   },
