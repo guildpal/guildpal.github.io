@@ -38,7 +38,7 @@ const pgaAdsConfigs = `
   },
   "market": {
     "rotation": false,
-    "allocation": ["persona", "ads", "persona", "pga"],
+    "allocation": ["pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594"
   }
