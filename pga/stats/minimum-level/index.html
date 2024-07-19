@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimum level for pixel earning</title>
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"> -->
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+    <style>
+        table.dataTable {
+            width: 100% !important; /* 테이블 전체 폭을 100%로 설정 */
+        }
+        table.dataTable th, table.dataTable td {
+            white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+            text-align: center;
+        }
+        .item-name-column {
+            width: 200px; /* 특정 열의 폭을 200px로 설정 */
+        }
+        .center-text {
+            text-align: center; /* 텍스트를 수평으로 중앙 정렬 */
+            vertical-align: middle; /* 텍스트를 수직으로 중앙 정렬 */
+        }
+        .dataTables_filter {
+            float: right; /* 검색 박스를 오른쪽 정렬 */
+            text-align: right; /* 검색 박스 내부 텍스트 오른쪽 정렬 */
+        }
+        .dataTables_filter input {
+            background-color: rgba(16, 19, 26, 0.80); /* 검색 박스 내부 배경색 */
+            color: #f0f0f0; /* 검색 박스 내부 폰트 색상 */
+            border: 1px solid #9198AF; /* 검색 박스 테두리 */
+            padding: 5px; /* 검색 박스 패딩 */
+        }
+    </style>
+</head>
+<body>
+    <span><h2 class="text-[20px] font-[700] pl-[12px]">Minimum level for pixel earning</h2> (as of 17 July 2024)</span>
+    <div class="header-border"></div>
+    <table id="minlevel" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th class="center-text">skill</th>
+                <th class="center-text">pixel_earning</th>
+                <th class="center-text">min_level</th>
+                <th class="center-text">item_name</th>
+                <th class="center-text">frequency</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <!-- PapaParse JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

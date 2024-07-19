@@ -1,0 +1,204 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import url(root.css);
+@import url(table.css);
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+html {
+  text-align: left;
+  color: var(--white);
+  font-family: 'Spoqa Han Sans Neo', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 1.4;
+}
+body {
+  position: relative;
+  font-size: var(--a14);
+  background: var(--pga_bg);
+  background-size: 100%;
+  background-attachment : fixed;
+  padding:24px 18px;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar-corner{
+  background-color: transparent;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background: var(--box_bg_20);
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--box_bg_40);
+  border: 0;
+  border-radius: 8px;
+}
+
+.hide{display: none;}
+
+.text_title, h3{
+  font-weight: 700;
+  font-size: var(--a26);
+}
+.text_subTitle, h4{
+  font-weight: 700;
+  font-size: var(--a20);
+}
+.text_contents{
+  font-weight: 300;
+  font-size: var(--a14);
+}
+.text_caption{
+  font-weight: 300;
+  font-size: var(--a12);
+}
+.text_caption_area{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.center{margin-left: auto; margin-right: auto;}
+.text_center{text-align: center;}
+
+
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  display: block;
+  color: var(--white);
+}
+div,
+section,
+header,
+footer {
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
+}
+
+.contents {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  max-width: 2800px;
+  padding:7.6rem 4rem 6rem 4rem;
+  margin: 0 auto;
+  min-height: calc( 100vh - 149px);
+}
+
+section {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.title_area{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.dim{
+  z-index: 110;
+  position: fixed;
+  width:100vw;
+  height:100vh;
+  background: rgba(16, 19, 26, 0.80);
+  backdrop-filter: var(--bl16);
+}
+
+#btn_pre a{
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--a16);
+  font-weight: 500;
+  color: var(--CBCFDC);
+  transition: all 0.4s;
+  /* margin-bottom: 1.6rem; */
+}
+#btn_pre svg{
+  width:20px;
+  height:auto;
+}
+#btn_pre a path{
+  fill : var(--CBCFDC);
+  transition: all 0.4s;
+}
+#btn_pre a:hover{
+
+  color: var(--white);
+}
+#btn_pre a:hover path{
+  fill : var(--white);
+}
+
+
+@media screen and (max-width: 900px) {
+  body {
+    background: url(../img/bg-m.jpg)no-repeat var(--pga_bg);
+    background-size: 100%;
+  }
+  .contents {
+    padding:6rem 1.6rem 4rem 1.6rem;
+    min-height: calc( 100vh - 126px);
+    gap: 4rem;
+  }
+
+  .title_area{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .text_title, h3{
+    font-weight: 700;
+    font-size: var(--a22);
+  }
+  .text_subTitle, h4{
+    font-weight: 700;
+    font-size: var(--a18);
+  }
+  .text_contents{
+    font-weight: 300;
+    font-size: var(--a14);
+  }
+  .text_caption{
+    font-weight: 300;
+    font-size: var(--a12);
+  }
+
+  #btn_pre a{
+    margin-bottom: 0rem;
+    font-size: var(--a14);
+  }
+  #btn_pre svg{
+    width:18px;
+  }
+  
+}
