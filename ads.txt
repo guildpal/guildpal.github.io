@@ -1,0 +1,12 @@
+smartyads.com, 19771, DIRECT, fd2bde0ff2e62c5d
+conversantmedia.com, 100264, RESELLER, 03113cd04947736d
+loopme.com, 11426, RESELLER, 6c8d5f95897a5a3b
+adform.com, 2795, RESELLER
+pubmatic.com, 161970, RESELLER, 5d62403b186f2ace
+video.unrulymedia.com, 3563866356, DIRECT
+contextweb.com, 562867, RESELLER, 89ff185a4c4e857c
+improvedigital.com, 2345, DIRECT
+richaudience.com, PJgvK4kTic, RESELLER
+motorik.io, 599, DIRECT
+videoheroes.tv, 212654, RESELLER, 064bc410192443d8
+Integralstream.com, 2, RESELLER
