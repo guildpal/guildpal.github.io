@@ -184,18 +184,18 @@ function showPGA(slot, index) {
   containerDiv.innerHTML = '';
 
   let anchorElement = document.createElement('a');
-  anchorElement.href = 'https://x.com/GuildPal/status/1813211040303247402';
+  anchorElement.href = 'https://pixels.guildpal.com';
   anchorElement.target = '_blank';
 
   let imgElement = document.createElement('img');
   if (index%2 === 0) {
-    imgElement.src = './images/pga-ad-review-event-3.gif';
+    imgElement.src = './images/pga-ad-guildpalpage-2_240726.gif';
   } else {
-    imgElement.src = './images/pga-ad-review-event-4.gif';
+    imgElement.src = './images/pga-ad-guildpalpage-1_240726.gif';
   }
   imgElement.width = 320;
   imgElement.height = 100;
-  imgElement.alt = 'PGA';
+  imgElement.alt = 'pixels.guildpal.com';
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
