@@ -26,7 +26,7 @@ const pgaAdsConfigs = `
   },
   "note": {
     "rotation": false,
-    "allocation": ["pga"],
+    "allocation": ["cointraffic"],
     "adRotationPeriod": 30,
     "personaUnitId": "99db66bb-d1cb-41dd-a9a6-4710173d41b3"
   },
