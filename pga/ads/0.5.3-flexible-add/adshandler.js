@@ -38,7 +38,7 @@ const pgaAdsConfigs = `
   },
   "market": {
     "rotation": true,
-    "allocation": ["ads", "pga", "pga"],
+    "allocation": ["ads", "smartyads", "pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594"
   }
@@ -66,6 +66,9 @@ function showAd(slot, index) {
         break;
       case "ads":
         showADS(slot, index);
+        break;
+      case "smartyads":
+        showSmartyAds(slot, index);
         break;
       default:
         showPGA(slot, index);
@@ -220,4 +223,12 @@ function showADS(slot, index) {
   iframeElement.style.backgroundColor = 'transparent';
 
   containerDiv.appendChild(iframeElement);
+}
+
+function showSmartyAds(slot, index) {
+  let containerDiv = document.querySelector('body > div');
+  containerDiv.innerHTML = '';
+
+  var adUnits = [ { code: 'pga-banner-ad', placement_id: 4203, sizes: [320, 100], refreshable: true, refreshIntervalSec: 30 } ];
+  smarty.buildUnits(adUnits);
 }
