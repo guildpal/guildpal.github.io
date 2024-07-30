@@ -87,7 +87,7 @@ async function processClick(e) {
         body: JSON.stringify({
           player_id: playerId,
           domain: "display",
-          subject: pgaAdConfig?.allocation?.[index] || "",
+          subject: "RUBY_REWARDS",
           slot: `pga/${slot}`,
           ts: new Date().getTime(),
         }),
@@ -116,7 +116,7 @@ async function processImpression() {
         body: JSON.stringify({
           player_id: playerId,
           domain: "display",
-          subject: pgaAdConfig?.allocation?.[index] || "",
+          subject: "RUBY_REWARDS",
           slot: `pga/${slot}`,
           ts: new Date().getTime(),
         }),
