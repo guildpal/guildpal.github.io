@@ -51,7 +51,6 @@ const timeSecond = 1000;
 
 let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
-let index = 0;
 let slot = "home";
 let playerId = "";
 
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("search:", search);
 
   const searchParams = new URLSearchParams(search);
-  index = Number(searchParams.get("index")) || 0;
+  const index = Number(searchParams.get("index")) || 0;
   slot = (searchParams.get("slot") || "home").toLowerCase().trim();
   playerId = searchParams.get("mid");
 
