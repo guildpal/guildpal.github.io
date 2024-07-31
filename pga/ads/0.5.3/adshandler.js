@@ -51,6 +51,10 @@ let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
 let slot = "home";
 let playerId = "";
+let pgaVersion = "";
+let pendingEvent = null;
+let pendingEventTarget = null;
+let body = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
@@ -59,18 +63,106 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchParams = new URLSearchParams(search);
   const index = Number(searchParams.get("index")) || 0;
   slot = (searchParams.get("slot") || "home").toLowerCase().trim();
+  pgaVersion = searchParams.get("v");
   playerId = searchParams.get("mid");
 
   pgaAdConfig = pgaAdsConfigs[slot];
   personaAdUnitId = pgaAdConfig.personaUnitId;
 
-  const body = document.querySelector("body");
-  body.addEventListener("click", processClick);
+  body = document.querySelector("body");
+  body?.addEventListener("click", processClick);
+
+  window.addEventListener("message", async function (event) {
+    if (event.data.protocol === "app-to-iframe") {
+      if (event.data.method === "response-display-toast") {
+        console.log("from parent", event);
+        body?.removeEventListener("click", processClick);
+        dispatchPendingEvent();
+        body?.addEventListener("click", processClick);
+      }
+    }
+  });
 
   showAd(slot, index);
 });
 
+function requestDisplayToast(message, duration) {
+  if (window.parent === window) {
+    // console.log(message);
+    alert(message);
+    body?.removeEventListener("click", processClick);
+    dispatchPendingEvent();
+    body?.addEventListener("click", processClick);
+  } else {
+    window.parent.postMessage(
+      {
+        protocol: "iframe-to-app",
+        method: "request-display-toast",
+        payload: { message, duration },
+      },
+      "*"
+    );
+  }
+}
+
+function clonePointerEvent(originalEvent) {
+  const clonedEvent = new PointerEvent(originalEvent.type, {
+    bubbles: originalEvent.bubbles,
+    cancelable: originalEvent.cancelable,
+    composed: originalEvent.composed,
+    pointerId: originalEvent.pointerId,
+    width: originalEvent.width,
+    height: originalEvent.height,
+    pressure: originalEvent.pressure,
+    tangentialPressure: originalEvent.tangentialPressure,
+    tiltX: originalEvent.tiltX,
+    tiltY: originalEvent.tiltY,
+    twist: originalEvent.twist,
+    pointerType: originalEvent.pointerType,
+    isPrimary: originalEvent.isPrimary,
+    screenX: originalEvent.screenX,
+    screenY: originalEvent.screenY,
+    clientX: originalEvent.clientX,
+    clientY: originalEvent.clientY,
+    ctrlKey: originalEvent.ctrlKey,
+    altKey: originalEvent.altKey,
+    shiftKey: originalEvent.shiftKey,
+    metaKey: originalEvent.metaKey,
+    button: originalEvent.button,
+    buttons: originalEvent.buttons,
+    relatedTarget: originalEvent.relatedTarget,
+    offsetX: originalEvent.offsetX,
+    offsetY: originalEvent.offsetY,
+    movementX: originalEvent.movementX,
+    movementY: originalEvent.movementY,
+  });
+
+  return clonedEvent;
+}
+
+function dispatchPendingEvent() {
+  if (pendingEventTarget && pendingEvent) {
+    pendingEventTarget.dispatchEvent(pendingEvent);
+    pendingEventTarget = null;
+    pendingEvent = null;
+  }
+}
+
 async function processClick(e) {
+  const anchor = document.querySelector("#pga-banner-ad a");
+  if (!anchor) {
+    console.log("no ads");
+    // alert("no ads");
+    return;
+  }
+
+  console.log("event", e);
+  pendingEvent = clonePointerEvent(e);
+  pendingEventTarget = e.target;
+  console.log("pendingEvent", pendingEvent);
+
+  e.preventDefault();
+
   try {
     const response = await fetch(
       "https://pga-svc-ads.play-extension.xyz/ads-api/addinteraction",
@@ -91,11 +183,18 @@ async function processClick(e) {
       }
     );
     const result = await response.json();
-    if (result.showResult) {
-      alert(result.resultMessage);
+    console.log("result", result);
+
+    // NOTE: 일단 무조건 posting
+    if (result.showResult || true) {
+      // alert(result.resultMessage);
+      requestDisplayToast("message from iframe", 1000);
+    } else {
+      dispatchPendingEvent();
     }
   } catch (err) {
     console.error(err);
+    dispatchPendingEvent();
   }
 }
 
