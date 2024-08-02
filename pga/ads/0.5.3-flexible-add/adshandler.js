@@ -14,7 +14,7 @@ const pgaAdsConfigs = `
   },
   "timer": {
     "rotation": true,
-    "allocation": ["pga", "pga", "pixels"],
+    "allocation": ["pixels", "pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "dadceda3-345b-4bb2-be73-72fb4af12165"
   },
@@ -38,7 +38,7 @@ const pgaAdsConfigs = `
   },
   "market": {
     "rotation": true,
-    "allocation": ["ads", "pga", "pga", "pixels"],
+    "allocation": ["aads", "pga", "pga", "pixels"],
     "adRotationPeriod": 30,
     "personaUnitId": "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594"
   }
@@ -59,19 +59,20 @@ function showAd(slot, index) {
         showPersona(pgaAdConfig.personaUnitId, slot, index);
         break;
       case "cointraffic":
-          showCointraffic(slot, index);
-          break;
+        showCointraffic(slot, index);
+        break;
       case "pga":
         showPGA(slot, index);
         break;
-      case "ads":
-        showADS(slot, index);
+      case "aads":
+        showAADS(slot, index);
         break;
       case "smartyads":
         showSmartyAds(slot, index);
         break;
       case "pixels":
         showPixelsGame(slot, index);
+        break;
       default:
         showPGA(slot, index);
     }
@@ -215,6 +216,8 @@ function showPixelsGame(slot, index) {
   let containerDiv = document.querySelector('body > div');
   containerDiv.innerHTML = '';
 
+  console.log("guild crop wars");
+
   let anchorElement = document.createElement('a');
   anchorElement.href = 'https://discord.com/channels/907099564127977483/908600800928989185/1268352635409403917';
   anchorElement.target = '_blank';
@@ -231,9 +234,9 @@ function showPixelsGame(slot, index) {
 }
 
 
-// ads
+// aads
 
-function showADS(slot, index) {
+function showAADS(slot, index) {
 
   let containerDiv = document.querySelector('body > div');
   containerDiv.innerHTML = '';
