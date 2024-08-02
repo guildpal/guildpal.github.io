@@ -1,0 +1,52 @@
+skill,pixel_earning,min_level,vip,landowner,item_name,image_url,frequency
+cooking,100,70,true,true,Butterberry Jam,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_butterberryjam/9b1160db-151c-4b24-b8db-b84c8d0d031c.png",1
+cooking,40,69,true,true,Cubecumber Loaf,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_cubecumberloaf/12fe6334-95ac-44f7-ad74-3ff4b5ce130c.png",4
+cooking,20,65,true,true,Butterberry Jam,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_butterberryjam/9b1160db-151c-4b24-b8db-b84c8d0d031c.png",85
+cooking,20,67,true,true,Butterberry Pie,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_butterberrypie/0eda427c-b441-4a04-9c41-c6959a3d9dc3.png",47
+cooking,16,62,true,true,Slice of Scarrot Cake,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_scarrotcake/eedd33b5-5c04-49ee-adec-47a6d1f74cbd.png",108
+cooking,16,65,true,true,Scarrot Loaf,"https://d31ss916pli4td.cloudfront.net/items/v2/inventory_icon_scarrotloaf.png",90
+cooking,16,67,true,true,Scarrot Pie,"https://d31ss916pli4td.cloudfront.net/items/v2/inventory_icon_scarrotpie.png",54
+cooking,8,59,true,true,Cubecumber Loaf,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_cubecumberloaf/12fe6334-95ac-44f7-ad74-3ff4b5ce130c.png",119
+cooking,8,60,true,true,Scarrot Puree,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_scarrotpuree/128604ec-ef92-40c9-8f2a-1923981e2b32.png",130
+cooking,6,56,true,true,Cubecumber Relish,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_cubecumberrelish/459765fc-e2d4-4e13-bf05-4a3ba6cbaa7a.png",164
+cooking,6,44,true,true,Muckchuck Pie,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_muckchuckpie/5e04246a-a9b2-4c64-a8cb-b94c73f6d508.png",1262
+cooking,6,45,true,false,Napricot Jam,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_napricotfruitjam/eb144189-bc5e-4d57-b1e0-203466050639.png",1087
+cooking,6,47,true,true,Napricot Pie,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_napricotpie/ccc7009f-0e01-4a9d-b41d-34a663488dbf.png",792
+cooking,6,51,true,false,Slothmato Paste,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_slothmatopaste/c108c143-1cee-4f17-ba42-fd3617cb29c5.png",236
+cooking,6,54,true,true,Slice of Slothmato Pizza,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_slothmatopizza/54f6938c-183c-4945-bda7-998f25cc789a.png",182
+cooking,3,38,true,true,Coffee Fruit Pie,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_coffeefruitpie/277b6f35-469e-44ff-9a13-978617ff5f35.png",1216
+cooking,3,41,true,false,Muckchuck Jam,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_muckchuckfruitjam/dc661205-9b87-445a-a825-f5beb67dc5cc.png",554
+farming,100,65,true,true,Scarrot,"https://d31ss916pli4td.cloudfront.net/items/v2/inventory_icon_scarrot.png",1
+farming,40,50,true,false,Napricot,"https://d31ss916pli4td.cloudfront.net/uploadedAssets//fc169b8f-e0dd-4d16-97d7-966061749de9.png",17
+farming,20,63,true,true,Scarrot,"https://d31ss916pli4td.cloudfront.net/items/v2/inventory_icon_scarrot.png",68
+farming,8,28,true,false,Cubecumber,"https://d31ss916pli4td.cloudfront.net/uploadedAssets//6b482d96-58a2-4bad-81dc-71b18e250bfa.png",3636
+farming,8,28,true,false,Napricot,"https://d31ss916pli4td.cloudfront.net/uploadedAssets//fc169b8f-e0dd-4d16-97d7-966061749de9.png",4683
+farming,8,28,true,false,Slothmato,"https://mesh-online-assets.s3.us-east-2.amazonaws.com/uploadedAssets//13b70f08-4a7e-4289-90a4-133ac6848d0c.png",4141
+farming,3,15,true,true,Java Bean,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_coffeefruit/15e36728-5c31-4896-a3c2-3566c7e9aeaa.png",3373
+farming,3,19,true,false,Muckchuck,"https://d31ss916pli4td.cloudfront.net/uploadedAssets//3dee626e-4975-462e-994c-4c8d2f25af28.png",5367
+forestry,30,60,true,true,Sawstump Log,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_woodlog_03/c5129a8c-a635-4428-a569-4367d9e45a00.png",3
+forestry,20,69,true,false,Borebranch Log,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_woodlog_04/06a79aca-6a32-4501-a589-9406a0d3c5c5.png",64
+forestry,6,27,true,false,Sawstump Log,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_woodlog_03/c5129a8c-a635-4428-a569-4367d9e45a00.png",817
+forestry,3,27,true,false,Craftbark Log,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_woodlog_02/f350ed9d-599d-4c88-9237-0a0138a11d1c.png",709
+forestry,3,50,true,true,Sawstump Log,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_woodlog_03/c5129a8c-a635-4428-a569-4367d9e45a00.png",90
+forestry,3,69,true,false,Borebranch Log,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_woodlog_04/06a79aca-6a32-4501-a589-9406a0d3c5c5.png",18
+metalworking,100,66,true,true,Adamaxium Bar,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_metalbar_04/b8a8b2f3-857f-4988-98f5-f4d573853fa6.png",5
+metalworking,40,52,true,true,Irontite Bar,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_Iron_Bar/3635b140-271a-4871-9412-39802884a4b0.png",12
+metalworking,20,64,true,true,Adamaxium Bar,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_metalbar_04/b8a8b2f3-857f-4988-98f5-f4d573853fa6.png",51
+metalworking,8,41,true,true,Irontite Bar,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_Iron_Bar/3635b140-271a-4871-9412-39802884a4b0.png",534
+metalworking,3,21,true,false,Bronzenite Bar,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_metalbar_02/aac83d2f-77bc-46ac-b9f6-a0af7695e924.png",733
+mining,30,57,true,true,Bedrock Matrix,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_roughstone_03/3059ed41-3ba2-4cc9-ac41-f67defa774db.png",5
+mining,20,70,true,true,Adamaxium Ore,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_metalore_04/1834aa49-1c52-4b9b-94a3-ec41d6c6d003.png",54
+mining,20,70,true,true,Claricite Matrix,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_roughstone_04/aae86759-bedd-4e03-aed1-313a5440eb1d.png",59
+mining,8,28,true,false,Irontite Ore,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_metalore_03/4ce570dd-f1b4-45ff-9ef8-7631b5f12157.png",1520
+mining,6,28,true,false,Bedrock Matrix,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_roughstone_03/3059ed41-3ba2-4cc9-ac41-f67defa774db.png",1459
+stoneshaping,100,70,true,true,Claricite Powder,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_stonepowder04/a37eddcb-7c69-484d-885d-56abea332c6d.png",6
+stoneshaping,40,55,true,false,Bedrock Powder,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_stonepowder03/da039c9f-07d4-4501-b7b0-088597d9b0e2.png",13
+stoneshaping,20,60,true,true,Claricite Brick,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_brick_04/969c19c8-ce62-49d3-8d5d-a3ffa6596431.png",211
+stoneshaping,20,64,true,true,Claricite Powder,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_stonepowder04/a37eddcb-7c69-484d-885d-56abea332c6d.png",222
+stoneshaping,8,44,true,false,Bedrock Powder,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_stonepowder03/da039c9f-07d4-4501-b7b0-088597d9b0e2.png",671
+stoneshaping,6,42,true,false,Bedrock Brick,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_brick_03/3cb8b206-14fb-4355-9853-4a12775d327c.png",671
+woodwork,100,70,true,true,Borebranch Plank,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_woodplank_04/35dc743c-9027-4efb-afd4-fd267dee11a6.png",3
+woodwork,40,50,true,true,Sawstump Plank,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_woodplank_03/c2519900-db2a-4bd1-8b6e-cf83d9653962.png",9
+woodwork,20,64,true,false,Borebranch Plank,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_woodplank_04/35dc743c-9027-4efb-afd4-fd267dee11a6.png",131
+woodwork,8,44,true,false,Sawstump Plank,"https://d31ss916pli4td.cloudfront.net/uploadedAssets/i/itm_woodplank_03/c2519900-db2a-4bd1-8b6e-cf83d9653962.png",383
