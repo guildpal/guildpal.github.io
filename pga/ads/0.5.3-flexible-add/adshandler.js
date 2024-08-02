@@ -14,13 +14,13 @@ const pgaAdsConfigs = `
   },
   "timer": {
     "rotation": true,
-    "allocation": ["pga", "pga"],
+    "allocation": ["pga", "pga", "pixels"],
     "adRotationPeriod": 30,
     "personaUnitId": "dadceda3-345b-4bb2-be73-72fb4af12165"
   },
   "storage": {
     "rotation": true,
-    "allocation": ["pga", "pga"],
+    "allocation": ["pga", "pga", "pixels"],
     "adRotationPeriod": 30,
     "personaUnitId": "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4"
   },
@@ -32,13 +32,13 @@ const pgaAdsConfigs = `
   },
   "guild": {
     "rotation": false,
-    "allocation": ["persona", "ads", "pga", "pga"],
+    "allocation": ["pixels", "persona"],
     "adRotationPeriod": 30,
     "personaUnitId": "e7b6f005-3d79-4e74-bf6d-6729f33262a1"
   },
   "market": {
     "rotation": true,
-    "allocation": ["ads", "pga", "pga"],
+    "allocation": ["ads", "pga", "pga", "pixels"],
     "adRotationPeriod": 30,
     "personaUnitId": "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594"
   }
@@ -70,6 +70,8 @@ function showAd(slot, index) {
       case "smartyads":
         showSmartyAds(slot, index);
         break;
+      case "pixels":
+        showPixelsGame(slot, index);
       default:
         showPGA(slot, index);
     }
@@ -187,18 +189,42 @@ function showPGA(slot, index) {
   containerDiv.innerHTML = '';
 
   let anchorElement = document.createElement('a');
-  anchorElement.href = 'https://pixels.guildpal.com';
+  // anchorElement.href = 'https://pixels.guildpal.com';
+  anchorElement.href = 'https://pixels.guildpal.com/pga';
   anchorElement.target = '_blank';
 
   let imgElement = document.createElement('img');
   if (index%2 === 0) {
-    imgElement.src = './images/pga-ad-guildpalpage-2_240726.gif';
+    imgElement.src = './images/three-mins-pga-guide01.gif';
   } else {
-    imgElement.src = './images/pga-ad-guildpalpage-1_240726.gif';
+    imgElement.src = './images/three-mins-pga-guide02.gif';
   }
   imgElement.width = 320;
   imgElement.height = 100;
   imgElement.alt = 'pixels.guildpal.com';
+
+  anchorElement.appendChild(imgElement);
+  containerDiv.appendChild(anchorElement);
+}
+
+
+// pixels game
+
+function showPixelsGame(slot, index) {
+
+  let containerDiv = document.querySelector('body > div');
+  containerDiv.innerHTML = '';
+
+  let anchorElement = document.createElement('a');
+  anchorElement.href = 'https://discord.com/channels/907099564127977483/908600800928989185/1268352635409403917';
+  anchorElement.target = '_blank';
+
+  let imgElement = document.createElement('img');
+  imgElement.src = './images/guild-crop-wars.jpg';
+
+  imgElement.width = 320;
+  imgElement.height = 100;
+  imgElement.alt = 'guild crop wars';
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
