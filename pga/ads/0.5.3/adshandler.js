@@ -98,7 +98,7 @@ function requestDisplayToast(message, duration) {
       {
         protocol: "iframe-to-app",
         method: "request-display-toast",
-        payload: { message, duration },
+        payload: {message, duration},
       },
       "*"
     );
@@ -185,10 +185,8 @@ async function processClick(e) {
     const result = await response.json();
     console.log("result", result);
 
-    // NOTE: 일단 무조건 posting
-    if (result.showResult || true) {
-      // alert(result.resultMessage);
-      requestDisplayToast("message from iframe", 1000);
+    if (result.showResult) {
+      requestDisplayToast(result.resultMessage, result.duration);
     } else {
       dispatchPendingEvent();
     }
