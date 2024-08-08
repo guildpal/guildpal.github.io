@@ -32,13 +32,13 @@ const pgaAdsConfigs = `
   },
   "guild": {
     "rotation": false,
-    "allocation": ["smartyads"],
+    "allocation": ["persona"],
     "adRotationPeriod": 30,
     "personaUnitId": "e7b6f005-3d79-4e74-bf6d-6729f33262a1"
   },
   "market": {
     "rotation": true,
-    "allocation": ["aads", "smartyads", "pga", "pga", "persona"],
+    "allocation": ["aads", "pga", "pga", "persona"],
     "adRotationPeriod": 30,
     "personaUnitId": "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594"
   }
