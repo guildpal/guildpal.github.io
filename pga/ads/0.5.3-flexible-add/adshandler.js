@@ -26,7 +26,7 @@ const pgaAdsConfigs = `
   },
   "note": {
     "rotation": false,
-    "allocation": ["cointraffic"],
+    "allocation": ["smartyads"],
     "adRotationPeriod": 30,
     "personaUnitId": "99db66bb-d1cb-41dd-a9a6-4710173d41b3"
   },
@@ -257,14 +257,24 @@ function showSmartyAds(slot, index) {
   let containerDiv = document.querySelector("body > div");
   containerDiv.innerHTML = "";
 
-  var adUnits = [
-    {
-      code: "pga-banner-ad",
-      placement_id: 4203,
-      sizes: [320, 100],
-      refreshable: true,
-      refreshIntervalSec: 30,
-    },
+  // const adUnits = [
+  //   {
+  //     code: "pga-banner-ad",
+  //     placement_id: 4203,
+  //     sizes: [320, 100],
+  //     refreshable: true,
+  //     refreshIntervalSec: 30,
+  //   },
+  // ];
+  // smarty.buildUnits(adUnits);
+  const adUnits = [
+      {
+          code: 'pga-banner-ad',
+          placement_id: 4543,
+          sizes: [320, 100],
+          refreshable: false,
+          refreshIntervalSec: null
+      }
   ];
   smarty.buildUnits(adUnits);
 }
