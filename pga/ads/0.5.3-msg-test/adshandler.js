@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const index = Number(searchParams.get("index")) || 0;
   slot = (searchParams.get("slot") || "home").toLowerCase().trim();
   pgaVersion = searchParams.get("v");
-  playerId = searchParams.get("mid");
+  playerId = searchParams.get("mid") || "";
 
   pgaAdConfig = pgaAdsConfigs[slot];
   personaAdUnitId = pgaAdConfig.personaUnitId;
