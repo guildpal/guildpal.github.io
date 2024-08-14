@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //   }
 // }
 
-async function requestDisplayToast(message, duration) {
+async function requestDisplayToast(message, duration, satusCode) {
   return new Promise((resolve, reject) => {
     toastr.options = {
       positionClass: "toast-center", //"toast-top-center",
@@ -117,10 +117,14 @@ async function requestDisplayToast(message, duration) {
         resolve();
       },
     };
-    toastr.success(message);
-    // toastr.info(message);
-    // toastr.warning(message);
-    // toastr.error(message);
+
+    if (satusCode === 200 || satusCode === 201) {
+      toastr.success(message);
+    } else {
+      toastr.error(message);
+      // toastr.info(message);
+      // toastr.warning(message);
+    }
   });
 }
 
@@ -219,10 +223,13 @@ async function processClick(e) {
       }
     );
     const result = await response.json();
-    console.log("result", result);
 
     if (result.showResult) {
-      await requestDisplayToast(result.resultMessage, result.duration);
+      await requestDisplayToast(
+        result.resultMessage,
+        result.duration,
+        result.status_code
+      );
     } else {
       dispatchPendingEvent();
     }
