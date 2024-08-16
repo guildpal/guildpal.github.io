@@ -5,10 +5,14 @@
  * */
 .toast-title {
   font-weight: 700;
+  font-family: system-ui, sans-serif;
+  font-size: 16px;
 }
 .toast-message {
   -ms-word-wrap: break-word;
   word-wrap: break-word;
+  font-family: system-ui, sans-serif;
+  font-size: 15px;
 }
 .toast-message a,
 .toast-message label {
