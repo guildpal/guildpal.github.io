@@ -121,9 +121,9 @@ async function requestDisplayToast(message, duration, satusCode) {
     if (satusCode === 200 || satusCode === 201) {
       toastr.success(message);
     } else {
-      toastr.error(message);
+      toastr.warning(message);
       // toastr.info(message);
-      // toastr.warning(message);
+      // toastr.error(message);
     }
   });
 }
