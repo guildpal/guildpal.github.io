@@ -5,6 +5,12 @@ const pgaAdsConfigs = {
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
+  order: {
+    rotation: true,
+    allocation: ["pga", "pga"],
+    adRotationPeriod: 30,
+    personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
+  },
   tasks: {
     rotation: false,
     allocation: ["persona"],
