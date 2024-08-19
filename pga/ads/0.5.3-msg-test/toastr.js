@@ -167,7 +167,7 @@
           closeMethod: false,
           closeDuration: false,
           closeEasing: false,
-          closeOnHover: false, // true
+          closeOnHover: true,
 
           extendedTimeOut: 1000,
           iconClasses: {

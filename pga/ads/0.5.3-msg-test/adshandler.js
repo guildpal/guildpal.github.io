@@ -105,7 +105,8 @@ async function requestDisplayToast(message, duration, satusCode) {
     toastr.options = {
       positionClass: "toast-center", //"toast-top-center",
       timeOut: duration, // set 0 to prevent from auto hiding
-      extendedTimeOut: 1000,
+      extendedTimeOut: 0,
+      closeOnHover: false,
       progressBar: true,
       onclick: function () {
         dispatchPendingEvent();
