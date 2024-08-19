@@ -47,6 +47,26 @@ const timeSecond = 1000;
 
 /////
 
+const compareSemver = (version1, version2) => {
+  const v1 = version1.split(".").map(Number);
+  const v2 = version2.split(".").map(Number);
+
+  for (let i = 0; i < Math.max(v1.length, v2.length); i++) {
+    const num1 = v1[i] || 0;
+    const num2 = v2[i] || 0;
+
+    if (num1 > num2) {
+      return 1;
+    } else if (num1 < num2) {
+      return -1;
+    }
+  }
+
+  return 0;
+};
+
+/////
+
 let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
 let slot = "home";
@@ -63,42 +83,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchParams = new URLSearchParams(search);
   const index = Number(searchParams.get("index")) || 0;
   slot = (searchParams.get("slot") || "home").toLowerCase().trim();
-  pgaVersion = searchParams.get("v");
+  pgaVersion = searchParams.get("v") || "0.1.0";
   playerId = searchParams.get("mid") || "";
 
   pgaAdConfig = pgaAdsConfigs[slot];
   personaAdUnitId = pgaAdConfig.personaUnitId;
 
-  clickTarget = document.querySelector("#pga-banner-ad");
-  clickTarget?.addEventListener("click", processClick);
-
-  // window.addEventListener("message", async function (event) {
-  //   if (event.data.protocol === "app-to-iframe") {
-  //     if (event.data.method === "response-display-toast") {
-  //       console.log("from parent", event);
-  //       dispatchPendingEvent();
-  //     }
-  //   }
-  // });
+  if (compareSemver(pgaVersion, "0.5.8") >= 0) {
+    clickTarget = document.querySelector("#pga-banner-ad");
+    clickTarget?.addEventListener("click", processClick);
+  }
 
   showAd(slot, index);
 });
-
-// function requestDisplayToast(message, duration) {
-//   if (window.parent === window) {
-//     alert(message);
-//     dispatchPendingEvent();
-//   } else {
-//     window.parent.postMessage(
-//       {
-//         protocol: "iframe-to-app",
-//         method: "request-display-toast",
-//         payload: { message, duration },
-//       },
-//       "*"
-//     );
-//   }
-// }
 
 async function requestDisplayToast(message, duration, satusCode) {
   return new Promise((resolve, reject) => {
