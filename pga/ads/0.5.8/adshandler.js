@@ -281,7 +281,8 @@ function showAd(slot, index) {
     return;
   }
 
-  processImpression();
+  // NOTE: 당분간 addimpression 호출하지 않음 (2024-08-20)
+  // processImpression();
 
   if (index < pgaAdConfig.allocation.length) {
     switch (pgaAdConfig.allocation[index]) {
