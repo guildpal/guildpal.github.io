@@ -68,7 +68,7 @@ function showAd(slot, index) {
         showAADS(slot, index);
         break;
       case "smartyads":
-        // showSmartyAds(slot, index);
+        showSmartyAds(slot, index);
         break;
       case "pixels":
         showPixelsGame(slot, index);
@@ -257,16 +257,6 @@ function showSmartyAds(slot, index) {
   let containerDiv = document.querySelector("body > div");
   containerDiv.innerHTML = "";
 
-  // const adUnits = [
-  //   {
-  //     code: "pga-banner-ad",
-  //     placement_id: 4203,
-  //     sizes: [320, 100],
-  //     refreshable: true,
-  //     refreshIntervalSec: 30,
-  //   },
-  // ];
-  // smarty.buildUnits(adUnits);
   const adUnits = [
       {
           code: 'pga-banner-ad',
