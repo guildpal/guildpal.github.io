@@ -68,7 +68,7 @@ function showAd(slot, index) {
         showAADS(slot, index);
         break;
       case "smartyads":
-        showSmartyAds(slot, index);
+        // showSmartyAds(slot, index);
         break;
       case "pixels":
         showPixelsGame(slot, index);
