@@ -51,28 +51,6 @@ const pgaAdsConfigs = {
 const defaultPersonaAdUnitId = "d126cd27-d130-425e-a332-6b33a0b947b4"; // home
 const timeSecond = 1000;
 
-/////
-
-const compareSemver = (version1, version2) => {
-  const v1 = version1.split(".").map(Number);
-  const v2 = version2.split(".").map(Number);
-
-  for (let i = 0; i < Math.max(v1.length, v2.length); i++) {
-    const num1 = v1[i] || 0;
-    const num2 = v2[i] || 0;
-
-    if (num1 > num2) {
-      return 1;
-    } else if (num1 < num2) {
-      return -1;
-    }
-  }
-
-  return 0;
-};
-
-/////
-
 let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
 let slot = "home";
@@ -102,175 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showAd(slot, index);
 });
-
-async function requestDisplayToast(message, duration, satusCode) {
-  return new Promise((resolve, reject) => {
-    toastr.options = {
-      positionClass: "toast-center", //"toast-top-center",
-      timeOut: duration, // set 0 to prevent from auto hiding
-      extendedTimeOut: 0,
-      closeOnHover: false,
-      progressBar: true,
-      onclick: function () {
-        dispatchPendingEvent();
-        toastr.clear();
-        resolve();
-      },
-      onHidden: function () {
-        dispatchPendingEvent();
-        resolve();
-      },
-    };
-
-    if (satusCode === 200 || satusCode === 201) {
-      toastr.success(message);
-    } else {
-      toastr.warning(message);
-      // toastr.info(message);
-      // toastr.error(message);
-    }
-  });
-}
-
-function clonePointerEvent(originalEvent) {
-  const clonedEvent = new PointerEvent(originalEvent.type, {
-    bubbles: originalEvent.bubbles,
-    cancelable: originalEvent.cancelable,
-    composed: originalEvent.composed,
-    pointerId: originalEvent.pointerId,
-    width: originalEvent.width,
-    height: originalEvent.height,
-    pressure: originalEvent.pressure,
-    tangentialPressure: originalEvent.tangentialPressure,
-    tiltX: originalEvent.tiltX,
-    tiltY: originalEvent.tiltY,
-    twist: originalEvent.twist,
-    pointerType: originalEvent.pointerType,
-    isPrimary: originalEvent.isPrimary,
-    screenX: originalEvent.screenX,
-    screenY: originalEvent.screenY,
-    clientX: originalEvent.clientX,
-    clientY: originalEvent.clientY,
-    ctrlKey: originalEvent.ctrlKey,
-    altKey: originalEvent.altKey,
-    shiftKey: originalEvent.shiftKey,
-    metaKey: originalEvent.metaKey,
-    button: originalEvent.button,
-    buttons: originalEvent.buttons,
-    relatedTarget: originalEvent.relatedTarget,
-    offsetX: originalEvent.offsetX,
-    offsetY: originalEvent.offsetY,
-    movementX: originalEvent.movementX,
-    movementY: originalEvent.movementY,
-  });
-
-  return clonedEvent;
-}
-
-function dispatchPendingEvent() {
-  if (pendingEventTarget && pendingEvent) {
-    clickTarget?.removeEventListener("click", processClick);
-    pendingEventTarget.dispatchEvent(pendingEvent);
-    pendingEventTarget = null;
-    pendingEvent = null;
-    clickTarget?.addEventListener("click", processClick);
-  }
-}
-
-function showLoader() {
-  const cover = document.querySelector("#pga-banner-cover");
-  if (cover) {
-    cover.style.display = "block";
-  }
-}
-
-function hideLoader() {
-  const cover = document.querySelector("#pga-banner-cover");
-  if (cover) {
-    cover.style.display = "none";
-  }
-}
-
-async function processClick(e) {
-  const anchor = document.querySelector("#pga-banner-ad a");
-  if (!anchor) {
-    console.log("no ads");
-    // alert("no ads");
-    return;
-  }
-
-  console.log("event", e);
-  pendingEvent = clonePointerEvent(e);
-  pendingEventTarget = e.target;
-  console.log("pendingEvent", pendingEvent);
-
-  e.preventDefault();
-
-  try {
-    showLoader();
-    const response = await fetch(
-      "https://pga-svc-ads.play-extension.xyz/ads-api/addinteraction",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "X-Atomrigs-Pga-Pid": playerId,
-        },
-        body: JSON.stringify({
-          player_id: playerId,
-          domain: "display",
-          subject: "RUBY_REWARDS",
-          slot: `pga/${slot}`,
-          ts: new Date().getTime(),
-        }),
-      }
-    );
-    const result = await response.json();
-
-    if (result.showResult) {
-      await requestDisplayToast(
-        result.resultMessage,
-        result.duration,
-        result.status_code
-      );
-    } else {
-      dispatchPendingEvent();
-    }
-  } catch (err) {
-    console.error(err);
-    dispatchPendingEvent();
-  } finally {
-    hideLoader();
-  }
-}
-
-async function processImpression() {
-  try {
-    const response = await fetch(
-      "https://pga-svc-ads.play-extension.xyz/ads-api/addimpression",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "X-Atomrigs-Pga-Pid": playerId,
-        },
-        body: JSON.stringify({
-          player_id: playerId,
-          domain: "display",
-          subject: "RUBY_REWARDS",
-          slot: `pga/${slot}`,
-          ts: new Date().getTime(),
-        }),
-      }
-    );
-    const result = await response.json();
-    console.log("processImpression", result);
-  } catch (err) {
-    console.error(err);
-  }
-}
 
 function showAd(slot, index) {
   // NOTE: pendingEvent 있을 경우 광고 로테이션 되지 않도록
@@ -322,23 +131,115 @@ function showAd(slot, index) {
   }
 }
 
-function removeTabParameterFromUrl(search) {
-  const paramStart = search.indexOf("?tab=");
-  if (paramStart !== -1) {
-    const paramEnd = search.indexOf("&", paramStart);
-    if (paramEnd !== -1) {
-      // Remove the entire parameter including its value
-      return (
-        search.substring(0, paramStart) + "&" + search.substring(paramEnd + 1)
-      );
-    } else {
-      return search.substring(0, paramStart);
-    }
+async function processImpression() {
+  try {
+    const response = await fetch(
+      "https://pga-svc-ads.play-extension.xyz/ads-api/addimpression",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-Atomrigs-Pga-Pid": playerId,
+        },
+        body: JSON.stringify({
+          player_id: playerId,
+          domain: "display",
+          subject: "RUBY_REWARDS",
+          slot: `pga/${slot}`,
+          ts: new Date().getTime(),
+        }),
+      }
+    );
+    const result = await response.json();
+    console.log("processImpression", result);
+  } catch (err) {
+    console.error(err);
   }
-  return search;
 }
 
-///////////////////////// agency codes
+async function processClick(e) {
+  const anchor = document.querySelector("#pga-banner-ad a");
+  if (!anchor) {
+    console.log("no ads");
+    // alert("no ads");
+    return;
+  }
+
+  // console.log("event", e);
+  pendingEvent = clonePointerEvent(e);
+  pendingEventTarget = e.target;
+  // console.log("pendingEvent", pendingEvent);
+
+  e.preventDefault();
+
+  try {
+    showLoader();
+    const response = await fetch(
+      "https://pga-svc-ads.play-extension.xyz/ads-api/addinteraction",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-Atomrigs-Pga-Pid": playerId,
+        },
+        body: JSON.stringify({
+          player_id: playerId,
+          domain: "display",
+          subject: "RUBY_REWARDS",
+          slot: `pga/${slot}`,
+          ts: new Date().getTime(),
+        }),
+      }
+    );
+    const result = await response.json();
+    if (result.showResult) {
+      await showResult(
+        result.resultMessage,
+        result.duration,
+        result.status_code === 200 || result.status_code === 201
+      );
+    }
+  } catch (err) {
+    console.error(err);
+  } finally {
+    hideLoader();
+    dispatchPendingEvent();
+  }
+}
+
+async function showResult(message, duration, success) {
+  return new Promise((resolve) => {
+    if (success) {
+      requestReloadNotice();
+    }
+
+    // displayToast(message, duration, success, resolve);
+    // requestDisplayToastWithCallback(message, duration, success, resolve);
+    // requestDisplayAlertWithCallback(message, duration, success, resolve);
+
+    if (compareSemver(pgaVersion, "0.6.0") >= 0) {
+      requestDisplayAlertWithCallback(message, duration, success, resolve);
+    } else {
+      displayToast(message, duration, success, resolve);
+    }
+  });
+}
+
+function dispatchPendingEvent() {
+  if (pendingEventTarget && pendingEvent) {
+    clickTarget?.removeEventListener("click", processClick);
+    pendingEventTarget.dispatchEvent(pendingEvent);
+    pendingEventTarget = null;
+    pendingEvent = null;
+    clickTarget?.addEventListener("click", processClick);
+  }
+}
+
+// -----------------------------------------------------
+// agency codes
+// -----------------------------------------------------
 
 // persona
 
@@ -456,4 +357,233 @@ function showSmartyAds(slot, index) {
     },
   ];
   smarty.buildUnits(adUnits);
+}
+
+// -----------------------------------------------------
+// utils
+// -----------------------------------------------------
+
+function removeTabParameterFromUrl(search) {
+  const paramStart = search.indexOf("?tab=");
+  if (paramStart !== -1) {
+    const paramEnd = search.indexOf("&", paramStart);
+    if (paramEnd !== -1) {
+      // Remove the entire parameter including its value
+      return (
+        search.substring(0, paramStart) + "&" + search.substring(paramEnd + 1)
+      );
+    } else {
+      return search.substring(0, paramStart);
+    }
+  }
+  return search;
+}
+
+const compareSemver = (version1, version2) => {
+  const v1 = version1.split(".").map(Number);
+  const v2 = version2.split(".").map(Number);
+
+  for (let i = 0; i < Math.max(v1.length, v2.length); i++) {
+    const num1 = v1[i] || 0;
+    const num2 = v2[i] || 0;
+
+    if (num1 > num2) {
+      return 1;
+    } else if (num1 < num2) {
+      return -1;
+    }
+  }
+
+  return 0;
+};
+
+function showLoader() {
+  const cover = document.querySelector("#pga-banner-cover");
+  if (cover) {
+    cover.style.display = "block";
+  }
+}
+
+function hideLoader() {
+  const cover = document.querySelector("#pga-banner-cover");
+  if (cover) {
+    cover.style.display = "none";
+  }
+}
+
+function displayToast(message, duration, success, callback) {
+  toastr.options = {
+    positionClass: "toast-center", //"toast-top-center",
+    timeOut: duration, // set 0 to prevent from auto hiding
+    extendedTimeOut: 0,
+    closeOnHover: false,
+    progressBar: true,
+    onclick: function () {
+      toastr.clear();
+      callback();
+    },
+    onHidden: function () {
+      callback();
+    },
+  };
+
+  if (success) {
+    toastr.success(message);
+  } else {
+    toastr.warning(message);
+    // toastr.info(message);
+    // toastr.error(message);
+  }
+}
+
+function requestReloadNotice() {
+  window.parent.postMessage(
+    {
+      protocol: "iframe-to-app",
+      method: "reload-notice",
+      payload: {},
+    },
+    "*"
+  );
+}
+
+function requestNavigate(path) {
+  window.parent.postMessage(
+    {
+      protocol: "iframe-to-app",
+      method: "navigate-to",
+      payload: { path },
+    },
+    "*"
+  );
+}
+
+function requestDisplayToast(message, duration, success) {
+  window.parent.postMessage(
+    {
+      protocol: "iframe-to-app",
+      method: "display-toast",
+      payload: { type: success ? "success" : "warning", message, duration },
+    },
+    "*"
+  );
+}
+
+function requestDisplayAlert(message, duration, success) {
+  window.parent.postMessage(
+    {
+      protocol: "iframe-to-app",
+      method: "display-alert",
+      payload: { type: success ? "success" : "warning", message, duration },
+    },
+    "*"
+  );
+}
+
+function requestDisplayToastWithCallback(message, duration, success, callback) {
+  function messageHandler(event) {
+    if (
+      event.data.protocol === "app-to-iframe" &&
+      event.data.method === "display-toast-response"
+    ) {
+      window.removeEventListener("message", messageHandler);
+      callback();
+    }
+  }
+  window.addEventListener("message", messageHandler);
+  requestDisplayToast(message, duration, success);
+}
+
+function requestDisplayAlertWithCallback(message, duration, success, callback) {
+  function messageHandler(event) {
+    if (
+      event.data.protocol === "app-to-iframe" &&
+      event.data.method === "display-alert-response"
+    ) {
+      window.removeEventListener("message", messageHandler);
+      callback();
+    }
+  }
+  window.addEventListener("message", messageHandler);
+  requestDisplayAlert(message, duration, success);
+}
+
+// async function requestDisplayToast(message, duration, satusCode) {
+//   return new Promise((resolve, reject) => {
+//     const width = 300;
+//     const height = 300;
+//     const left = (screen.width - width) / 2;
+//     const top = (screen.height - height) / 2;
+//     const options = [
+//       `width=${width}`,
+//       `height=${height}`,
+//       `top=${top}`,
+//       `left=${left}`,
+//       "resizable=yes",
+//       "scrollbars=no",
+//       "toolbar=no",
+//       "menubar=no",
+//       "location=no",
+//       "directories=no",
+//       "status=no",
+//       "copyhistory=no",
+//       "fullscreen=no",
+//       "dependent=yes",
+//       "alwaysRaised=yes",
+//     ].join(",");
+
+//     dispatchPendingEvent();
+
+//     setTimeout(() => {
+//       const urlObject = new URL("https://www.google.com");
+//       // urlObject.searchParams.set('playerId', AppService.PLAYER_ID);
+//       // urlObject.searchParams.set('pgaVersion', version);
+//       const popUpWindow = window.open(
+//         urlObject.toString(),
+//         "ad-response",
+//         options
+//       );
+//       // if (popUpWindow && target === "ad-response") {
+//       //   window.candyGameOpenedPopupWindow = popUpWindow
+//       // }
+//       popUpWindow.focus();
+//     }, 1);
+
+//     resolve();
+//   });
+// }
+
+function clonePointerEvent(originalEvent) {
+  const clonedEvent = new PointerEvent(originalEvent.type, {
+    bubbles: originalEvent.bubbles,
+    cancelable: originalEvent.cancelable,
+    composed: originalEvent.composed,
+    pointerId: originalEvent.pointerId,
+    width: originalEvent.width,
+    height: originalEvent.height,
+    pressure: originalEvent.pressure,
+    tangentialPressure: originalEvent.tangentialPressure,
+    tiltX: originalEvent.tiltX,
+    tiltY: originalEvent.tiltY,
+    twist: originalEvent.twist,
+    pointerType: originalEvent.pointerType,
+    isPrimary: originalEvent.isPrimary,
+    screenX: originalEvent.screenX,
+    screenY: originalEvent.screenY,
+    clientX: originalEvent.clientX,
+    clientY: originalEvent.clientY,
+    ctrlKey: originalEvent.ctrlKey,
+    altKey: originalEvent.altKey,
+    shiftKey: originalEvent.shiftKey,
+    metaKey: originalEvent.metaKey,
+    button: originalEvent.button,
+    buttons: originalEvent.buttons,
+    relatedTarget: originalEvent.relatedTarget,
+    offsetX: originalEvent.offsetX,
+    offsetY: originalEvent.offsetY,
+    movementX: originalEvent.movementX,
+    movementY: originalEvent.movementY,
+  });
+
+  return clonedEvent;
 }
