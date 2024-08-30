@@ -1,0 +1,27 @@
+:root {
+    --wh: #ffffff;
+    --bk: #232323;
+
+    --gray: #f4f4f4;
+    --text_light_gray:#E6E6E6;
+    --text_dark_gray:#3F3F3F;
+    --yellow:#FFD600;
+
+    --f32: 32px;
+    --f28: 28px;
+    --f26: 26px;
+    --f24: 24px;
+    --f22: 22px;
+    --f20: 20px;
+    --f18: 18px;
+    --f16: 16px;
+    --f14: 14px;
+    --f12: 12px;
+
+    --shodow:  0px 4px 4px rgba(31, 37, 57, 0.2);
+    --bright:  0px 0px 6px rgba(117, 138, 204, 0.3);
+    --bl16: blur(8px);
+
+    --bg-gra : linear-gradient(180deg, #560E10 48.72%, #240809 100%);
+
+}

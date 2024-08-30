@@ -1,0 +1,202 @@
+.marin_area {
+    padding:0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%), radial-gradient(111.84% 123.86% at 61.22% 97.71%, #EDFED4 1.88%, #9FF1C1 24.29%, #39B7CC 58.58%, #1C5BC9 84.39%);
+}
+
+.marin_area .contents{
+    padding: 0 16px 100px;
+    background: url(../img/main_bg_object.png)no-repeat;
+    background-size: 100%;
+    background-position: center bottom;
+}
+.logo_pixels_crush_main{
+    width: 70%;
+    max-width: 400px;
+    margin-bottom: 0;
+}
+.marin_area p{
+    font-weight: 700;
+    font-size: var(--f24);
+    color:var(--text_light_gray);
+}
+.video_ratio{
+    display: flex;
+    justify-content: center;
+    margin-top:20px;
+}
+.video_ratio video{
+    max-width: 576px;
+    width:100%;
+}
+
+
+section h4{
+    margin-bottom: 40px;
+}
+section img{
+    margin-bottom: 24px;
+}
+
+
+
+/* What_is_Pixels_Crush */
+.What_is_Pixels_Crush{
+    background: linear-gradient(180deg, #26294F 0%, #171B3F 100%);
+    color:var(--wh);
+}
+.What_is_Pixels_Crush img{
+    width:70%;
+    max-width: 516px;
+}
+.What_is_Pixels_Crush p{
+    color:var(--text_light_gray);
+}
+.What_is_Pixels_Crush h5{
+    color:var(--yellow);
+}
+
+
+/* where_Pixels_Crush */
+.where_Pixels_Crush{
+    padding-top: 60px;
+}
+.where_Pixels_Crush .icon_game_machine{
+    width:24px;
+    height: auto;
+    margin-bottom: 0;
+}
+.where_Pixels_Crush ul{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+.where_Pixels_Crush li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex:1;
+}
+.where_Pixels_Crush li img{
+    margin:0;
+}
+.where_Pixels_Crush li p{
+    font-weight: 500;
+    color:var(--text_dark_gray);
+}
+
+
+/* What_is_Ruby */
+.What_is_Ruby{
+    background:var(--bg-gra);
+    color:var(--wh);
+    position: relative;
+    padding-top: 60px;
+}
+.What_is_Ruby::before{
+    position: absolute;
+    content: '';
+    left:0; right:0; top:0; bottom:0;
+    max-width:900px;
+    margin:0 auto;
+    background-image: url(../img/img-What_is_Ruby.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 200px;
+    opacity: 0.6;
+    z-index: 1;
+}
+.What_is_Ruby > div{
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.What_is_Ruby .icon_ruby{
+    width:38px;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 0;
+}
+
+
+
+.how_earn_Ruby ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:16px;
+}
+.how_earn_Ruby li{
+    color:var(--text_dark_gray);
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 40%;
+    background-color: #ECEEF5;
+    border-radius: 8px;
+}
+.how_earn_Ruby li .ruby_area{
+    font-family: "Press Start 2P", system-ui;
+    font-size: var(--f16);
+    color:var(--wh);
+    background-color: #1A1E47;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:4px;
+    width:100%;
+    padding:12px 6px;
+    border-radius: 8px;
+}
+
+.how_earn_Ruby li .ruby_area .icon_ruby_2{
+    background: url(../img/pga-icon-ruby.png)no-repeat;
+}
+.how_earn_Ruby li .ruby_area .icon_time{
+    background: url(../img/icon-time.png)no-repeat;
+}
+.how_earn_Ruby li .ruby_area .icon_player{
+    background: url(../img/icon-player.png)no-repeat;
+}
+.how_earn_Ruby li .ruby_area .ruby_icon_area{
+    width:24px;
+    aspect-ratio: 1 / 1;
+    background-size: 100%;
+}
+.how_earn_Ruby li .ruby_dec{
+    padding:12px 6px;
+    width:100%;
+    height:100%;
+    text-align: center;
+}
+
+
+
+
+
+
+@media screen and (max-width: 900px) {
+    .marin_area .contents{
+        padding-bottom: 60px;
+    }
+
+
+    .marin_area p{
+        font-size: var(--f14);
+    }
+    
+
+    .where_Pixels_Crush ul{
+        flex-direction: column;
+        gap:24px;
+    }
+
+    .how_earn_Ruby ul{
+        flex-direction: column;
+    }
+   
+
+  
+}

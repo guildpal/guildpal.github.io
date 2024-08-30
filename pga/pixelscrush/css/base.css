@@ -1,0 +1,147 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url(root.css);
+@import url(go_top.css);
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+html {
+  text-align: left;
+  color: var(--bk);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.4;
+}
+body {
+  position: relative;
+  font-size: var(--f14);
+  background: var(--gray);
+  background-size: 100%;
+  background-attachment : fixed;
+}
+
+/* scrollbar */
+::-webkit-scrollbar-corner{
+  background-color: transparent;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background: #F9F9F9;
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb {
+  background: #E8E8E8;
+  border: 0;
+  border-radius: 8px;
+}
+
+
+
+.hide{display: none;}
+
+
+/* text */
+.text_title, h3{
+  font-weight: 800;
+  font-size: var(--f26);
+}
+.text_subTitle, h4{
+  font-weight: 800;
+  font-size: var(--f28);
+}
+h5{
+  font-weight: 700;
+  font-size: var(--f22);
+  color:var(--text_light_gray);
+}
+.text_contents{
+  font-weight: 400;
+  font-size: var(--f18);
+}
+.text_caption{
+  font-weight: 300;
+  font-size: var(--f12);
+}
+.text_caption_area{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.text_bold{
+  font-weight: 700;
+}
+
+.center{margin-left: auto; margin-right: auto;}
+.text_center{text-align: center;}
+
+
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  display: block;
+  color: var(--wh);
+}
+div,
+section,
+header,
+footer {
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
+}
+
+
+section {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 100px 0;
+}
+.contents {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:0 16px;
+}
+
+
+
+@media screen and (max-width: 900px) {
+  .text_subTitle, h4{
+    font-size: var(--f22);
+  }
+  h5{
+    font-size: var(--f16);
+  }
+  .text_contents{
+    font-size: var(--f14);
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+
+ 
+  
+}
