@@ -12,7 +12,7 @@ const pgaAdsConfigs = {
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   tasks: {
-    rotation: false,
+    rotation: true,
     allocation: ["persona"],
     adRotationPeriod: 30,
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
@@ -30,13 +30,13 @@ const pgaAdsConfigs = {
     personaUnitId: "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4",
   },
   note: {
-    rotation: false,
+    rotation: true,
     allocation: ["cointraffic"],
     adRotationPeriod: 30,
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
   guild: {
-    rotation: false,
+    rotation: true,
     allocation: ["cointraffic"],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
@@ -48,8 +48,14 @@ const pgaAdsConfigs = {
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
 };
+
+const adsServer = "https://api-pixels.guildpal.com";
+
 const defaultPersonaAdUnitId = "d126cd27-d130-425e-a332-6b33a0b947b4"; // home
 const timeSecond = 1000;
+const domainDisplay = "display";
+const allAdsSubject = "ALL-ADS";
+const pgaSelfAdsSubject = "PGA-SELF-ADS";
 
 let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
@@ -82,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function showAd(slot, index) {
-  // NOTE: pendingEvent 있을 경우 광고 로테이션 되지 않도록
+  // NOTE: not rotate ads when pendingEvent exists
   if (pendingEvent) {
     setTimeout(() => {
       showAd(slot, index);
@@ -90,8 +96,8 @@ function showAd(slot, index) {
     return;
   }
 
-  // NOTE: 당분간 addimpression 호출하지 않음 (2024-08-20)
-  // processImpression();
+  // to see # of all possible impressions
+  processImpression(domainDisplay, allAdsSubject);
 
   if (index < pgaAdConfig.allocation.length) {
     switch (pgaAdConfig.allocation[index]) {
@@ -131,26 +137,24 @@ function showAd(slot, index) {
   }
 }
 
-async function processImpression() {
+async function processImpression(domain, subject) {
+  // modified by Luke
   try {
-    const response = await fetch(
-      "https://pga-svc-ads.play-extension.xyz/ads-api/addimpression",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "X-Atomrigs-Pga-Pid": playerId,
-        },
-        body: JSON.stringify({
-          player_id: playerId,
-          domain: "display",
-          subject: "RUBY_REWARDS",
-          slot: `pga/${slot}`,
-          ts: new Date().getTime(),
-        }),
-      }
-    );
+    const response = await fetch(`${adsServer}/ads-api/addimpression`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-Atomrigs-Pga-Pid": playerId,
+      },
+      body: JSON.stringify({
+        player_id: playerId,
+        domain: domain, // "display",
+        subject: subject, // "RUBY_REWARDS",
+        slot: `pga/${slot}`,
+        ts: new Date().getTime(),
+      }),
+    });
     const result = await response.json();
     console.log("processImpression", result);
   } catch (err) {
@@ -175,24 +179,21 @@ async function processClick(e) {
 
   try {
     showLoader();
-    const response = await fetch(
-      "https://pga-svc-ads.play-extension.xyz/ads-api/addinteraction",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "X-Atomrigs-Pga-Pid": playerId,
-        },
-        body: JSON.stringify({
-          player_id: playerId,
-          domain: "display",
-          subject: "RUBY_REWARDS",
-          slot: `pga/${slot}`,
-          ts: new Date().getTime(),
-        }),
-      }
-    );
+    const response = await fetch(`${adsServer}/ads-api/addinteraction`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-Atomrigs-Pga-Pid": playerId,
+      },
+      body: JSON.stringify({
+        player_id: playerId,
+        domain: "display",
+        subject: "RUBY_REWARDS",
+        slot: `pga/${slot}`,
+        ts: new Date().getTime(),
+      }),
+    });
     const result = await response.json();
     if (result.showResult) {
       await showResult(
@@ -452,7 +453,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: { path },
+      payload: {path},
     },
     "*"
   );
@@ -463,7 +464,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
@@ -474,7 +475,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
