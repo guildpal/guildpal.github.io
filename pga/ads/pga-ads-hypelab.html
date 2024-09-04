@@ -84,8 +84,8 @@
           console.log("onReady");
         });
 
-        banner.addEventListener("error", function () {
-          console.log("onError");
+        banner.addEventListener("error", function (error) {
+          console.log("onError", error);
         });
       });
     </script>
