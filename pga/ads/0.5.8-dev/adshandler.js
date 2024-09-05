@@ -302,15 +302,10 @@ function showHypelab(slot, index) {
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
-  let bannerElement = document.createElement("hype-banner");
-  bannerElement.id = "banner";
-  bannerElement.setAttribute("placement", "a034aa49f6");
-
   let scriptElement = document.createElement("script");
   scriptElement.defer = true;
   scriptElement.src = "https://api.hypelab.com/v1/scripts/hp-sdk.js?v=0";
 
-  containerDiv.appendChild(bannerElement);
   containerDiv.appendChild(scriptElement);
 
   // initialize after sdk is loaded
@@ -319,6 +314,12 @@ function showHypelab(slot, index) {
       environment: "production", // Replace with your environment
       propertySlug: "d001c21f78", // Replace with your property slug
     });
+
+    let bannerElement = document.createElement("hype-banner");
+    bannerElement.id = "banner";
+    bannerElement.setAttribute("placement", "a034aa49f6");
+
+    containerDiv.appendChild(bannerElement);
   };
 }
 
