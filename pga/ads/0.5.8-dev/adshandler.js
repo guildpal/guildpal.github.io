@@ -304,7 +304,7 @@ function showHypelab(slot, index) {
 
   let bannerElement = document.createElement("hype-banner");
   bannerElement.id = "banner";
-  bannerElement.placement = "a034aa49f6";
+  bannerElement.setAttribute("placement", "a034aa49f6");
 
   let scriptElement = document.createElement("script");
   scriptElement.defer = true;
