@@ -58,7 +58,7 @@ const pgaAdsConfigs = {
   },
   order: {
     rotation: false,
-    allocation: ["pga"],
+    allocation: ["hypelab"],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
@@ -76,7 +76,7 @@ const pgaAdsConfigs = {
   },
   storage: {
     rotation: false,
-    allocation: ["cointraffic"],
+    allocation: ["hypelab"],
     adRotationPeriod: 30,
     personaUnitId: "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4",
   },
@@ -88,13 +88,13 @@ const pgaAdsConfigs = {
   },
   guild: {
     rotation: false,
-    allocation: ["cointraffic"],
+    allocation: ["aads"],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
   },
   market: {
     rotation: false,
-    allocation: ["aads"],
+    allocation: ["hypelab"],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
@@ -161,11 +161,14 @@ function showAd(slot, index) {
       case "pga":
         showPGA(slot, index);
         break;
-      case "ads":
+      case "aads":
         showADS(slot, index);
         break;
       case "smartyads":
         showSmartyAds(slot, index);
+        break;
+      case "hypelab":
+        showHypelab(slot, index);
         break;
       default:
         showPGA(slot, index);
@@ -350,6 +353,33 @@ function showCointraffic(slot, index) {
   // if (container === undefined || !container.hasChildNodes()) {
   //   showAd(slot, index);
   // }
+}
+
+// hypelab
+
+function showHypelab(slot, index) {
+  let containerDiv = document.querySelector("div#pga-banner-ad");
+  containerDiv.innerHTML = "";
+
+  let scriptElement = document.createElement("script");
+  scriptElement.defer = true;
+  scriptElement.src = "https://api.hypelab.com/v1/scripts/hp-sdk.js?v=0";
+
+  containerDiv.appendChild(scriptElement);
+
+  // initialize after sdk is loaded
+  scriptElement.onload = function () {
+    HypeLab.initialize({
+      environment: "production", // Replace with your environment
+      propertySlug: "d001c21f78", // Replace with your property slug
+    });
+
+    let bannerElement = document.createElement("hype-banner");
+    bannerElement.id = "banner";
+    bannerElement.setAttribute("placement", "a034aa49f6");
+
+    containerDiv.appendChild(bannerElement);
+  };
 }
 
 // pga
