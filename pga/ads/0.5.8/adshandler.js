@@ -82,7 +82,7 @@ const pgaAdsConfigs = {
   },
   note: {
     rotation: false,
-    allocation: ["cointraffic"],
+    allocation: ["pga"],
     adRotationPeriod: 30,
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
@@ -534,7 +534,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: {path},
+      payload: { path },
     },
     "*"
   );
@@ -545,7 +545,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
@@ -556,7 +556,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
