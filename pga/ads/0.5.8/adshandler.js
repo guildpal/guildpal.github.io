@@ -216,6 +216,7 @@ async function processImpression(domain, subject) {
   }
 }
 
+/*
 let visibilityChangeTimer = null;
 let listeningVisibilityChange = false;
 
@@ -249,8 +250,9 @@ function onVisibiityChange() {
     processInteraction();
   }
 }
+*/
 
-async function processInteraction() {
+async function processClick(e) {
   // const anchor = document.querySelector("#pga-banner-ad a");
   // if (!anchor) {
   //   console.log("no ads");
