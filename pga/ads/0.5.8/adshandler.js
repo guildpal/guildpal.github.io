@@ -217,12 +217,12 @@ async function processImpression(domain, subject) {
 }
 
 async function processClick(e) {
-  const anchor = document.querySelector("#pga-banner-ad a");
-  if (!anchor) {
-    console.log("no ads");
-    // alert("no ads");
-    return;
-  }
+  // const anchor = document.querySelector("#pga-banner-ad a");
+  // if (!anchor) {
+  //   console.log("no ads");
+  //   // alert("no ads");
+  //   return;
+  // }
 
   // console.log("event", e);
   pendingEvent = clonePointerEvent(e);
