@@ -57,7 +57,6 @@ let pgaVersion = "";
 let pendingEvent = null;
 let pendingEventTarget = null;
 let clickTarget = null;
-let adRefreshCount = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
@@ -81,9 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function showAd(slot, index) {
-  incrementAdRefreshCount();
-  if (isAdRefreshCountExceeded()) return;
-
   // NOTE: not rotate ads when pendingEvent exists
   if (pendingEvent) {
     setTimeout(() => {
@@ -134,16 +130,6 @@ function showAd(slot, index) {
       showAd(slot, 0);
     }, pgaAdConfig.adRotationPeriod * timeSecond);
   }
-}
-
-function incrementAdRefreshCount() {
-  adRefreshCount++;
-}
-
-function isAdRefreshCountExceeded() {
-  // adRefreshCount is incremented before this function is called. The maximum allowed refresh count is 3.
-  if (adRefreshCount === 4) return true;
-  return false;
 }
 
 async function processImpression(domain, subject) {
