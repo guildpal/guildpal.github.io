@@ -239,12 +239,13 @@ function processClick(e) {
 }
 
 function onVisibiityChange() {
+  clearTimeout(visibilityChangeTimer);
+  visibilityChangeTimer = null;
+  listeningVisibilityChange = false;
+  console.log("removeEventListener visibilitychange");
+  document.removeEventListener("visibilitychange", onVisibiityChange);
+
   if (document.visibilityState === "hidden") {
-    clearTimeout(visibilityChangeTimer);
-    visibilityChangeTimer = null;
-    listeningVisibilityChange = false;
-    console.log("removeEventListener visibilitychange");
-    document.removeEventListener("visibilitychange", onVisibiityChange);
     processInteraction();
   }
 }
