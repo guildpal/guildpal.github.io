@@ -217,19 +217,19 @@ async function processImpression(domain, subject) {
 }
 
 async function processClick(e) {
-  const anchor = document.querySelector("#pga-banner-ad a");
-  if (!anchor) {
-    console.log("no ads");
-    // alert("no ads");
-    return;
-  }
+  // const anchor = document.querySelector("#pga-banner-ad a");
+  // if (!anchor) {
+  //   console.log("no ads");
+  //   // alert("no ads");
+  //   return;
+  // }
 
   // console.log("event", e);
-  pendingEvent = clonePointerEvent(e);
-  pendingEventTarget = e.target;
+  // pendingEvent = clonePointerEvent(e);
+  // pendingEventTarget = e.target;
   // console.log("pendingEvent", pendingEvent);
 
-  e.preventDefault();
+  // e.preventDefault();
 
   try {
     showLoader();
@@ -260,7 +260,7 @@ async function processClick(e) {
     console.error(err);
   } finally {
     hideLoader();
-    dispatchPendingEvent();
+    // dispatchPendingEvent();
   }
 }
 
