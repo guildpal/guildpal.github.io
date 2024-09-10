@@ -216,23 +216,41 @@ async function processImpression(domain, subject) {
   }
 }
 
-function processClick(e) {
-  let timer = setTimeout(() => {
-    document.removeEventListener("visibilitychange", onVisibiityChange);
-  }, 1000);
+let visibilityChangeTimer = null;
+let listeningVisibilityChange = false;
 
-  function onVisibiityChange() {
-    if (document.visibilityState === "hidden") {
-      clearTimeout(timer);
-      document.removeEventListener("visibilitychange", onVisibiityChange);
-      processInteraction(e);
-    }
+function processClick(e) {
+  if (visibilityChangeTimer) {
+    clearTimeout(visibilityChangeTimer);
+    visibilityChangeTimer = null;
   }
 
-  document.addEventListener("visibilitychange", onVisibiityChange);
+  visibilityChangeTimer = setTimeout(() => {
+    console.log("removeEventListener visibilitychange");
+    document.removeEventListener("visibilitychange", onVisibiityChange);
+    listeningVisibilityChange = false;
+  }, 1000);
+
+  if (!listeningVisibilityChange) {
+    listeningVisibilityChange = true;
+    console.log("addEventListener visibilitychange");
+    document.addEventListener("visibilitychange", onVisibiityChange);
+  }
 }
 
-async function processInteraction(e) {
+function onVisibiityChange() {
+  clearTimeout(visibilityChangeTimer);
+  visibilityChangeTimer = null;
+  listeningVisibilityChange = false;
+  console.log("removeEventListener visibilitychange");
+  document.removeEventListener("visibilitychange", onVisibiityChange);
+
+  if (document.visibilityState === "hidden") {
+    processInteraction();
+  }
+}
+
+async function processInteraction() {
   // const anchor = document.querySelector("#pga-banner-ad a");
   // if (!anchor) {
   //   console.log("no ads");
