@@ -216,7 +216,23 @@ async function processImpression(domain, subject) {
   }
 }
 
-async function processClick(e) {
+function processClick(e) {
+  let timer = setTimeout(() => {
+    document.removeEventListener("visibilitychange", onVisibiityChange);
+  }, 1000);
+
+  function onVisibiityChange() {
+    if (document.visibilityState === "hidden") {
+      clearTimeout(timer);
+      document.removeEventListener("visibilitychange", onVisibiityChange);
+      processInteraction(e);
+    }
+  }
+
+  document.addEventListener("visibilitychange", onVisibiityChange);
+}
+
+async function processInteraction(e) {
   // const anchor = document.querySelector("#pga-banner-ad a");
   // if (!anchor) {
   //   console.log("no ads");
