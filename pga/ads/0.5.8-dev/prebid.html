@@ -21,7 +21,7 @@
           code: "test-div",
           mediaTypes: {
             banner: {
-              sizes: [[321, 101]],
+              sizes: [[320, 100]],
             },
           },
           bids: [
@@ -30,6 +30,22 @@
               params: {
                 property_slug: "d001c21f78",
                 placement_slug: "a034aa49f6",
+              },
+            },
+          ],
+        },
+        {
+          code: "test-div2",
+          mediaTypes: {
+            banner: {
+              sizes: [[320, 100]],
+            },
+          },
+          bids: [
+            {
+              bidder: "cointraffic",
+              params: {
+                placementId: "ct_cn9L6gxT7Hq", // Banner Code in dashboard
               },
             },
           ],
@@ -89,5 +105,6 @@
     <h2>Ad Serverless Test Page</h2>
 
     <div id="test-div"></div>
+    <div id="test-div2"></div>
   </body>
 </html>
