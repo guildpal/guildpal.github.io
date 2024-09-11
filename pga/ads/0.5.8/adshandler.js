@@ -288,8 +288,7 @@ async function processClick(e) {
     if (result.showResult) {
       await showResult(
         result.resultMessage,
-        // result.duration,
-        0,
+        result.duration,
         result.status_code === 200 || result.status_code === 201
       );
     }
