@@ -1,100 +1,109 @@
 // const pgaAdsConfigs = {
 //   home: {
 //     rotation: true,
-//     allocation: ["pga", "pga"],
+//     allocation: [ADS.pga, ADS.pga],
 //     adRotationPeriod: 30,
 //     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
 //   },
 //   order: {
 //     rotation: true,
-//     allocation: ["pga", "pga"],
+//     allocation: [ADS.pga, ADS.pga],
 //     adRotationPeriod: 30,
 //     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
 //   },
 //   tasks: {
 //     rotation: true,
-//     allocation: ["persona"],
+//     allocation: [ADS.persona],
 //     adRotationPeriod: 30,
 //     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
 //   },
 //   timer: {
 //     rotation: true,
-//     allocation: ["persona", "pga", "pga"],
+//     allocation: [ADS.persona, ADS.pga, ADS.pga],
 //     adRotationPeriod: 30,
 //     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
 //   },
 //   storage: {
 //     rotation: true,
-//     allocation: ["pga", "pga", "cointraffic"],
+//     allocation: [ADS.pga, ADS.pga, ADS.cointraffic],
 //     adRotationPeriod: 30,
 //     personaUnitId: "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4",
 //   },
 //   note: {
 //     rotation: true,
-//     allocation: ["cointraffic"],
+//     allocation: [ADS.cointraffic],
 //     adRotationPeriod: 30,
 //     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
 //   },
 //   guild: {
 //     rotation: true,
-//     allocation: ["cointraffic"],
+//     allocation: [ADS.cointraffic],
 //     adRotationPeriod: 30,
 //     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
 //   },
 //   market: {
 //     rotation: true,
-//     allocation: ["aads", "pga", "pga", "persona"],
+//     allocation: [ADS.aads, ADS.pga, ADS.pga, ADS.persona],
 //     adRotationPeriod: 30,
 //     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
 //   },
 // };
 
+const ADS = {
+  pga: "pga",
+  persona: "persona",
+  cointraffic: "cointraffic",
+  smartyads: "smartyads",
+  hypelab: "hypelab",
+  aads: "aads",
+};
+
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: ["pga"],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   order: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: [ADS.hypelab],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   tasks: {
     rotation: false,
-    allocation: ["persona"],
+    allocation: [ADS.persona],
     adRotationPeriod: 30,
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
   timer: {
     rotation: false,
-    allocation: ["persona"],
+    allocation: [ADS.persona],
     adRotationPeriod: 30,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
   },
   storage: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: [ADS.hypelab],
     adRotationPeriod: 30,
     personaUnitId: "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4",
   },
   note: {
     rotation: false,
-    allocation: ["pga"],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
   guild: {
     rotation: false,
-    allocation: ["aads"],
+    allocation: [ADS.aads],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
   },
   market: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: [ADS.hypelab],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
@@ -116,6 +125,7 @@ let pgaVersion = "";
 let pendingEvent = null;
 let pendingEventTarget = null;
 let clickTarget = null;
+let currentAd = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
@@ -152,22 +162,22 @@ function showAd(slot, index) {
 
   if (index < pgaAdConfig.allocation.length) {
     switch (pgaAdConfig.allocation[index]) {
-      case "persona":
+      case ADS.persona:
         showPersona(pgaAdConfig.personaUnitId, slot, index);
         break;
-      case "cointraffic":
+      case ADS.cointraffic:
         showCointraffic(slot, index);
         break;
-      case "pga":
+      case ADS.pga:
         showPGA(slot, index);
         break;
-      case "aads":
+      case ADS.aads:
         showADS(slot, index);
         break;
-      case "smartyads":
+      case ADS.smartyads:
         showSmartyAds(slot, index);
         break;
-      case "hypelab":
+      case ADS.hypelab:
         showHypelab(slot, index);
         break;
       default:
@@ -216,49 +226,24 @@ async function processImpression(domain, subject) {
   }
 }
 
-/*
-let visibilityChangeTimer = null;
-let listeningVisibilityChange = false;
-
-function processClick(e) {
-  if (visibilityChangeTimer) {
-    clearTimeout(visibilityChangeTimer);
-    visibilityChangeTimer = null;
+function isBannerLoaded() {
+  if (currentAd === ADS.hypelab) {
+    const el = document.querySelector("#pga-banner-ad > #banner");
+    return el?.style?.display === "block";
   }
 
-  visibilityChangeTimer = setTimeout(() => {
-    console.log("removeEventListener visibilitychange");
-    document.removeEventListener("visibilitychange", onVisibiityChange);
-    listeningVisibilityChange = false;
-  }, 1000);
-
-  if (!listeningVisibilityChange) {
-    listeningVisibilityChange = true;
-    console.log("addEventListener visibilitychange");
-    document.addEventListener("visibilitychange", onVisibiityChange);
-  }
+  // rest
+  const anchor = document.querySelector("#pga-banner-ad a");
+  return !!anchor;
 }
-
-function onVisibiityChange() {
-  clearTimeout(visibilityChangeTimer);
-  visibilityChangeTimer = null;
-  listeningVisibilityChange = false;
-  console.log("removeEventListener visibilitychange");
-  document.removeEventListener("visibilitychange", onVisibiityChange);
-
-  if (document.visibilityState === "hidden") {
-    processInteraction();
-  }
-}
-*/
 
 async function processClick(e) {
-  // const anchor = document.querySelector("#pga-banner-ad a");
-  // if (!anchor) {
-  //   console.log("no ads");
-  //   // alert("no ads");
-  //   return;
-  // }
+  const isLoaded = isBannerLoaded();
+  if (!isLoaded) {
+    e.preventDefault();
+    console.log("no ads");
+    return;
+  }
 
   // console.log("event", e);
   // pendingEvent = clonePointerEvent(e);
@@ -340,6 +325,8 @@ const PERSONA_SDK_CONFIG = {
 };
 
 function showPersona(adUnitId, slot, index) {
+  currentAd = ADS.persona;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -367,6 +354,8 @@ function showPersona(adUnitId, slot, index) {
 // coinTraffic
 
 function showCointraffic(slot, index) {
+  currentAd = ADS.cointraffic;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -394,6 +383,8 @@ function showCointraffic(slot, index) {
 // hypelab
 
 function showHypelab(slot, index) {
+  currentAd = ADS.hypelab;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -421,6 +412,8 @@ function showHypelab(slot, index) {
 // pga
 
 function showPGA(slot, index) {
+  currentAd = ADS.pga;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -445,6 +438,8 @@ function showPGA(slot, index) {
 // ads
 
 function showADS(slot, index) {
+  currentAd = ADS.aads;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -462,6 +457,8 @@ function showADS(slot, index) {
 }
 
 function showSmartyAds(slot, index) {
+  currentAd = ADS.smartyads;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
