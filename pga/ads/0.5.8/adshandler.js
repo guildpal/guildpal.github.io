@@ -56,24 +56,25 @@ const ADS = {
   smartyads: "smartyads",
   hypelab: "hypelab",
   aads: "aads",
+  lootrush: "lootrush",
 };
 
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: [ADS.pga],
+    allocation: [ADS.hypelab],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   order: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.lootrush],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   tasks: {
-    rotation: false,
-    allocation: [ADS.persona],
+    rotation: true,
+    allocation: [ADS.lootrush, ADS.hypelab],
     adRotationPeriod: 30,
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
@@ -85,7 +86,7 @@ const pgaAdsConfigs = {
   },
   storage: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.persona],
     adRotationPeriod: 30,
     personaUnitId: "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4",
   },
@@ -97,13 +98,13 @@ const pgaAdsConfigs = {
   },
   guild: {
     rotation: false,
-    allocation: [ADS.aads],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
   },
   market: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.aads],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
@@ -114,8 +115,9 @@ const adsServer = "https://api-pixels.guildpal.com";
 const defaultPersonaAdUnitId = "d126cd27-d130-425e-a332-6b33a0b947b4"; // home
 const timeSecond = 1000;
 const domainDisplay = "display";
+const domainAffiliate = "affiliate";
 const allAdsSubject = "ALL-ADS";
-const pgaSelfAdsSubject = "PGA-SELF-ADS";
+const pgaSelfAdsSubject = "pga";
 
 let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
@@ -158,7 +160,7 @@ function showAd(slot, index) {
   }
 
   // to see # of all possible impressions
-  processImpression(domainDisplay, allAdsSubject);
+  // processImpression(domainDisplay, allAdsSubject, slot);
 
   if (index < pgaAdConfig.allocation.length) {
     switch (pgaAdConfig.allocation[index]) {
@@ -179,6 +181,9 @@ function showAd(slot, index) {
         break;
       case ADS.hypelab:
         showHypelab(slot, index);
+        break;
+      case ADS.lootrush:
+        showLootRush(slot, index);
         break;
       default:
         showPGA(slot, index);
@@ -201,7 +206,7 @@ function showAd(slot, index) {
   }
 }
 
-async function processImpression(domain, subject) {
+async function processImpression(domain, subject, slot) {
   // modified by Luke
   try {
     const response = await fetch(`${adsServer}/ads-api/addimpression`, {
@@ -346,8 +351,10 @@ function showPersona(adUnitId, slot, index) {
     if (errorMessage === "daily limit reached") {
       showPGA(slot, index);
     }
-    // return
+    // return;
   });
+
+  processImpression(domainDisplay, "agent/persona", slot);
 }
 
 // coinTraffic
@@ -368,6 +375,8 @@ function showCointraffic(slot, index) {
 
   containerDiv.appendChild(spanElement);
   containerDiv.appendChild(scriptElement);
+
+  processImpression(domainDisplay, "agent/cointraffic", slot);
 
   // if (window['ctbkz3FU91fH']) {
   //   window['ctbkz3FU91fH'].reload();
@@ -406,6 +415,7 @@ function showHypelab(slot, index) {
 
     containerDiv.appendChild(bannerElement);
   };
+  processImpression(domainDisplay, "agent/hypelab", slot);
 }
 
 // pga
@@ -432,6 +442,32 @@ function showPGA(slot, index) {
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
+  processImpression(domainDisplay, pgaSelfAdsSubject, slot);
+}
+
+//
+
+function showLootRush(slot, index) {
+  currentAd = ADS.lootrush;
+
+  let containerDiv = document.querySelector("div#pga-banner-ad");
+  containerDiv.innerHTML = "";
+
+  let anchorElement = document.createElement("a");
+  anchorElement.href =
+    "https://www.lootrush.com/collections/pixels---farm-land807754?ref=6755d3f7&utm_campaign=land_rental&utm_medium=banner&utm_source=pga";
+  anchorElement.target = "_blank";
+
+  let imgElement = document.createElement("img");
+  imgElement.src = "./images/lootrush-ad.gif";
+
+  imgElement.width = 320;
+  imgElement.height = 100;
+  imgElement.alt = "www.lootrush.com";
+
+  anchorElement.appendChild(imgElement);
+  containerDiv.appendChild(anchorElement);
+  processImpression(domainDisplay, "affiliate/lootrush", slot);
 }
 
 // ads
@@ -453,6 +489,7 @@ function showADS(slot, index) {
   iframeElement.style.backgroundColor = "transparent";
 
   containerDiv.appendChild(iframeElement);
+  processImpression(domainDisplay, "agent/aads", slot);
 }
 
 function showSmartyAds(slot, index) {
@@ -471,6 +508,7 @@ function showSmartyAds(slot, index) {
     },
   ];
   smarty.buildUnits(adUnits);
+  processImpression(domainDisplay, "agent/smartyads", slot);
 }
 
 // -----------------------------------------------------
@@ -566,7 +604,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: { path },
+      payload: {path},
     },
     "*"
   );
@@ -577,7 +615,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
@@ -588,7 +626,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
