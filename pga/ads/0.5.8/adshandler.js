@@ -238,8 +238,7 @@ function isBannerLoaded() {
 }
 
 async function processClick(e) {
-  const isLoaded = isBannerLoaded();
-  if (!isLoaded) {
+  if (!isBannerLoaded()) {
     e.preventDefault();
     console.log("no ads");
     return;
