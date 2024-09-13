@@ -111,6 +111,12 @@
     ></script> -->
 
     <script>
+      function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      await delay(5000);
+
       pbjs.que.push(function () {
         pbjs.addAdUnits(adUnits);
       });
@@ -137,9 +143,7 @@
           }
         }
       }
-    </script>
 
-    <script>
       pbjs.que.push(function () {
         pbjs.requestBids({
           timeout: 2000,
