@@ -104,48 +104,42 @@
       src="https://cdn.jsdelivr.net/npm/prebid.js@latest/dist/hypelabBidAdapter.js"
       async
     ></script> -->
-    <script
-      type="text/javascript"
-      src="./prebid9.13.0.js"
-      async
-    ></script>
+    <script type="text/javascript" src="./prebid9.13.0.js" async></script>
 
     <script>
-      setTimeout(() => {
-        pbjs.que.push(function () {
-          pbjs.addAdUnits(adUnits);
-        });
+      pbjs.que.push(function () {
+        pbjs.addAdUnits(adUnits);
+      });
 
-        // you could instead pass an array of adUnits
-        // to getHighestCpmBids() if desired
-        function renderAllAdUnits() {
-          console.log("renderAllAdUnits called");
-          var winners = pbjs.getHighestCpmBids();
-          for (var i = 0; i < winners.length; i++) {
-            renderOne(winners[i]);
+      // you could instead pass an array of adUnits
+      // to getHighestCpmBids() if desired
+      function renderAllAdUnits() {
+        console.log("renderAllAdUnits called");
+        var winners = pbjs.getHighestCpmBids();
+        for (var i = 0; i < winners.length; i++) {
+          renderOne(winners[i]);
+        }
+      }
+
+      function renderOne(winningBid) {
+        if (winningBid && winningBid.adId) {
+          var div = document.getElementById(winningBid.adUnitCode);
+          if (div) {
+            let iframe = document.createElement("iframe");
+            iframe.frameBorder = "0";
+            div.appendChild(iframe);
+            var iframeDoc = iframe.contentWindow.document;
+            pbjs.renderAd(iframeDoc, winningBid.adId);
           }
         }
+      }
 
-        function renderOne(winningBid) {
-          if (winningBid && winningBid.adId) {
-            var div = document.getElementById(winningBid.adUnitCode);
-            if (div) {
-              let iframe = document.createElement("iframe");
-              iframe.frameBorder = "0";
-              div.appendChild(iframe);
-              var iframeDoc = iframe.contentWindow.document;
-              pbjs.renderAd(iframeDoc, winningBid.adId);
-            }
-          }
-        }
-
-        pbjs.que.push(function () {
-          pbjs.requestBids({
-            timeout: 2000,
-            bidsBackHandler: renderAllAdUnits,
-          });
+      pbjs.que.push(function () {
+        pbjs.requestBids({
+          timeout: 2000,
+          bidsBackHandler: renderAllAdUnits,
         });
-      }, 5000);
+      });
     </script>
   </head>
 
