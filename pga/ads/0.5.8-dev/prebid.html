@@ -17,23 +17,23 @@
   <head>
     <script>
       var adUnits = [
-        // {
-        //   code: "test-div",
-        //   mediaTypes: {
-        //     banner: {
-        //       sizes: [[320, 100]],
-        //     },
-        //   },
-        //   bids: [
-        //     {
-        //       bidder: "hypelab",
-        //       params: {
-        //         property_slug: "d001c21f78",
-        //         placement_slug: "a034aa49f6",
-        //       },
-        //     },
-        //   ],
-        // },
+        {
+          code: "test-div",
+          mediaTypes: {
+            banner: {
+              sizes: [[320, 100]],
+            },
+          },
+          bids: [
+            {
+              bidder: "hypelab",
+              params: {
+                property_slug: "d001c21f78",
+                placement_slug: "a034aa49f6",
+              },
+            },
+          ],
+        },
         // {
         //   code: "test-div",
         //   mediaTypes: {
@@ -66,23 +66,23 @@
         //     },
         //   ],
         // },
-        {
-          code: "test-div2",
-          mediaTypes: {
-            banner: {
-              sizes: [[320, 100]],
-            },
-          },
-          bids: [
-            {
-              bidder: "cointraffic",
-              params: {
-                placementId: "cn9L6gxT7Hq", // Banner Code in dashboard
-                // placementId: "bkz3FU91fH", // Unified Code in dashboard
-              },
-            },
-          ],
-        },
+        // {
+        //   code: "test-div2",
+        //   mediaTypes: {
+        //     banner: {
+        //       sizes: [[320, 100]],
+        //     },
+        //   },
+        //   bids: [
+        //     {
+        //       bidder: "cointraffic",
+        //       params: {
+        //         placementId: "cn9L6gxT7Hq", // Banner Code in dashboard
+        //         // placementId: "bkz3FU91fH", // Unified Code in dashboard
+        //       },
+        //     },
+        //   ],
+        // },
       ];
 
       var pbjs = pbjs || {};
@@ -97,6 +97,11 @@
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/prebid.js@latest/dist/cointrafficBidAdapter.js"
+      async
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/prebid.js@latest/dist/hypelabBidAdapter.js"
       async
     ></script>
     <!-- <script
