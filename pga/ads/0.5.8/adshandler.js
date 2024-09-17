@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
   showAd(slot, index);
 });
 
-function showAd(slot, index) {
+async function showAd(slot, index) {
   // NOTE: not rotate ads when pendingEvent exists
   if (pendingEvent) {
     setTimeout(() => {
@@ -159,7 +159,34 @@ function showAd(slot, index) {
     return;
   }
 
+  /////// add requestAd call
+  // to-do: refactoring
+  try {
+    const response = await fetch(`${adsServer}/ads-api/requestad`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-Atomrigs-Pga-Pid": playerId,
+      },
+    });
+    const result = await response.json();
+    console.log("requestad", result);
+    if (result.subject === ADS.aads) {
+      showADS(slot, index);
+      return;
+    } else if (result.subject === ADS.persona) {
+      showPersona(pgaAdConfig.personaUnitId, slot, index);
+      return;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  /////// add requestAd call - end
+
   // to see # of all possible impressions
+  // moved into each ad ftns
   // processImpression(domainDisplay, allAdsSubject, slot);
 
   if (index < pgaAdConfig.allocation.length) {
