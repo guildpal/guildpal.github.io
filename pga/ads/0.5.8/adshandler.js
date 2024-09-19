@@ -381,6 +381,8 @@ function showPersona(adUnitId, slot, index) {
     // return;
   });
 
+  // to-do: measure actual impressions
+  // issue
   processImpression(domainDisplay, "agent/persona", slot);
 }
 
@@ -403,6 +405,8 @@ function showCointraffic(slot, index) {
   containerDiv.appendChild(spanElement);
   containerDiv.appendChild(scriptElement);
 
+  // to-do: measure actual impressions
+  // issue
   processImpression(domainDisplay, "agent/cointraffic", slot);
 
   // if (window['ctbkz3FU91fH']) {
@@ -440,8 +444,13 @@ function showHypelab(slot, index) {
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
 
+    // to-do:  walter - call processImpression where an actual impression occurs
+
     containerDiv.appendChild(bannerElement);
   };
+
+  // to-do: measure actual impressions
+  // issue
   processImpression(domainDisplay, "agent/hypelab", slot);
 }
 
@@ -516,6 +525,9 @@ function showADS(slot, index) {
   iframeElement.style.backgroundColor = "transparent";
 
   containerDiv.appendChild(iframeElement);
+
+  // to-do: measure actual impressions
+  // issue
   processImpression(domainDisplay, "agent/aads", slot);
 }
 
@@ -535,6 +547,8 @@ function showSmartyAds(slot, index) {
     },
   ];
   smarty.buildUnits(adUnits);
+  // to-do: measure actual impressions
+  // issue
   processImpression(domainDisplay, "agent/smartyads", slot);
 }
 
