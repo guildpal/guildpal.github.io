@@ -62,19 +62,19 @@ const ADS = {
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.lootrush],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   order: {
     rotation: false,
-    allocation: [ADS.lootrush],
+    allocation: [ADS.hypelab],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   tasks: {
-    rotation: true,
-    allocation: [ADS.lootrush, ADS.hypelab],
+    rotation: false,
+    allocation: [ADS.hypelab],
     adRotationPeriod: 30,
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
@@ -104,7 +104,7 @@ const pgaAdsConfigs = {
   },
   market: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.lootrush],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
