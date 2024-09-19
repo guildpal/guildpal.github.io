@@ -444,14 +444,13 @@ function showHypelab(slot, index) {
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
 
-    // to-do:  walter - call processImpression where an actual impression occurs
+    bannerElement.addEventListener('ready', function () {
+      // call processImpression where an actual impression occurs
+      processImpression(domainDisplay, "agent/hypelab", slot);
+    });
 
     containerDiv.appendChild(bannerElement);
   };
-
-  // to-do: measure actual impressions
-  // issue
-  processImpression(domainDisplay, "agent/hypelab", slot);
 }
 
 // pga

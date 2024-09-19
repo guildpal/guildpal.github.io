@@ -344,12 +344,7 @@ function showHypelab(slot, index) {
 
     bannerElement.addEventListener('ready', function () {
       // measure actual impressions
-      console.log('hypelab onReady');
       processImpression(domainDisplay, "agent/hypelab", slot);
-    });
-
-    bannerElement.addEventListener('error', function (err) {
-      console.log('hypelab onError', err);
     });
 
     containerDiv.appendChild(bannerElement);
