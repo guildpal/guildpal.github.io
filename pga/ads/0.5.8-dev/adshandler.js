@@ -36,7 +36,7 @@ const pgaAdsConfigs = {
   },
   market: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
 };
@@ -48,6 +48,28 @@ const timeSecond = 1000;
 const domainDisplay = "display";
 const allAdsSubject = "ALL-ADS";
 const pgaSelfAdsSubject = "PGA-SELF-ADS";
+
+// prebid
+const prebidAdUnits = [
+  {
+    code: 'pga-banner-ad',
+    mediaTypes: {
+      banner: {
+        sizes: [[320, 100]],
+      },
+    },
+    bids: [
+      {
+        bidder: 'cointraffic',
+        params: {
+          placementId: 'cn9L6gxT7Hq', // Banner Code in dashboard
+        },
+      },
+    ],
+  },
+];
+let pbjs = pbjs || {}
+pbjs.que = pbjs.que || []
 
 let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
@@ -110,6 +132,9 @@ function showAd(slot, index) {
         break;
       case "hypelab":
         showHypelab(slot, index);
+        break;
+      case "prebid":
+        showPrebid(slot, index);
         break;
       default:
         showPGA(slot, index);
@@ -321,6 +346,35 @@ function showHypelab(slot, index) {
 
     containerDiv.appendChild(bannerElement);
   };
+}
+
+function showPrebid(slot, index) {
+  pbjs.que.push(function () {
+    pbjs.addAdUnits(adUnits)
+    pbjs.requestBids({
+      timeout: 2000,
+      bidsBackHandler: renderAllAdUnits,
+    })
+  })
+}
+function renderAllAdUnits() {
+  console.log('renderAllAdUnits called')
+  var winners = pbjs.getHighestCpmBids()
+  for (var i = 0; i < winners.length; i++) {
+    renderOne(winners[i])
+  }
+}
+function renderOne(winningBid) {
+  if (winningBid && winningBid.adId) {
+    var div = document.getElementById(winningBid.adUnitCode)
+    if (div) {
+      let iframe = document.createElement('iframe')
+      iframe.frameBorder = '0'
+      div.appendChild(iframe)
+      var iframeDoc = iframe.contentWindow.document
+      pbjs.renderAd(iframeDoc, winningBid.adId)
+    }
+  }
 }
 
 // pga
