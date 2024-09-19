@@ -68,8 +68,6 @@ const prebidAdUnits = [
     ],
   },
 ];
-let pbjs = pbjs || {}
-pbjs.que = pbjs.que || []
 
 let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
