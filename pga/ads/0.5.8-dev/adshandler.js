@@ -1,37 +1,37 @@
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
   order: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
   tasks: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
   timer: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
   storage: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
   note: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
   guild: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
   market: {
