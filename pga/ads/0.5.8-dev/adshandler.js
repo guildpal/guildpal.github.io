@@ -109,7 +109,7 @@ function showAd(slot, index) {
   }
 
   // to see # of all possible impressions
-  processImpression(domainDisplay, allAdsSubject);
+  // processImpression(domainDisplay, allAdsSubject);
 
   if (index < pgaAdConfig.allocation.length) {
     switch (pgaAdConfig.allocation[index]) {
@@ -341,6 +341,16 @@ function showHypelab(slot, index) {
     let bannerElement = document.createElement("hype-banner");
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
+
+    bannerElement.addEventListener('ready', function () {
+      // measure actual impressions
+      console.log('hypelab onReady');
+      processImpression(domainDisplay, "agent/hypelab", slot);
+    });
+
+    bannerElement.addEventListener('error', function (err) {
+      console.log('hypelab onError', err);
+    });
 
     containerDiv.appendChild(bannerElement);
   };
