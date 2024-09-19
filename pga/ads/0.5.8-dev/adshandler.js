@@ -348,7 +348,7 @@ function showHypelab(slot, index) {
 
 function showPrebid(slot, index) {
   pbjs.que.push(function () {
-    pbjs.addAdUnits(adUnits)
+    pbjs.addAdUnits(prebidAdUnits)
     pbjs.requestBids({
       timeout: 2000,
       bidsBackHandler: renderAllAdUnits,
