@@ -258,6 +258,31 @@ async function processImpression(domain, subject, slot) {
   }
 }
 
+async function processDeimpression(domain, subject, slot) {
+  // modified by Luke
+  try {
+    const response = await fetch(`${adsServer}/ads-api/reduceimpression`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-Atomrigs-Pga-Pid": playerId,
+      },
+      body: JSON.stringify({
+        player_id: playerId,
+        domain: domain, // "display",
+        subject: subject, // "RUBY_REWARDS",
+        slot: `pga/${slot}`,
+        ts: new Date().getTime(),
+      }),
+    });
+    const result = await response.json();
+    console.log("processDeimpression", result);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 function isBannerLoaded() {
   if (currentAd === ADS.hypelab) {
     const el = document.querySelector("#pga-banner-ad > #banner");
@@ -375,14 +400,12 @@ function showPersona(adUnitId, slot, index) {
 
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
     console.log("Persona error:", errorMessage);
-    if (errorMessage === "daily limit reached") {
-      showPGA(slot, index);
-    }
+    // processDeimpression(domainDisplay, "agent/persona", slot);
+    showPGA(slot, index);
+    //if (errorMessage === "daily limit reached") {}
     // return;
   });
 
-  // to-do: measure actual impressions
-  // issue
   processImpression(domainDisplay, "agent/persona", slot);
 }
 
