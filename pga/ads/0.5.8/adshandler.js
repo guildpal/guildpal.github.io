@@ -449,6 +449,10 @@ function showHypelab(slot, index) {
       processImpression(domainDisplay, "agent/hypelab", slot);
     });
 
+    bannerElement.addEventListener("error", function () {
+      showPGA(slot, index);
+    });
+
     containerDiv.appendChild(bannerElement);
   };
 }
@@ -478,6 +482,11 @@ function showPGA(slot, index) {
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
   processImpression(domainDisplay, pgaSelfAdsSubject, slot);
+
+  // show hypelab after 30 seconds as showPGA is called as fallback for now
+  setTimeout(() => {
+    showHypelab(slot);
+  }, 30000);
 }
 
 //
