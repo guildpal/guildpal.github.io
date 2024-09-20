@@ -400,7 +400,7 @@ function showPersona(adUnitId, slot, index) {
 
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
     console.log("Persona error:", errorMessage);
-    // processDeimpression(domainDisplay, "agent/persona", slot);
+    processDeimpression(domainDisplay, "agent/persona", slot);
     showPGA(slot, index);
     //if (errorMessage === "daily limit reached") {}
     // return;
