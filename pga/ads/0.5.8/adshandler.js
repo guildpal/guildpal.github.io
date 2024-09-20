@@ -92,7 +92,7 @@ const pgaAdsConfigs = {
   },
   note: {
     rotation: false,
-    allocation: [ADS.pga],
+    allocation: [ADS.persona],
     adRotationPeriod: 30,
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
@@ -444,7 +444,7 @@ function showHypelab(slot, index) {
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
 
-    bannerElement.addEventListener('ready', function () {
+    bannerElement.addEventListener("ready", function () {
       // call processImpression where an actual impression occurs
       processImpression(domainDisplay, "agent/hypelab", slot);
     });
