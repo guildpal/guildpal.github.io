@@ -410,6 +410,17 @@ function showADS(slot, index) {
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
+  let hiddenImage = document.createElement("img");
+  hiddenImage.src = "images/aads_hidden_image.png";
+  hiddenImage.style.display = "none";
+  hiddenImage.style.width = "0";
+  hiddenImage.style.height = "0";
+  hiddenImage.style.position = "absolute";
+  hiddenImage.style.left = "-9999px";
+  hiddenImage.alt = "Hidden ADS image";
+
+  containerDiv.appendChild(hiddenImage);
+
   let iframeElement = document.createElement("iframe");
   iframeElement.setAttribute("data-aa", "2337944");
   iframeElement.src = "//ad.a-ads.com/2337944?size=320x100";
