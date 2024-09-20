@@ -1,12 +1,12 @@
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["persona"],
     adRotationPeriod: 50,
   },
   order: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["persona"],
     adRotationPeriod: 50,
   },
   tasks: {
@@ -180,6 +180,31 @@ async function processImpression(domain, subject) {
   }
 }
 
+async function processDeimpression(domain, subject, slot) {
+  // modified by Luke
+  try {
+    const response = await fetch(`${adsServer}/ads-api/reduceimpression`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-Atomrigs-Pga-Pid": playerId,
+      },
+      body: JSON.stringify({
+        player_id: playerId,
+        domain: domain, // "display",
+        subject: subject, // "RUBY_REWARDS",
+        slot: `pga/${slot}`,
+        ts: new Date().getTime(),
+      }),
+    });
+    const result = await response.json();
+    console.log("processDeimpression", result);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 async function processClick(e) {
   const anchor = document.querySelector("#pga-banner-ad a");
   if (!anchor) {
@@ -285,10 +310,10 @@ function showPersona(adUnitId, slot, index) {
 
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
     console.log("Persona error:", errorMessage);
-    if (errorMessage === "daily limit reached") {
-      showPGA(slot, index);
-    }
-    // return
+    processDeimpression(domainDisplay, "agent/persona", slot);
+    showPGA(slot, index);
+    //if (errorMessage === "daily limit reached") {}
+    // return;
   });
 }
 
