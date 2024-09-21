@@ -401,7 +401,10 @@ function showPersona(adUnitId, slot, index) {
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
     console.log("Persona error:", errorMessage);
     processDeimpression(domainDisplay, "agent/persona", slot);
-    showPGA(slot, index);
+
+    showHypelab(slot, index);
+    // showPGA(slot, index);
+
     //if (errorMessage === "daily limit reached") {}
     // return;
   });
