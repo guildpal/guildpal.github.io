@@ -500,23 +500,25 @@ function showCointraffic(slot, index) {
 function showHypelab(slot, index) {
   currentAd = ADS.hypelab;
 
+  const controller = new AbortController();
+  const {signal} = controller
+
   const existingBanner = document.querySelector("hype-banner")
   if (existingBanner) {
-    existingBanner.removeEventListener("ready", readyEventHandler);
-    existingBanner.removeEventListener("error", errorEventHandler);
+    signal.abort();
+    // existingBanner.removeEventListener("ready", readyEventHandler);
+    // existingBanner.removeEventListener("error", errorEventHandler);
     existingBanner.remove();
   };
 
   const containerDiv = document.querySelector("div#pga-banner-ad");
-  containerDiv.innerHTML = "";
-
   let scriptElement = document.getElementById("hypelab-sdk");
-
   if (!scriptElement) {
     scriptElement = document.createElement("script");
     scriptElement.id = "hypelab-sdk";
     scriptElement.defer = true;
     scriptElement.src = "https://api.hypelab.com/v1/scripts/hp-sdk.js?v=0";
+    containerDiv.innerHTML = "";
     containerDiv.appendChild(scriptElement);
   }
 
@@ -530,8 +532,8 @@ function showHypelab(slot, index) {
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
 
-    bannerElement.addEventListener("ready", readyEventHandler);
-    bannerElement.addEventListener("error", errorEventHandler);
+    bannerElement.addEventListener("ready", readyEventHandler, {signal});
+    bannerElement.addEventListener("error", errorEventHandler, {signal});
 
     function readyEventHandler() {
       processImpression(domainDisplay, "agent/hypelab", slot);
