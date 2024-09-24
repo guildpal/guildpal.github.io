@@ -1,22 +1,22 @@
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: ["persona"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
   order: {
     rotation: false,
-    allocation: ["persona"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
   tasks: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
   timer: {
     rotation: false,
-    allocation: ["hypelab"],
+    allocation: ["prebid"],
     adRotationPeriod: 50,
   },
   storage: {
