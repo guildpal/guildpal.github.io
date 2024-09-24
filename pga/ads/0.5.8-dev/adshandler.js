@@ -98,7 +98,7 @@ const pgaAdsConfigs = {
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
   guild: {
-    rotation: false,
+    rotation: true,
     allocation: [ADS.prebid],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
@@ -138,6 +138,7 @@ const prebidAdUnits = [
     ],
   },
 ];
+const prebidArgs = {}
 
 let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
@@ -176,9 +177,8 @@ function addPrebidEventListeners() {
     console.log("pbjs is not defined")
     return;
   }
-  // TODO: replace "home" and "index" to valid values
-  const slot = "home";
-  const index = 0;
+  const {slot, index} = prebidArgs;
+  
   pbjs.onEvent('bidWon', (data) => {
     console.log(data.bidderCode + ' won the ad server auction for ad unit ' + data.adUnitCode + ' at ' + data.cpm + ' CPM');
     processImpression(domainDisplay, "agent/prebid", slot);
@@ -547,11 +547,15 @@ function showHypelab(slot, index) {
 function showPrebid(slot, index) {
   currentAd = ADS.prebid;
 
+  prebidArgs = {
+    slot,
+    index
+  }
+
   const containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
   pbjs.removeAdUnit();
-
 
   pbjs.que.push(function () {
     pbjs.addAdUnits(prebidAdUnits)
