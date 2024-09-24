@@ -148,7 +148,6 @@ let pendingEvent = null;
 let pendingEventTarget = null;
 let clickTarget = null;
 let currentAd = null;
-let isHypelabSdkLoaded = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
@@ -477,16 +476,17 @@ function showHypelab(slot, index) {
   const containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
-  if (!isHypelabSdkLoaded) {
+  let scriptElement = document.getElementById("hypelab-sdk");
+
+  if (!scriptElement) {
     const scriptElement = document.createElement("script");
+    scriptElement.id = "hypelab-sdk";
     scriptElement.defer = true;
     scriptElement.src = "https://api.hypelab.com/v1/scripts/hp-sdk.js?v=0";
     containerDiv.appendChild(scriptElement);
   }
 
   scriptElement.onload = function () {
-    isHypelabSdkLoaded = true;
-
     HypeLab.initialize({
       environment: "production", // Replace with your environment
       propertySlug: "d001c21f78", // Replace with your property slug
