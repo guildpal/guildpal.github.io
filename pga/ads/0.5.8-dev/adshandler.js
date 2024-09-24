@@ -186,17 +186,27 @@ function addPrebidEvents() {
   pbjs.onEvent('adRenderFailed', function () {
     console.log('adRenderFailed');
     showADS(prebidArgs.slot, prebidArgs.index);
+    removePrebidIframe();
   });
 
   pbjs.onEvent('bidRejected', function () {
     console.log('bidRejected');
     showADS(prebidArgs.slot, prebidArgs.index);
+    removePrebidIframe();
   });
 
   pbjs.onEvent('bidTimeout', function () {
     console.log('bidTimeout');
     showADS(prebidArgs.slot, prebidArgs.index);
+    removePrebidIframe();
   });
+}
+
+function removePrebidIframe() {
+  const iframe = document.querySelector('prebid-iframe')
+  if (iframe) {
+    iframe.remove()
+  }
 }
 
 async function showAd(slot, index) {
@@ -525,18 +535,24 @@ function showHypelab(slot, index) {
     bannerElement.addEventListener("ready", handleHypelabReadyHandler);
     bannerElement.addEventListener("error", handleHypelabErrorHandler);
 
-    setTimeout(() => {
-      bannerElement.removeEventListener("ready", handleHypelabReadyHandler)
-      bannerElement.removeEventListener("error", handleHypelabErrorHandler)
-    }, 10000)
+    // setTimeout(() => {
+    //   bannerElement.removeEventListener("ready", handleHypelabReadyHandler)
+    //   bannerElement.removeEventListener("error", handleHypelabErrorHandler)
+    // }, 10000)
 
     function handleHypelabErrorHandler() {
       bannerElement.remove();
       showPrebid(slot, index);
+      removeHypelabEventListeners();
     }
 
     function handleHypelabReadyHandler() {
       processImpression(domainDisplay, "agent/hypelab", slot);
+    }
+
+    function removeHypelabEventListeners() {
+      bannerElement.removeEventListener('ready', handleHypelabReadyHandler)
+      bannerElement.removeEventListener('error', handleHypelabErrorHandler)
     }
 
     containerDiv.appendChild(bannerElement);
@@ -572,7 +588,7 @@ function renderOne(winningBid) {
   if (winningBid && winningBid.adId) {
     var div = document.getElementById(winningBid.adUnitCode)
     if (div) {
-      const iframe = document.createElement('iframe');
+      const iframe = document.createElement('prebid-iframe');
       iframe.scrolling = 'no';
       iframe.frameBorder = '0';
       iframe.marginHeight = '0';
