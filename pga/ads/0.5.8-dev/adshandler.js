@@ -1,43 +1,113 @@
+// const pgaAdsConfigs = {
+//   home: {
+//     rotation: true,
+//     allocation: [ADS.pga, ADS.pga],
+//     adRotationPeriod: 30,
+//     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
+//   },
+//   order: {
+//     rotation: true,
+//     allocation: [ADS.pga, ADS.pga],
+//     adRotationPeriod: 30,
+//     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
+//   },
+//   tasks: {
+//     rotation: true,
+//     allocation: [ADS.persona],
+//     adRotationPeriod: 30,
+//     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
+//   },
+//   timer: {
+//     rotation: true,
+//     allocation: [ADS.persona, ADS.pga, ADS.pga],
+//     adRotationPeriod: 30,
+//     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
+//   },
+//   storage: {
+//     rotation: true,
+//     allocation: [ADS.pga, ADS.pga, ADS.cointraffic],
+//     adRotationPeriod: 30,
+//     personaUnitId: "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4",
+//   },
+//   note: {
+//     rotation: true,
+//     allocation: [ADS.cointraffic],
+//     adRotationPeriod: 30,
+//     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
+//   },
+//   guild: {
+//     rotation: true,
+//     allocation: [ADS.cointraffic],
+//     adRotationPeriod: 30,
+//     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
+//   },
+//   market: {
+//     rotation: true,
+//     allocation: [ADS.aads, ADS.pga, ADS.pga, ADS.persona],
+//     adRotationPeriod: 30,
+//     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
+//   },
+// };
+
+const ADS = {
+  pga: "pga",
+  persona: "persona",
+  cointraffic: "cointraffic",
+  smartyads: "smartyads",
+  hypelab: "hypelab",
+  aads: "aads",
+  lootrush: "lootrush",
+  prebid: "prebid",
+};
+
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: ["prebid"],
-    adRotationPeriod: 50,
+    allocation: [ADS.lootrush],
+    adRotationPeriod: 30,
+    personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   order: {
     rotation: false,
-    allocation: ["prebid"],
-    adRotationPeriod: 50,
+    allocation: [ADS.hypelab],
+    adRotationPeriod: 30,
+    personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   tasks: {
     rotation: false,
-    allocation: ["prebid"],
-    adRotationPeriod: 50,
+    allocation: [ADS.hypelab],
+    adRotationPeriod: 30,
+    personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
   timer: {
-    rotation: false,
-    allocation: ["prebid"],
-    adRotationPeriod: 50,
+    rotation: true,
+    allocation: [ADS.prebid],
+    adRotationPeriod: 30,
+    personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
   },
   storage: {
     rotation: false,
-    allocation: ["prebid"],
-    adRotationPeriod: 50,
+    allocation: [ADS.lootrush],
+    adRotationPeriod: 30,
+    personaUnitId: "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4",
   },
   note: {
     rotation: false,
-    allocation: ["prebid"],
-    adRotationPeriod: 50,
+    allocation: [ADS.hypelab],
+    adRotationPeriod: 30,
+    personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
   guild: {
-    rotation: false,
-    allocation: ["prebid"],
-    adRotationPeriod: 50,
+    rotation: true,
+    allocation: [ADS.prebid],
+    adRotationPeriod: 30,
+    personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
   },
   market: {
     rotation: false,
-    allocation: ["prebid"],
-    adRotationPeriod: 50,
+    allocation: [ADS.lootrush],
+    adRotationPeriod: 30,
+    personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
 };
 
@@ -46,28 +116,9 @@ const adsServer = "https://api-pixels.guildpal.com";
 const defaultPersonaAdUnitId = "d126cd27-d130-425e-a332-6b33a0b947b4"; // home
 const timeSecond = 1000;
 const domainDisplay = "display";
+const domainAffiliate = "affiliate";
 const allAdsSubject = "ALL-ADS";
-const pgaSelfAdsSubject = "PGA-SELF-ADS";
-
-// prebid
-const prebidAdUnits = [
-  {
-    code: 'pga-banner-ad',
-    mediaTypes: {
-      banner: {
-        sizes: [[320, 100]],
-      },
-    },
-    bids: [
-      {
-        bidder: 'cointraffic',
-        params: {
-          placementId: 'cn9L6gxT7Hq', // Banner Code in dashboard
-        },
-      },
-    ],
-  },
-];
+const pgaSelfAdsSubject = "pga";
 
 let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
@@ -77,6 +128,7 @@ let pgaVersion = "";
 let pendingEvent = null;
 let pendingEventTarget = null;
 let clickTarget = null;
+let currentAd = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
@@ -99,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
   showAd(slot, index);
 });
 
-function showAd(slot, index) {
+async function showAd(slot, index) {
   // NOTE: not rotate ads when pendingEvent exists
   if (pendingEvent) {
     setTimeout(() => {
@@ -108,30 +160,60 @@ function showAd(slot, index) {
     return;
   }
 
+  /////// add requestAd call
+  // to-do: refactoring
+  try {
+    const response = await fetch(`${adsServer}/ads-api/requestad`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-Atomrigs-Pga-Pid": playerId,
+      },
+    });
+    const result = await response.json();
+    console.log("requestad", result);
+    if (result.subject === ADS.aads) {
+      showADS(slot, index);
+      return;
+    } else if (result.subject === ADS.persona) {
+      showPersona(pgaAdConfig.personaUnitId, slot, index);
+      return;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  /////// add requestAd call - end
+
   // to see # of all possible impressions
-  // processImpression(domainDisplay, allAdsSubject);
+  // moved into each ad ftns
+  // processImpression(domainDisplay, allAdsSubject, slot);
 
   if (index < pgaAdConfig.allocation.length) {
     switch (pgaAdConfig.allocation[index]) {
-      case "persona":
+      case ADS.persona:
         showPersona(pgaAdConfig.personaUnitId, slot, index);
         break;
-      case "cointraffic":
+      case ADS.cointraffic:
         showCointraffic(slot, index);
         break;
-      case "pga":
+      case ADS.pga:
         showPGA(slot, index);
         break;
-      case "ads":
+      case ADS.aads:
         showADS(slot, index);
         break;
-      case "smartyads":
+      case ADS.smartyads:
         showSmartyAds(slot, index);
         break;
-      case "hypelab":
+      case ADS.hypelab:
         showHypelab(slot, index);
         break;
-      case "prebid":
+      case ADS.lootrush:
+        showLootRush(slot, index);
+        break;
+      case ADS.prebid:
         showPrebid(slot, index);
         break;
       default:
@@ -155,7 +237,7 @@ function showAd(slot, index) {
   }
 }
 
-async function processImpression(domain, subject) {
+async function processImpression(domain, subject, slot) {
   // modified by Luke
   try {
     const response = await fetch(`${adsServer}/ads-api/addimpression`, {
@@ -205,20 +287,30 @@ async function processDeimpression(domain, subject, slot) {
   }
 }
 
-async function processClick(e) {
+function isBannerLoaded() {
+  if (currentAd === ADS.hypelab) {
+    const el = document.querySelector("#pga-banner-ad > #banner");
+    return el?.style?.display === "block";
+  }
+
+  // rest
   const anchor = document.querySelector("#pga-banner-ad a");
-  if (!anchor) {
+  return !!anchor;
+}
+
+async function processClick(e) {
+  if (!isBannerLoaded()) {
+    e.preventDefault();
     console.log("no ads");
-    // alert("no ads");
     return;
   }
 
   // console.log("event", e);
-  pendingEvent = clonePointerEvent(e);
-  pendingEventTarget = e.target;
+  // pendingEvent = clonePointerEvent(e);
+  // pendingEventTarget = e.target;
   // console.log("pendingEvent", pendingEvent);
 
-  e.preventDefault();
+  // e.preventDefault();
 
   try {
     showLoader();
@@ -249,7 +341,7 @@ async function processClick(e) {
     console.error(err);
   } finally {
     hideLoader();
-    dispatchPendingEvent();
+    // dispatchPendingEvent();
   }
 }
 
@@ -293,6 +385,8 @@ const PERSONA_SDK_CONFIG = {
 };
 
 function showPersona(adUnitId, slot, index) {
+  currentAd = ADS.persona;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -311,15 +405,22 @@ function showPersona(adUnitId, slot, index) {
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
     console.log("Persona error:", errorMessage);
     processDeimpression(domainDisplay, "agent/persona", slot);
-    showPGA(slot, index);
+
+    showHypelab(slot, index);
+    // showPGA(slot, index);
+
     //if (errorMessage === "daily limit reached") {}
     // return;
   });
+
+  processImpression(domainDisplay, "agent/persona", slot);
 }
 
 // coinTraffic
 
 function showCointraffic(slot, index) {
+  currentAd = ADS.cointraffic;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -334,6 +435,10 @@ function showCointraffic(slot, index) {
   containerDiv.appendChild(spanElement);
   containerDiv.appendChild(scriptElement);
 
+  // to-do: measure actual impressions
+  // issue
+  processImpression(domainDisplay, "agent/cointraffic", slot);
+
   // if (window['ctbkz3FU91fH']) {
   //   window['ctbkz3FU91fH'].reload();
   // }
@@ -347,6 +452,8 @@ function showCointraffic(slot, index) {
 // hypelab
 
 function showHypelab(slot, index) {
+  currentAd = ADS.hypelab;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -367,9 +474,13 @@ function showHypelab(slot, index) {
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
 
-    bannerElement.addEventListener('ready', function () {
-      // measure actual impressions
+    bannerElement.addEventListener("ready", function () {
+      // call processImpression where an actual impression occurs
       processImpression(domainDisplay, "agent/hypelab", slot);
+    });
+
+    bannerElement.addEventListener("error", function () {
+      showPrebid(slot, index);
     });
 
     containerDiv.appendChild(bannerElement);
@@ -377,6 +488,9 @@ function showHypelab(slot, index) {
 }
 
 function showPrebid(slot, index) {
+  console.log('showPrebid called');
+  currentAd = ADS.prebid;
+
   pbjs.que.push(function () {
     pbjs.addAdUnits(prebidAdUnits)
     pbjs.requestBids({
@@ -386,8 +500,13 @@ function showPrebid(slot, index) {
   })
 
   pbjs.onEvent('bidWon', function (data) {
-    console.log(data.bidderCode + ' won the ad server auction for ad unit ' + data.adUnitCode + ' at ' + data.cpm + ' CPM');
-    console.log('bidWon data', data);
+    console.log('bidWon', data);
+    processImpression(domainDisplay, "agent/prebid", slot);
+  });
+
+  pbjs.onEvent('adRenderFailed', function () {
+    console.log('adRenderFailed');
+    showADS(slot, index);
   });
 }
 function renderAllAdUnits() {
@@ -398,6 +517,7 @@ function renderAllAdUnits() {
   }
 }
 function renderOne(winningBid) {
+  console.log('renderOne called', winningBid);
   if (winningBid && winningBid.adId) {
     var div = document.getElementById(winningBid.adUnitCode)
     if (div) {
@@ -424,14 +544,6 @@ function renderOne(winningBid) {
       const iframeDoc = iframe.contentWindow.document;
       pbjs.renderAd(iframeDoc, winningBid.adId);
 
-      // most browsers have a default margin of 8px . We add those after prebid has written to the iframe.
-      // internally prebid uses document.write or inserts an element. Either way, this is safe to do here.
-      // document.write is sync.
-      // see https://github.com/prebid/Prebid.js/blob/92daa81f277598cbed486cf8be01ce796aa80c8f/src/prebid.js#L555-L588
-
-      // you may also use "all: unset".
-      // @see https://www.youtube.com/shorts/z47iLmBeRXY
-
       const normalizeCss = `/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */button,hr,input{overflow:visible}progress,sub,sup{vertical-align:baseline}[type=checkbox],[type=radio],legend{box-sizing:border-box;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}details,main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{padding:.35em .75em .625em}legend{color:inherit;display:table;max-width:100%;white-space:normal}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}`;
       const iframeStyle = iframeDoc.createElement('style');
       iframeStyle.appendChild(iframeDoc.createTextNode(normalizeCss));
@@ -443,6 +555,8 @@ function renderOne(winningBid) {
 // pga
 
 function showPGA(slot, index) {
+  currentAd = ADS.pga;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -462,24 +576,46 @@ function showPGA(slot, index) {
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
+  processImpression(domainDisplay, pgaSelfAdsSubject, slot);
+
+  // show hypelab after 30 seconds as showPGA is called as fallback for now
+  setTimeout(() => {
+    showHypelab(slot);
+  }, 30000);
+}
+
+//
+
+function showLootRush(slot, index) {
+  currentAd = ADS.lootrush;
+
+  let containerDiv = document.querySelector("div#pga-banner-ad");
+  containerDiv.innerHTML = "";
+
+  let anchorElement = document.createElement("a");
+  anchorElement.href =
+    "https://www.lootrush.com/collections/pixels---farm-land807754?ref=6755d3f7&utm_campaign=land_rental&utm_medium=banner&utm_source=pga";
+  anchorElement.target = "_blank";
+
+  let imgElement = document.createElement("img");
+  imgElement.src = "./images/lootrush-ad.gif";
+
+  imgElement.width = 320;
+  imgElement.height = 100;
+  imgElement.alt = "www.lootrush.com";
+
+  anchorElement.appendChild(imgElement);
+  containerDiv.appendChild(anchorElement);
+  processImpression(domainDisplay, "affiliate/lootrush", slot);
 }
 
 // ads
 
 function showADS(slot, index) {
+  currentAd = ADS.aads;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
-
-  let hiddenImage = document.createElement("img");
-  hiddenImage.src = "images/aads_hidden_image.png";
-  hiddenImage.style.display = "none";
-  hiddenImage.style.width = "0";
-  hiddenImage.style.height = "0";
-  hiddenImage.style.position = "absolute";
-  hiddenImage.style.left = "-9999px";
-  hiddenImage.alt = "Hidden ADS image";
-
-  containerDiv.appendChild(hiddenImage);
 
   let iframeElement = document.createElement("iframe");
   iframeElement.setAttribute("data-aa", "2337944");
@@ -492,9 +628,20 @@ function showADS(slot, index) {
   iframeElement.style.backgroundColor = "transparent";
 
   containerDiv.appendChild(iframeElement);
+
+  // to-do: measure actual impressions
+  // issue
+  processImpression(domainDisplay, "agent/aads", slot);
+
+  // show hypelab after 30 seconds as showPGA is called as fallback for now
+  setTimeout(() => {
+    showHypelab(slot);
+  }, 30000);
 }
 
 function showSmartyAds(slot, index) {
+  currentAd = ADS.smartyads;
+
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -508,6 +655,9 @@ function showSmartyAds(slot, index) {
     },
   ];
   smarty.buildUnits(adUnits);
+  // to-do: measure actual impressions
+  // issue
+  processImpression(domainDisplay, "agent/smartyads", slot);
 }
 
 // -----------------------------------------------------
@@ -603,7 +753,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: { path },
+      payload: {path},
     },
     "*"
   );
@@ -614,7 +764,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
@@ -625,7 +775,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
