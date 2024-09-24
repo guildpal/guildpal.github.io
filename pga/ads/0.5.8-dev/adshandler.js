@@ -479,7 +479,7 @@ function showHypelab(slot, index) {
   let scriptElement = document.getElementById("hypelab-sdk");
 
   if (!scriptElement) {
-    const scriptElement = document.createElement("script");
+    scriptElement = document.createElement("script");
     scriptElement.id = "hypelab-sdk";
     scriptElement.defer = true;
     scriptElement.src = "https://api.hypelab.com/v1/scripts/hp-sdk.js?v=0";
