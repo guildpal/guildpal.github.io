@@ -526,8 +526,7 @@ function showHypelab(slot, index) {
     });
 
     bannerElement.addEventListener("error", function () {
-      bannerElement.removeEventListener("ready")
-      bannerElement.removeEventListener("error")
+      bannerElement.remove();
       showPrebid(slot, index);
     });
 
