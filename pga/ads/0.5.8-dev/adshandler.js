@@ -168,7 +168,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   showAd(slot, index);
+  addPrebidEvents();
 });
+
+function addPrebidEvents() {
+  if (!pbjs) {
+    console.log("pbjs not found");
+    return;
+  }
+
+  pbjs.onEvent('bidWon', function (data) {
+    console.log('bidWon', data);
+    processImpression(domainDisplay, "agent/prebid", slot);
+  });
+
+  pbjs.onEvent('adRenderFailed', function () {
+    console.log('adRenderFailed');
+    showADS(slot, index);
+  });
+
+  pbjs.onEvent('bidRejected', function () {
+    console.log('bidRejected');
+    showADS(slot, index);
+  });
+
+  pbjs.onEvent('bidTimeout', function () {
+    console.log('bidTimeout');
+    showADS(slot, index);
+  });
+}
 
 async function showAd(slot, index) {
   // NOTE: not rotate ads when pendingEvent exists
@@ -517,26 +545,6 @@ function showPrebid(slot, index) {
       bidsBackHandler: renderAllAdUnits,
     })
   })
-
-  pbjs.onEvent('bidWon', function (data) {
-    console.log('bidWon', data);
-    processImpression(domainDisplay, "agent/prebid", slot);
-  });
-
-  pbjs.onEvent('adRenderFailed', function () {
-    console.log('adRenderFailed');
-    showADS(slot, index);
-  });
-
-  pbjs.onEvent('bidRejected', function () {
-    console.log('bidRejected');
-    showADS(slot, index);
-  });
-
-  pbjs.onEvent('bidTimeout', function () {
-    console.log('bidTimeout');
-    showADS(slot, index);
-  });
 }
 function renderAllAdUnits() {
   console.log('renderAllAdUnits called')
