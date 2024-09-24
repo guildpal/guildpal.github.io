@@ -505,7 +505,7 @@ function showHypelab(slot, index) {
 
   const existingBanner = document.querySelector("hype-banner")
   if (existingBanner) {
-    signal.abort();
+    controller.abort();
     // existingBanner.removeEventListener("ready", readyEventHandler);
     // existingBanner.removeEventListener("error", errorEventHandler);
     existingBanner.remove();
