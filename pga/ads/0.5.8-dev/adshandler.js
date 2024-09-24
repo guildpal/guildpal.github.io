@@ -500,6 +500,13 @@ function showCointraffic(slot, index) {
 function showHypelab(slot, index) {
   currentAd = ADS.hypelab;
 
+  const existingBanner = document.querySelector("hype-banner")
+  if (existingBanner) {
+    existingBanner.removeEventListener("ready", readyEventHandler);
+    existingBanner.removeEventListener("error", errorEventHandler);
+    existingBanner.remove();
+  };
+
   const containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -518,13 +525,6 @@ function showHypelab(slot, index) {
       environment: "production", // Replace with your environment
       propertySlug: "d001c21f78", // Replace with your property slug
     });
-
-    const existingBanner = document.querySelector("hype-banner")
-    if (existingBanner) {
-      existingBanner.removeEventListener("ready", readyEventHandler);
-      existingBanner.removeEventListener("error", errorEventHandler);
-      existingBanner.remove();
-    };
 
     const bannerElement = document.createElement("hype-banner");
     bannerElement.id = "banner";
