@@ -168,7 +168,32 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   showAd(slot, index);
+  addPrebidEventListeners();
 });
+
+function addPrebidEventListeners() {
+  if (!pbjs) {
+    console.log("pbjs is not defined")
+    return;
+  }
+  pbjs.onEvent('bidWon', () => {
+    console.log(data.bidderCode + ' won the ad server auction for ad unit ' + data.adUnitCode + ' at ' + data.cpm + ' CPM');
+    // TODO: replace "home" to valid slot
+    processImpression(domainDisplay, "agent/prebid", "home");
+  });
+  pbjs.onEvent('bidRejected', () => {
+    console.log('prebid adRenderFailed', data);
+    showADS(slot, index);
+  });
+  pbjs.onEvent('adRenderFailed', () => {
+    console.log("prebid bidRejected", data)
+    showADS(slot, index);
+  });
+  pbjs.onEvent('bidTimeout', () => {
+    console.log("prebid timeout", data)
+    showADS(slot, index);
+  });
+}
 
 async function showAd(slot, index) {
   // NOTE: not rotate ads when pendingEvent exists
@@ -525,15 +550,6 @@ function showPrebid(slot, index) {
 
   pbjs.removeAdUnit();
 
-  const id = "pga-banner-ad"
-  try {
-    pbjs.offEvent('bidWon', bidWonEventHandler, id)
-    pbjs.offEvent('bidRejected', bidRejectedHandler, id)
-    pbjs.offEvent('adRenderFailed', adRenderFailedHandler, id);
-    pbjs.offEvent('bidTimeout', bidTimeoutHandler, id);
-  } catch (error) {
-    console.error(error);
-  }
 
   pbjs.que.push(function () {
     pbjs.addAdUnits(prebidAdUnits)
@@ -542,27 +558,6 @@ function showPrebid(slot, index) {
       bidsBackHandler: renderAllAdUnits,
     })
   })
-  pbjs.onEvent('bidWon', bidWonEventHandler, id);
-  pbjs.onEvent('bidRejected', bidRejectedHandler, id);
-  pbjs.onEvent('adRenderFailed', adRenderFailedHandler, id);
-  pbjs.onEvent('bidTimeout', bidTimeoutHandler, id);
-
-  function bidWonEventHandler(data) {
-    console.log(data.bidderCode + ' won the ad server auction for ad unit ' + data.adUnitCode + ' at ' + data.cpm + ' CPM');
-    processImpression(domainDisplay, "agent/prebid", slot);
-  }
-  function adRenderFailedHandler(data) {
-    console.log('prebid adRenderFailed', data);
-    showADS(slot, index);
-  }
-  function bidRejectedHandler(data) {
-    console.log("prebid bidRejected", data)
-    showADS(slot, index);
-  }
-  function bidTimeoutHandler(data) {
-    console.log("prebid timeout", data)
-    showADS(slot, index);
-  }
 }
 function renderAllAdUnits() {
   console.log('renderAllAdUnits called')
