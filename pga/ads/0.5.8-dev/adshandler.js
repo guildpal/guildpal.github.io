@@ -522,11 +522,12 @@ function showHypelab(slot, index) {
     bannerElement.setAttribute("placement", "a034aa49f6");
 
     bannerElement.addEventListener("ready", function () {
-      // call processImpression where an actual impression occurs
       processImpression(domainDisplay, "agent/hypelab", slot);
     });
 
     bannerElement.addEventListener("error", function () {
+      bannerElement.removeEventListener("ready")
+      bannerElement.removeEventListener("error")
       showPrebid(slot, index);
     });
 
