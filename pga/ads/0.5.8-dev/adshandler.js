@@ -120,6 +120,25 @@ const domainAffiliate = "affiliate";
 const allAdsSubject = "ALL-ADS";
 const pgaSelfAdsSubject = "pga";
 
+const prebidAdUnits = [
+  {
+    code: 'pga-banner-ad',
+    mediaTypes: {
+      banner: {
+        sizes: [[320, 100]],
+      },
+    },
+    bids: [
+      {
+        bidder: 'cointraffic',
+        params: {
+          placementId: 'cn9L6gxT7Hq', // Banner Code in dashboard
+        },
+      },
+    ],
+  },
+];
+
 let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
 let slot = "home";
