@@ -522,14 +522,19 @@ function showHypelab(slot, index) {
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
 
-    bannerElement.addEventListener("ready", function () {
-      processImpression(domainDisplay, "agent/hypelab", slot);
-    });
+    bannerElement.addEventListener("ready", handleHypelabReadyHandler);
+    bannerElement.addEventListener("error", handleHypelabErrorHandler);
 
-    bannerElement.addEventListener("error", function () {
+    function handleHypelabErrorHandler() {
+      bannerElement.removeEventListener("ready", handleHypelabReadyHandler)
+      bannerElement.removeEventListener("error", handleHypelabErrorHandler)
       bannerElement.remove();
       showPrebid(slot, index);
-    });
+    }
+
+    function handleHypelabReadyHandler() {
+      processImpression(domainDisplay, "agent/hypelab", slot);
+    }
 
     containerDiv.appendChild(bannerElement);
   };
@@ -796,7 +801,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: {path},
+      payload: { path },
     },
     "*"
   );
@@ -807,7 +812,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
@@ -818,7 +823,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
