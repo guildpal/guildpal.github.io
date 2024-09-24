@@ -176,10 +176,12 @@ function addPrebidEventListeners() {
     console.log("pbjs is not defined")
     return;
   }
+  // TODO: replace "home" and "index" to valid values
+  const slot = "home";
+  const index = 0;
   pbjs.onEvent('bidWon', (data) => {
     console.log(data.bidderCode + ' won the ad server auction for ad unit ' + data.adUnitCode + ' at ' + data.cpm + ' CPM');
-    // TODO: replace "home" to valid slot
-    processImpression(domainDisplay, "agent/prebid", "home");
+    processImpression(domainDisplay, "agent/prebid", slot);
   });
   pbjs.onEvent('bidRejected', (data) => {
     console.log('prebid adRenderFailed', data);
