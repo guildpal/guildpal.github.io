@@ -14,82 +14,111 @@
 -->
 
 <html>
-  <head>
-    <script>
-      var adUnits = [
-        // {
-        //   code: "test-div",
-        //   mediaTypes: {
-        //     banner: {
-        //       sizes: [[320, 100]],
-        //     },
-        //   },
-        //   bids: [
-        //     {
-        //       bidder: "hypelab",
-        //       params: {
-        //         property_slug: "d001c21f78",
-        //         placement_slug: "a034aa49f6",
-        //       },
-        //     },
-        //   ],
-        // },
-        // {
-        //   code: "test-div",
-        //   mediaTypes: {
-        //     banner: {
-        //       sizes: [[320, 100]],
-        //     },
-        //   },
-        //   bids: [
-        //     {
-        //       bidder: "cointraffic",
-        //       params: {
-        //         placementId: "bkz3FU91fH",
-        //       },
-        //     },
-        //   ],
-        // },
-        // {
-        //   code: "test-div2",
-        //   mediaTypes: {
-        //     banner: {
-        //       sizes: [[300, 250]],
-        //     },
-        //   },
-        //   bids: [
-        //     {
-        //       bidder: "appnexus",
-        //       params: {
-        //         placementId: 13144370,
-        //       },
-        //     },
-        //   ],
-        // },
-        {
-          code: "test-div",
-          mediaTypes: {
-            banner: {
-              sizes: [[320, 100]],
-            },
-          },
-          bids: [
-            {
-              bidder: "cointraffic",
-              params: {
-                placementId: "cn9L6gxT7Hq", // Banner Code in dashboard
-                // placementId: "bkz3FU91fH", // Unified Code in dashboard
-              },
-            },
-          ],
-        },
-      ];
 
-      var pbjs = pbjs || {};
-      // pbjs.setConfig({ debug: true, enableSendAllBids: true });
-      pbjs.que = pbjs.que || [];
-    </script>
-    <!-- <script
+<head>
+  <script>
+    var adUnits = [
+      // {
+      //   code: "test-div",
+      //   mediaTypes: {
+      //     banner: {
+      //       sizes: [[320, 100]],
+      //     },
+      //   },
+      //   bids: [
+      //     {
+      //       bidder: "hypelab",
+      //       params: {
+      //         property_slug: "d001c21f78",
+      //         placement_slug: "a034aa49f6",
+      //       },
+      //     },
+      //   ],
+      // },
+      // {
+      //   code: "test-div",
+      //   mediaTypes: {
+      //     banner: {
+      //       sizes: [[320, 100]],
+      //     },
+      //   },
+      //   bids: [
+      //     {
+      //       bidder: "cointraffic",
+      //       params: {
+      //         placementId: "bkz3FU91fH",
+      //       },
+      //     },
+      //   ],
+      // },
+      // {
+      //   code: "test-div2",
+      //   mediaTypes: {
+      //     banner: {
+      //       sizes: [[300, 250]],
+      //     },
+      //   },
+      //   bids: [
+      //     {
+      //       bidder: "appnexus",
+      //       params: {
+      //         placementId: 13144370,
+      //       },
+      //     },
+      //   ],
+      // },
+      // {
+      //   code: "test-div",
+      //   mediaTypes: {
+      //     banner: {
+      //       sizes: [[320, 100]],
+      //     },
+      //   },
+      //   bids: [
+      //     {
+      //       bidder: "cointraffic",
+      //       params: {
+      //         placementId: "cn9L6gxT7Hq", // Banner Code in dashboard
+      //         // placementId: "bkz3FU91fH", // Unified Code in dashboard
+      //       },
+      //     },
+      //   ],
+      // },
+      {
+        code: 'test-div',
+        sizes: [[320, 100]],  // a display size
+        mediaTypes: { 'banner': {} },
+        bids: [
+          {
+            bidder: 'openx',
+            params: {
+              unit: '539439964',
+              delDomain: 'se-demo-d.openx.net',
+              customParams: {
+                key1: 'v1',
+                key2: ['v2', 'v3']
+              },
+            }
+          }, {
+            bidder: 'openx',
+            params: {
+              unit: '539439964',
+              delDomain: 'se-demo-d.openx.net',
+              customParams: {
+                key1: 'v1',
+                key2: ['v2', 'v3']
+              },
+            }
+          }
+        ]
+      }
+    ];
+
+    var pbjs = pbjs || {};
+    // pbjs.setConfig({ debug: true, enableSendAllBids: true });
+    pbjs.que = pbjs.que || [];
+  </script>
+  <!-- <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/prebid.js@latest/dist/prebid.js"
       async
@@ -104,46 +133,47 @@
       src="https://cdn.jsdelivr.net/npm/prebid.js@latest/dist/hypelabBidAdapter.js"
       async
     ></script> -->
-    <script type="text/javascript" src="./prebid9.13.0.js" async></script>
+  <script type="text/javascript" src="./prebid9.14.0.js" async></script>
 
-    <script>
-      pbjs.que.push(function () {
-        pbjs.addAdUnits(adUnits);
-      });
+  <script>
+    pbjs.que.push(function () {
+      pbjs.addAdUnits(adUnits);
+    });
 
-      // you could instead pass an array of adUnits
-      // to getHighestCpmBids() if desired
-      function renderAllAdUnits() {
-        console.log("renderAllAdUnits called");
-        var winners = pbjs.getHighestCpmBids();
-        for (var i = 0; i < winners.length; i++) {
-          renderOne(winners[i]);
+    // you could instead pass an array of adUnits
+    // to getHighestCpmBids() if desired
+    function renderAllAdUnits() {
+      console.log("renderAllAdUnits called");
+      var winners = pbjs.getHighestCpmBids();
+      for (var i = 0; i < winners.length; i++) {
+        renderOne(winners[i]);
+      }
+    }
+
+    function renderOne(winningBid) {
+      if (winningBid && winningBid.adId) {
+        var div = document.getElementById(winningBid.adUnitCode);
+        if (div) {
+          let iframe = document.createElement("iframe");
+          iframe.frameBorder = "0";
+          div.appendChild(iframe);
+          var iframeDoc = iframe.contentWindow.document;
+          pbjs.renderAd(iframeDoc, winningBid.adId);
         }
       }
+    }
 
-      function renderOne(winningBid) {
-        if (winningBid && winningBid.adId) {
-          var div = document.getElementById(winningBid.adUnitCode);
-          if (div) {
-            let iframe = document.createElement("iframe");
-            iframe.frameBorder = "0";
-            div.appendChild(iframe);
-            var iframeDoc = iframe.contentWindow.document;
-            pbjs.renderAd(iframeDoc, winningBid.adId);
-          }
-        }
-      }
-
-      pbjs.que.push(function () {
-        pbjs.requestBids({
-          timeout: 2000,
-          bidsBackHandler: renderAllAdUnits,
-        });
+    pbjs.que.push(function () {
+      pbjs.requestBids({
+        timeout: 2000,
+        bidsBackHandler: renderAllAdUnits,
       });
-    </script>
-  </head>
+    });
+  </script>
+</head>
 
-  <body>
-    <div id="test-div"></div>
-  </body>
+<body>
+  <div id="test-div"></div>
+</body>
+
 </html>
