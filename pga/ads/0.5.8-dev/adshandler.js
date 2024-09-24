@@ -81,7 +81,7 @@ const pgaAdsConfigs = {
   },
   timer: {
     rotation: false,
-    allocation: [ADS.prebid],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
   },
@@ -148,7 +148,6 @@ let pendingEvent = null;
 let pendingEventTarget = null;
 let clickTarget = null;
 let currentAd = null;
-let prebidArgs = {};
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
@@ -169,45 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   showAd(slot, index);
-  addPrebidEvents();
 });
-
-function addPrebidEvents() {
-  if (!pbjs) {
-    console.log("pbjs not found");
-    return;
-  }
-
-  pbjs.onEvent('bidWon', function (data) {
-    console.log('bidWon', data);
-    processImpression(domainDisplay, "agent/prebid", slot);
-  });
-
-  pbjs.onEvent('adRenderFailed', function () {
-    console.log('adRenderFailed');
-    showADS(prebidArgs.slot, prebidArgs.index);
-    removePrebidIframe();
-  });
-
-  pbjs.onEvent('bidRejected', function () {
-    console.log('bidRejected');
-    showADS(prebidArgs.slot, prebidArgs.index);
-    removePrebidIframe();
-  });
-
-  pbjs.onEvent('bidTimeout', function () {
-    console.log('bidTimeout');
-    showADS(prebidArgs.slot, prebidArgs.index);
-    removePrebidIframe();
-  });
-}
-
-function removePrebidIframe() {
-  const iframe = document.querySelector('prebid-iframe')
-  if (iframe) {
-    iframe.remove()
-  }
-}
 
 async function showAd(slot, index) {
   // NOTE: not rotate ads when pendingEvent exists
@@ -532,42 +493,22 @@ function showHypelab(slot, index) {
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
 
-    bannerElement.addEventListener("ready", handleHypelabReadyHandler);
-    bannerElement.addEventListener("error", handleHypelabErrorHandler);
-
-    // setTimeout(() => {
-    //   bannerElement.removeEventListener("ready", handleHypelabReadyHandler)
-    //   bannerElement.removeEventListener("error", handleHypelabErrorHandler)
-    // }, 10000)
-
-    function handleHypelabErrorHandler() {
-      bannerElement.remove();
-      showPrebid(slot, index);
-      removeHypelabEventListeners();
-    }
-
-    function handleHypelabReadyHandler() {
+    bannerElement.addEventListener("ready", function () {
+      // call processImpression where an actual impression occurs
       processImpression(domainDisplay, "agent/hypelab", slot);
-    }
+    });
 
-    function removeHypelabEventListeners() {
-      bannerElement.removeEventListener('ready', handleHypelabReadyHandler)
-      bannerElement.removeEventListener('error', handleHypelabErrorHandler)
-    }
+    bannerElement.addEventListener("error", function () {
+      showADS(slot, index);
+      // showPGA(slot, index);
+    });
 
     containerDiv.appendChild(bannerElement);
   };
 }
 
 function showPrebid(slot, index) {
-  console.log('showPrebid called');
   currentAd = ADS.prebid;
-
-  prebidArgs = {
-    slot,
-    index
-  }
-
   pbjs.que.push(function () {
     pbjs.addAdUnits(prebidAdUnits)
     pbjs.requestBids({
@@ -575,6 +516,13 @@ function showPrebid(slot, index) {
       bidsBackHandler: renderAllAdUnits,
     })
   })
+  pbjs.onEvent('bidWon', function (data) {
+    console.log(data.bidderCode + ' won the ad server auction for ad unit ' + data.adUnitCode + ' at ' + data.cpm + ' CPM');
+    processImpression(domainDisplay, "agent/prebid", slot);
+  });
+  pbjs.onEvent('adRenderFailed', function () {
+    console.log('prebid adRenderFailed');
+  });
 }
 function renderAllAdUnits() {
   console.log('renderAllAdUnits called')
@@ -584,11 +532,10 @@ function renderAllAdUnits() {
   }
 }
 function renderOne(winningBid) {
-  console.log('renderOne called', winningBid);
   if (winningBid && winningBid.adId) {
     var div = document.getElementById(winningBid.adUnitCode)
     if (div) {
-      const iframe = document.createElement('prebid-iframe');
+      const iframe = document.createElement('iframe');
       iframe.scrolling = 'no';
       iframe.frameBorder = '0';
       iframe.marginHeight = '0';
@@ -610,7 +557,6 @@ function renderOne(winningBid) {
       div.appendChild(iframe);
       const iframeDoc = iframe.contentWindow.document;
       pbjs.renderAd(iframeDoc, winningBid.adId);
-
       const normalizeCss = `/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */button,hr,input{overflow:visible}progress,sub,sup{vertical-align:baseline}[type=checkbox],[type=radio],legend{box-sizing:border-box;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}details,main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{padding:.35em .75em .625em}legend{color:inherit;display:table;max-width:100%;white-space:normal}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}`;
       const iframeStyle = iframeDoc.createElement('style');
       iframeStyle.appendChild(iframeDoc.createTextNode(normalizeCss));
@@ -618,8 +564,6 @@ function renderOne(winningBid) {
     }
   }
 }
-
-// pga
 
 function showPGA(slot, index) {
   currentAd = ADS.pga;
@@ -820,7 +764,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: { path },
+      payload: {path},
     },
     "*"
   );
@@ -831,7 +775,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
@@ -842,7 +786,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
