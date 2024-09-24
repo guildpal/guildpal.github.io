@@ -523,16 +523,14 @@ function showPrebid(slot, index) {
   const containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
-  // pbjs.removeAdUnit();
-  // pbjs.clearAllAuctions();
+  pbjs.removeAdUnit();
 
-  pbjs.offEvent('bidWon', bidWonEventHandler, "pga-banner-ad")
-  pbjs.offEvent('bidRejected', bidRejectedHandler, "pga-banner-ad")
-  pbjs.offEvent('adRenderFailed', adRenderFailedHandler, "pga-banner-ad");
-  pbjs.offEvent('bidTimeout', bidTimeoutHandler, "pga-banner-ad");
+  pbjs.offEvent('bidWon', bidWonEventHandler)
+  pbjs.offEvent('bidRejected', bidRejectedHandler)
+  pbjs.offEvent('adRenderFailed', adRenderFailedHandler);
+  pbjs.offEvent('bidTimeout', bidTimeoutHandler);
 
   pbjs.que.push(function () {
-    pbjs.removeAdUnit();
     pbjs.addAdUnits(prebidAdUnits)
     pbjs.requestBids({
       timeout: 2000,
