@@ -499,8 +499,7 @@ function showHypelab(slot, index) {
     });
 
     bannerElement.addEventListener("error", function () {
-      showADS(slot, index);
-      // showPGA(slot, index);
+      showPrebid(slot, index);
     });
 
     containerDiv.appendChild(bannerElement);
@@ -509,6 +508,16 @@ function showHypelab(slot, index) {
 
 function showPrebid(slot, index) {
   currentAd = ADS.prebid;
+
+  const containerDiv = document.querySelector("div#pga-banner-ad");
+  containerDiv.innerHTML = "";
+
+  pbjs.offEvent('bidWon', bidWonEventHandler)
+  pbjs.offEvent('bidRejected', bidRejectedHandler)
+  pbjs.offEvent('adRenderFailed', adRenderFailedHandler);
+  pbjs.offEvent('bidTimeout', bidTimeoutHandler);
+
+  
   pbjs.que.push(function () {
     pbjs.addAdUnits(prebidAdUnits)
     pbjs.requestBids({
@@ -516,13 +525,27 @@ function showPrebid(slot, index) {
       bidsBackHandler: renderAllAdUnits,
     })
   })
-  pbjs.onEvent('bidWon', function (data) {
+  pbjs.onEvent('bidWon', bidWonEventHandler);
+  pbjs.onEvent('bidRejected', bidRejectedHandler);
+  pbjs.onEvent('adRenderFailed', adRenderFailedHandler);
+  pbjs.onEvent('bidTimeout', bidTimeoutHandler);
+
+  function bidWonEventHandler(data) {
     console.log(data.bidderCode + ' won the ad server auction for ad unit ' + data.adUnitCode + ' at ' + data.cpm + ' CPM');
     processImpression(domainDisplay, "agent/prebid", slot);
-  });
-  pbjs.onEvent('adRenderFailed', function () {
-    console.log('prebid adRenderFailed');
-  });
+  }
+  function adRenderFailedHandler(data) {
+    console.log('prebid adRenderFailed', data);
+    showADS(slot, index);
+  }
+  function bidRejectedHandler(data) {
+    console.log("prebid bidRejected", data)
+    showADS(slot, index);
+  }
+  function bidTimeoutHandler(data) {
+    console.log("prebid timeout", data)
+    showADS(slot, index);
+  }
 }
 function renderAllAdUnits() {
   console.log('renderAllAdUnits called')
@@ -764,7 +787,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: {path},
+      payload: { path },
     },
     "*"
   );
@@ -775,7 +798,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
@@ -786,7 +809,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
