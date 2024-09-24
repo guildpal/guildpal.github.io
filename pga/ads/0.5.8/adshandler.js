@@ -57,6 +57,7 @@ const ADS = {
   hypelab: "hypelab",
   aads: "aads",
   lootrush: "lootrush",
+  prebid: "prebid",
 };
 
 const pgaAdsConfigs = {
@@ -211,6 +212,9 @@ async function showAd(slot, index) {
         break;
       case ADS.lootrush:
         showLootRush(slot, index);
+        break;
+      case ADS.prebid:
+        showPrebid(slot, index);
         break;
       default:
         showPGA(slot, index);
@@ -482,6 +486,70 @@ function showHypelab(slot, index) {
 
     containerDiv.appendChild(bannerElement);
   };
+}
+
+function showPrebid(slot, index) {
+  currentAd = ADS.prebid;
+
+  pbjs.que.push(function () {
+    pbjs.addAdUnits(prebidAdUnits)
+    pbjs.requestBids({
+      timeout: 2000,
+      bidsBackHandler: renderAllAdUnits,
+    })
+  })
+
+  pbjs.onEvent('bidWon', function (data) {
+    // console.log(data.bidderCode + ' won the ad server auction for ad unit ' + data.adUnitCode + ' at ' + data.cpm + ' CPM');
+    // console.log('bidWon data', data);
+    // console.log('bidderCode', data.bidderCode);
+    processImpression(domainDisplay, "agent/prebid", slot);
+  });
+
+  pbjs.onEvent('adRenderFailed', function () {
+    console.log('prebid adRenderFailed');
+  });
+}
+function renderAllAdUnits() {
+  console.log('renderAllAdUnits called')
+  var winners = pbjs.getHighestCpmBids()
+  for (var i = 0; i < winners.length; i++) {
+    renderOne(winners[i])
+  }
+}
+function renderOne(winningBid) {
+  if (winningBid && winningBid.adId) {
+    var div = document.getElementById(winningBid.adUnitCode)
+    if (div) {
+      const iframe = document.createElement('iframe');
+      iframe.scrolling = 'no';
+      iframe.frameBorder = '0';
+      iframe.marginHeight = '0';
+      iframe.marginHeight = '0';
+      iframe.name = `prebid_ads_iframe_${winningBid.adUnitCode}`;
+      iframe.title = '3rd party ad content';
+      iframe.sandbox.add(
+        'allow-forms',
+        'allow-popups',
+        'allow-popups-to-escape-sandbox',
+        'allow-same-origin',
+        'allow-scripts',
+        'allow-top-navigation-by-user-activation'
+      );
+      iframe.setAttribute('aria-label', 'Advertisment');
+      iframe.style.setProperty('border', '0');
+      iframe.style.setProperty('margin', '0');
+      iframe.style.setProperty('overflow', 'hidden');
+      div.appendChild(iframe);
+      const iframeDoc = iframe.contentWindow.document;
+      pbjs.renderAd(iframeDoc, winningBid.adId);
+
+      const normalizeCss = `/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */button,hr,input{overflow:visible}progress,sub,sup{vertical-align:baseline}[type=checkbox],[type=radio],legend{box-sizing:border-box;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}details,main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{padding:.35em .75em .625em}legend{color:inherit;display:table;max-width:100%;white-space:normal}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}`;
+      const iframeStyle = iframeDoc.createElement('style');
+      iframeStyle.appendChild(iframeDoc.createTextNode(normalizeCss));
+      iframeDoc.head.appendChild(iframeStyle);
+    }
+  }
 }
 
 // pga
