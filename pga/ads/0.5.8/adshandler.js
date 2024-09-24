@@ -476,7 +476,8 @@ function showHypelab(slot, index) {
     });
 
     bannerElement.addEventListener("error", function () {
-      showPGA(slot, index);
+      showADS(slot, index);
+      // showPGA(slot, index);
     });
 
     containerDiv.appendChild(bannerElement);
@@ -563,6 +564,11 @@ function showADS(slot, index) {
   // to-do: measure actual impressions
   // issue
   processImpression(domainDisplay, "agent/aads", slot);
+
+  // show hypelab after 30 seconds as showPGA is called as fallback for now
+  setTimeout(() => {
+    showHypelab(slot);
+  }, 30000);
 }
 
 function showSmartyAds(slot, index) {
