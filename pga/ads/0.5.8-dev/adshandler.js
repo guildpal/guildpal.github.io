@@ -384,6 +384,11 @@ function showPrebid(slot, index) {
       bidsBackHandler: renderAllAdUnits,
     })
   })
+
+  pbjs.onEvent('bidWon', function (data) {
+    console.log(data.bidderCode + ' won the ad server auction for ad unit ' + data.adUnitCode + ' at ' + data.cpm + ' CPM');
+    console.log('bidWon data', data);
+  });
 }
 function renderAllAdUnits() {
   console.log('renderAllAdUnits called')
