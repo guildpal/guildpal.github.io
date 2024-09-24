@@ -522,12 +522,10 @@ function showHypelab(slot, index) {
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
 
-    bannerElement.addEventListener("ready", handleHypelabReadyHandler);
-    bannerElement.addEventListener("error", handleHypelabErrorHandler);
+    bannerElement.addEventListener("ready", handleHypelabReadyHandler, { once: true });
+    bannerElement.addEventListener("error", handleHypelabErrorHandler, { once: true });
 
     function handleHypelabErrorHandler() {
-      bannerElement.removeEventListener("ready", handleHypelabReadyHandler)
-      bannerElement.removeEventListener("error", handleHypelabErrorHandler)
       bannerElement.remove();
       showPrebid(slot, index);
     }
