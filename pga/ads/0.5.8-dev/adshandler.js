@@ -547,10 +547,8 @@ function showHypelab(slot, index) {
 function showPrebid(slot, index) {
   currentAd = ADS.prebid;
 
-  prebidArgs = {
-    slot,
-    index
-  }
+  prebidArgs.slot = slot;
+  prebidArgs.index = index;
 
   const containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
