@@ -527,6 +527,16 @@ function showPrebid(slot, index) {
     console.log('adRenderFailed');
     showADS(slot, index);
   });
+
+  pbjs.onEvent('bidRejected', function () {
+    console.log('bidRejected');
+    showADS(slot, index);
+  });
+
+  pbjs.onEvent('bidTimeout', function () {
+    console.log('bidTimeout');
+    showADS(slot, index);
+  });
 }
 function renderAllAdUnits() {
   console.log('renderAllAdUnits called')
