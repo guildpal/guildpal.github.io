@@ -522,8 +522,13 @@ function showHypelab(slot, index) {
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
 
-    bannerElement.addEventListener("ready", handleHypelabReadyHandler, { once: true });
-    bannerElement.addEventListener("error", handleHypelabErrorHandler, { once: true });
+    bannerElement.addEventListener("ready", handleHypelabReadyHandler);
+    bannerElement.addEventListener("error", handleHypelabErrorHandler);
+
+    setTimeout(() => {
+      bannerElement.removeEventListener("ready", handleHypelabReadyHandler)
+      bannerElement.removeEventListener("error", handleHypelabErrorHandler)
+    }, 10000)
 
     function handleHypelabErrorHandler() {
       bannerElement.remove();
