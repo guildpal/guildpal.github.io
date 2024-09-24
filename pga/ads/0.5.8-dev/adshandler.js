@@ -148,6 +148,7 @@ let pendingEvent = null;
 let pendingEventTarget = null;
 let clickTarget = null;
 let currentAd = null;
+let prebidArgs = {};
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
@@ -184,17 +185,17 @@ function addPrebidEvents() {
 
   pbjs.onEvent('adRenderFailed', function () {
     console.log('adRenderFailed');
-    showADS(slot, index);
+    showADS(prebidArgs.slot, prebidArgs.index);
   });
 
   pbjs.onEvent('bidRejected', function () {
     console.log('bidRejected');
-    showADS(slot, index);
+    showADS(prebidArgs.slot, prebidArgs.index);
   });
 
   pbjs.onEvent('bidTimeout', function () {
     console.log('bidTimeout');
-    showADS(slot, index);
+    showADS(prebidArgs.slot, prebidArgs.index);
   });
 }
 
@@ -537,6 +538,11 @@ function showHypelab(slot, index) {
 function showPrebid(slot, index) {
   console.log('showPrebid called');
   currentAd = ADS.prebid;
+
+  prebidArgs = {
+    slot,
+    index
+  }
 
   pbjs.que.push(function () {
     pbjs.addAdUnits(prebidAdUnits)
