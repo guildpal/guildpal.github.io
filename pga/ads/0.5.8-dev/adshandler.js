@@ -189,11 +189,11 @@ function addPrebidEventListeners() {
   });
   pbjs.onEvent('adRenderFailed', (data) => {
     console.log("prebid bidRejected", data)
-    showADS(slot, index);
+    // showADS(slot, index);
   });
   pbjs.onEvent('bidTimeout', (data) => {
     console.log("prebid timeout", data)
-    showADS(slot, index);
+    // showADS(slot, index);
   });
 }
 
