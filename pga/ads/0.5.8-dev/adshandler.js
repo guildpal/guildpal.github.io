@@ -525,10 +525,15 @@ function showPrebid(slot, index) {
 
   pbjs.removeAdUnit();
 
-  pbjs.offEvent('bidWon', bidWonEventHandler)
-  pbjs.offEvent('bidRejected', bidRejectedHandler)
-  pbjs.offEvent('adRenderFailed', adRenderFailedHandler);
-  pbjs.offEvent('bidTimeout', bidTimeoutHandler);
+  const id = "pga-banner-ad"
+  try {
+    pbjs.offEvent('bidWon', bidWonEventHandler, id)
+    pbjs.offEvent('bidRejected', bidRejectedHandler, id)
+    pbjs.offEvent('adRenderFailed', adRenderFailedHandler, id);
+    pbjs.offEvent('bidTimeout', bidTimeoutHandler, id);
+  } catch (error) {
+    console.error(error);
+  }
 
   pbjs.que.push(function () {
     pbjs.addAdUnits(prebidAdUnits)
@@ -537,10 +542,10 @@ function showPrebid(slot, index) {
       bidsBackHandler: renderAllAdUnits,
     })
   })
-  pbjs.onEvent('bidWon', bidWonEventHandler);
-  pbjs.onEvent('bidRejected', bidRejectedHandler);
-  pbjs.onEvent('adRenderFailed', adRenderFailedHandler);
-  pbjs.onEvent('bidTimeout', bidTimeoutHandler);
+  pbjs.onEvent('bidWon', bidWonEventHandler, id);
+  pbjs.onEvent('bidRejected', bidRejectedHandler, id);
+  pbjs.onEvent('adRenderFailed', adRenderFailedHandler, id);
+  pbjs.onEvent('bidTimeout', bidTimeoutHandler, id);
 
   function bidWonEventHandler(data) {
     console.log(data.bidderCode + ' won the ad server auction for ad unit ' + data.adUnitCode + ' at ' + data.cpm + ' CPM');
