@@ -80,8 +80,8 @@ const pgaAdsConfigs = {
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
   timer: {
-    rotation: false,
-    allocation: [ADS.cointraffic],
+    rotation: true,
+    allocation: [ADS.prebid],
     adRotationPeriod: 30,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
   },
@@ -98,8 +98,8 @@ const pgaAdsConfigs = {
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
   guild: {
-    rotation: false,
-    allocation: [ADS.cointraffic],
+    rotation: true,
+    allocation: [ADS.prebid],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
   },
@@ -480,8 +480,7 @@ function showHypelab(slot, index) {
     });
 
     bannerElement.addEventListener("error", function () {
-      showADS(slot, index);
-      // showPGA(slot, index);
+      showPrebid(slot, index);
     });
 
     containerDiv.appendChild(bannerElement);
@@ -500,14 +499,11 @@ function showPrebid(slot, index) {
   })
 
   pbjs.onEvent('bidWon', function (data) {
-    // console.log(data.bidderCode + ' won the ad server auction for ad unit ' + data.adUnitCode + ' at ' + data.cpm + ' CPM');
-    // console.log('bidWon data', data);
-    // console.log('bidderCode', data.bidderCode);
     processImpression(domainDisplay, "agent/prebid", slot);
   });
 
   pbjs.onEvent('adRenderFailed', function () {
-    console.log('prebid adRenderFailed');
+    showADS(slot, index);
   });
 }
 function renderAllAdUnits() {
