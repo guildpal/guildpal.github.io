@@ -400,6 +400,8 @@ function renderOne(winningBid) {
       iframe.frameBorder = '0'
       div.appendChild(iframe)
       var iframeDoc = iframe.contentWindow.document
+      iframeDoc.body.style.overflow = 'hidden'
+      iframeDoc.body.style.margin = '0px'
       pbjs.renderAd(iframeDoc, winningBid.adId)
     }
   }
