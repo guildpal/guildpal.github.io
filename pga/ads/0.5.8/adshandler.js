@@ -69,7 +69,7 @@ const pgaAdsConfigs = {
   },
   order: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
@@ -601,9 +601,9 @@ function showPGA(slot, index) {
   processImpression(domainDisplay, pgaSelfAdsSubject, slot);
 
   // show hypelab after 30 seconds as showPGA is called as fallback for now
-  setTimeout(() => {
-    showHypelab(slot);
-  }, 30000);
+  // setTimeout(() => {
+  //   showHypelab(slot);
+  // }, 30000);
 }
 
 //
