@@ -149,6 +149,7 @@ let pendingEvent = null;
 let pendingEventTarget = null;
 let clickTarget = null;
 let currentAd = null;
+let hypelabElementListenerAdded = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
@@ -500,46 +501,34 @@ function showCointraffic(slot, index) {
 function showHypelab(slot, index) {
   currentAd = ADS.hypelab;
 
-  const controller = new AbortController();
-  const {signal} = controller
+  let containerDiv = document.querySelector("div#pga-banner-ad");
+  containerDiv.innerHTML = "";
 
-  const existingBanner = document.querySelector("hype-banner")
-  if (existingBanner) {
-    controller.abort();
-    // existingBanner.removeEventListener("ready", readyEventHandler);
-    // existingBanner.removeEventListener("error", errorEventHandler);
-    existingBanner.remove();
-  };
+  let scriptElement = document.createElement("script");
+  scriptElement.defer = true;
+  scriptElement.src = "https://api.hypelab.com/v1/scripts/hp-sdk.js?v=0";
 
-  const containerDiv = document.querySelector("div#pga-banner-ad");
-  let scriptElement = document.getElementById("hypelab-sdk");
-  if (!scriptElement) {
-    scriptElement = document.createElement("script");
-    scriptElement.id = "hypelab-sdk";
-    scriptElement.defer = true;
-    scriptElement.src = "https://api.hypelab.com/v1/scripts/hp-sdk.js?v=0";
-    containerDiv.innerHTML = "";
-    containerDiv.appendChild(scriptElement);
-  }
+  containerDiv.appendChild(scriptElement);
 
+  // initialize after sdk is loaded
   scriptElement.onload = function () {
     HypeLab.initialize({
       environment: "production", // Replace with your environment
       propertySlug: "d001c21f78", // Replace with your property slug
     });
 
-    const bannerElement = document.createElement("hype-banner");
+    let bannerElement = document.createElement("hype-banner");
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
 
-    bannerElement.addEventListener("ready", readyEventHandler, {signal});
-    bannerElement.addEventListener("error", errorEventHandler, {signal});
-
-    function readyEventHandler() {
-      processImpression(domainDisplay, "agent/hypelab", slot);
-    }
-    function errorEventHandler() {
-      showPrebid(slot, index);
+    if (hypelabElementListenerAdded) {
+      bannerElement.addEventListener("ready", function () {
+        processImpression(domainDisplay, "agent/hypelab", slot);
+      });
+      bannerElement.addEventListener("error", function () {
+        showADS(slot, index);
+      });
+      hypelabElementListenerAdded = true;
     }
 
     containerDiv.appendChild(bannerElement);
