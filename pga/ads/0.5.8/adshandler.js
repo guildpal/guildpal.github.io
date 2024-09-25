@@ -128,7 +128,6 @@ let pendingEvent = null;
 let pendingEventTarget = null;
 let clickTarget = null;
 let currentAd = null;
-let hypelabElementListenerAdded = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
@@ -471,15 +470,15 @@ function showHypelab(slot, index) {
     bannerElement.id = "banner";
     bannerElement.setAttribute("placement", "a034aa49f6");
 
-    if (!hypelabElementListenerAdded) {
-      bannerElement.addEventListener("ready", function () {
-        processImpression(domainDisplay, "agent/hypelab", slot);
-      });
-      bannerElement.addEventListener("error", function () {
-        showADS(slot, index);
-      });
-      hypelabElementListenerAdded = true;
-    }
+    bannerElement.addEventListener("ready", function () {
+      // call processImpression where an actual impression occurs
+      processImpression(domainDisplay, "agent/hypelab", slot);
+    });
+
+    bannerElement.addEventListener("error", function () {
+      showADS(slot, index);
+      // showPGA(slot, index);
+    });
 
     containerDiv.appendChild(bannerElement);
   };
