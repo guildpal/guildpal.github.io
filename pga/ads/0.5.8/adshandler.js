@@ -446,10 +446,10 @@ function showPrebid(slot, index) {
   });
   pbjs.onEvent('bidRejected', (data) => {
     console.log('prebid adRenderFailed', data);
+    showADS();
   });
   pbjs.onEvent('adRenderFailed', (data) => {
     console.log("prebid bidRejected", data)
-    showADS();
   });
   pbjs.onEvent('bidTimeout', (data) => {
     console.log("prebid timeout", data)
