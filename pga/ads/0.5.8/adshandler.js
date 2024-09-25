@@ -99,7 +99,7 @@ const pgaAdsConfigs = {
   },
   guild: {
     rotation: false,
-    allocation: [ADS.prebid],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
   },
