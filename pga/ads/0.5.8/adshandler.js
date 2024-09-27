@@ -453,7 +453,7 @@ function showPrebid(slot, index) {
   });
   pbjs.onEvent("bidRejected", (data) => {
     console.log("prebid adRenderFailed", data);
-    showADS();
+    showPGA();
   });
   pbjs.onEvent("adRenderFailed", (data) => {
     console.log("prebid bidRejected", data);
