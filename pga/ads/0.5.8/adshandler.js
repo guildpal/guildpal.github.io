@@ -609,9 +609,9 @@ function showPGA(slot, index) {
   processImpression(domainDisplay, pgaSelfAdsSubject, slot);
 
   // show hypelab after 30 seconds as showPGA is called as fallback for now
-  // setTimeout(() => {
-  //   showHypelab(slot);
-  // }, 30000);
+  setTimeout(() => {
+    showHypelab(slot);
+  }, 30000);
 }
 
 //
