@@ -111,7 +111,7 @@ const pgaAdsConfigs = {
   },
 };
 
-const adsServer = "https://api-pixels.guildpal.com";
+const adsServer = "https://api-pixels.guildpal.work";
 
 const defaultPersonaAdUnitId = "d126cd27-d130-425e-a332-6b33a0b947b4"; // home
 const timeSecond = 1000;
