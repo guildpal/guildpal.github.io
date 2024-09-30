@@ -68,7 +68,7 @@ const pgaAdsConfigs = {
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   order: {
-    rotation: true,
+    rotation: false,
     allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
@@ -80,7 +80,7 @@ const pgaAdsConfigs = {
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
   timer: {
-    rotation: true,
+    rotation: false,
     allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
@@ -98,7 +98,7 @@ const pgaAdsConfigs = {
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
   guild: {
-    rotation: true,
+    rotation: false,
     allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
