@@ -68,8 +68,8 @@ const pgaAdsConfigs = {
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   order: {
-    rotation: false,
-    allocation: [ADS.pga],
+    rotation: true,
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
@@ -80,7 +80,7 @@ const pgaAdsConfigs = {
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
   timer: {
-    rotation: false,
+    rotation: true,
     allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
@@ -98,7 +98,7 @@ const pgaAdsConfigs = {
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
   guild: {
-    rotation: false,
+    rotation: true,
     allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
@@ -197,7 +197,7 @@ async function showAd(slot, index) {
     } else if (result.subject === ADS.persona) {
       showPersona(pgaAdConfig.personaUnitId, slot, index);
       return;
-    }
+    } 
   } catch (err) {
     console.error(err);
   }
@@ -425,10 +425,6 @@ function showPersona(adUnitId, slot, index) {
     processDeimpression(domainDisplay, "agent/persona", slot);
 
     showHypelab(slot, index);
-    // showPGA(slot, index);
-
-    //if (errorMessage === "daily limit reached") {}
-    // return;
   });
 
   processImpression(domainDisplay, "agent/persona", slot);
@@ -575,7 +571,6 @@ function showHypelab(slot, index) {
 
     bannerElement.addEventListener("error", function () {
       showPGA(slot, index);
-      // showPGA(slot, index);
     });
 
     containerDiv.appendChild(bannerElement);
@@ -783,7 +778,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: {path},
+      payload: { path },
     },
     "*"
   );
@@ -794,7 +789,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
@@ -805,7 +800,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
