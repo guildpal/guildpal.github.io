@@ -140,6 +140,7 @@ const prebidAdUnits = [
 
 let pgaAdConfig = {};
 let personaAdUnitId = defaultPersonaAdUnitId;
+let regionalPersonaAdUnitId = "9f741163-d0fd-4bed-9a84-f780d1677c5c";
 let slot = "home";
 let playerId = "";
 let pgaVersion = "";
@@ -197,7 +198,9 @@ async function showAd(slot, index) {
     } else if (result.subject === ADS.persona) {
       showPersona(pgaAdConfig.personaUnitId, slot, index);
       return;
-    } 
+    } else if (result.subject.includes("agent/persona-regional")) {
+      showPersonaRegional(regionalPersonaAdUnitId, slot, index, result.subject);
+    }
   } catch (err) {
     console.error(err);
   }
@@ -428,6 +431,38 @@ function showPersona(adUnitId, slot, index) {
   });
 
   processImpression(domainDisplay, "agent/persona", slot);
+}
+
+function showPersonaRegional(adUnitId, slot, index, subject) {
+  currentAd = ADS.persona;
+
+  let containerDiv = document.querySelector("div#pga-banner-ad");
+  containerDiv.innerHTML = "";
+
+  let adUnitConfig = {
+    adUnitId,
+    containerId: "pga-banner-ad",
+  };
+
+  const sdk = new PersonaAdSDK.PersonaAdSDK(PERSONA_SDK_CONFIG);
+  const adClient = sdk.getClient();
+  if (adClient === null) {
+    console.log("Persona error: adClient is null..");
+    return;
+  }
+
+  adClient.showBannerAd(adUnitConfig, (errorMessage) => {
+    console.log("Persona error:", errorMessage);
+    processDeimpression(domainDisplay, subject, slot);
+
+    // showHypelab(slot, index);
+  });
+
+  processImpression(domainDisplay, subject, slot);
+
+  setTimeout(() => {
+    showAd(slot, index);
+  }, 30000);
 }
 
 function showPrebid(slot, index) {
