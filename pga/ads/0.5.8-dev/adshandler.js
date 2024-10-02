@@ -63,7 +63,7 @@ const ADS = {
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: [ADS.lootrush],
+    allocation: [ADS.smartyads],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
@@ -715,7 +715,7 @@ function showSmartyAds(slot, index) {
   var adUnits = [
     {
       code: "pga-banner-ad",
-      placement_id: 4203,
+      placement_id: 4543,
       sizes: [320, 100],
       refreshable: true,
       refreshIntervalSec: 30,
