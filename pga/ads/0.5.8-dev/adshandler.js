@@ -198,7 +198,7 @@ async function showAd(slot, index) {
     } else if (result.subject === ADS.persona) {
       showPersona(pgaAdConfig.personaUnitId, slot, index);
       return;
-    } else if (result.subject.include("agent/persona-regional")) {
+    } else if (result.subject.includes("agent/persona-regional")) {
       showPersonaRegional(regionalPersonaAdUnitId, slot, index, result.subject);
     }
   } catch (err) {
