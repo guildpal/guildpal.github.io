@@ -200,6 +200,8 @@ async function showAd(slot, index) {
       return;
     } else if (result.subject.includes("agent/persona-regional")) {
       showPersonaRegional(regionalPersonaAdUnitId, slot, index, result.subject);
+    } else if (result.subject === ADS.hypelab) {
+      showHypelab(slot, index);
     }
   } catch (err) {
     console.error(err);
