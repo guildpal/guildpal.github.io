@@ -709,12 +709,12 @@ function showADS(slot, index) {
 function showSmartyAds(slot, index) {
   currentAd = ADS.smartyads;
 
-  const containerDiv = document.querySelector("div#pga-banner-ad");
+  const containerDiv = document.querySelector("div#block_4543");
   containerDiv.innerHTML = "";
 
   const adUnits = [
     {
-      code: "pga-banner-ad",
+      code: "block_4543",
       placement_id: 4543,
       ip: "192.168.1.1",
       gdpr: "1",
