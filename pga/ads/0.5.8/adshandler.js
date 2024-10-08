@@ -69,7 +69,7 @@ const pgaAdsConfigs = {
   },
   order: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.smartyads],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
@@ -710,8 +710,14 @@ function showSmartyAds(slot, index) {
   var adUnits = [
     {
       code: "pga-banner-ad",
-      placement_id: 4203,
-      sizes: [320, 100],
+      placement_id: 4543,
+      ip: "192.168.1.1",
+      gdpr: "1",
+      gdpr_consent:
+        "BOSSotLOSSotLAPABAENBc-AAAAgR7_______9______9uz_Gv_v_f__33e8__9v_l_7_-___u_-33d4-_1vX99yfm1-7ftr3t",
+      gpp: "DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN",
+      gpp_sid: "2",
+      coppa: "0",
       refreshable: true,
       refreshIntervalSec: 30,
     },
