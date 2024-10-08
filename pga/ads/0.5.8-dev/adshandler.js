@@ -709,14 +709,20 @@ function showADS(slot, index) {
 function showSmartyAds(slot, index) {
   currentAd = ADS.smartyads;
 
-  let containerDiv = document.querySelector("div#pga-banner-ad");
+  const containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
-  var adUnits = [
+  const adUnits = [
     {
       code: "pga-banner-ad",
       placement_id: 4543,
-      sizes: [320, 100],
+      ip: "192.168.1.1",
+      gdpr: "1",
+      gdpr_consent:
+        "BOSSotLOSSotLAPABAENBc-AAAAgR7_______9______9uz_Gv_v_f__33e8__9v_l_7_-___u_-33d4-_1vX99yfm1-7ftr3t",
+      gpp: "DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN",
+      gpp_sid: "2",
+      coppa: "0",
       refreshable: true,
       refreshIntervalSec: 30,
     },
