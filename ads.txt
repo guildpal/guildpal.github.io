@@ -10,3 +10,13 @@ richaudience.com, PJgvK4kTic, RESELLER
 motorik.io, 599, DIRECT
 videoheroes.tv, 212654, RESELLER, 064bc410192443d8
 Integralstream.com, 2, RESELLER
+152media.info,152M317,RESELLER
+amxrtb.com, 105199329, DIRECT
+appnexus.com, 12290, RESELLER
+lijit.com, 260380, RESELLER
+pubmatic.com, 158355, RESELLER
+indexexchange.com, 191503, RESELLER
+rubiconproject.com, 23844, RESELLER
+smartadserver.com, 3056, RESELLER
+rubiconproject.com, 17960, RESELLER
+openx.com, 559680764, RESELLER
