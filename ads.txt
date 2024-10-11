@@ -1,6 +1,5 @@
 google.com, pub-4863853734952101, DIRECT, f08c47fec0942fa0
 smartyads.com, 19771, DIRECT, fd2bde0ff2e62c5d
-conversantmedia.com, 100264, RESELLER, 03113cd04947736d
 loopme.com, 11426, RESELLER, 6c8d5f95897a5a3b
 adform.com, 2795, RESELLER
 pubmatic.com, 161970, RESELLER, 5d62403b186f2ace
