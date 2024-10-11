@@ -109,6 +109,12 @@ const pgaAdsConfigs = {
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
+  shopping: {
+    rotation: false,
+    allocation: [ADS.hypelab],
+    adRotationPeriod: 30,
+    personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
+  },
 };
 
 const adsServer = "https://api-pixels.guildpal.com";
@@ -826,7 +832,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: { path },
+      payload: {path},
     },
     "*"
   );
@@ -837,7 +843,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
@@ -848,7 +854,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
