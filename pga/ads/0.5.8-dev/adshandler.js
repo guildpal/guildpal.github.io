@@ -623,14 +623,16 @@ function showPGA(slot, index) {
   containerDiv.innerHTML = "";
 
   let anchorElement = document.createElement("a");
-  anchorElement.href = "https://pixels.guildpal.com/pga";
   anchorElement.target = "_blank";
 
   let imgElement = document.createElement("img");
   if (index % 2 === 0) {
-    imgElement.src = "./images/three-mins-pga-guide01.gif";
+    imgElement.src = "./images/tasking-racing-youtube.gif";
+    anchorElement.href =
+      "https://www.youtube.com/shorts/w0VHrrXANQY?feature=share";
   } else {
-    imgElement.src = "./images/three-mins-pga-guide02.gif";
+    imgElement.src = "./images/pga-youtube-banner.gif";
+    anchorElement.href = "https://www.youtube.com/shorts/Iq_wnkVyRQI";
   }
   imgElement.width = 320;
   imgElement.height = 100;
