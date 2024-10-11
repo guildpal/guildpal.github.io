@@ -625,8 +625,10 @@ function showPGA(slot, index) {
   let anchorElement = document.createElement("a");
   anchorElement.target = "_blank";
 
+  const randomNumber = Math.random();
+
   let imgElement = document.createElement("img");
-  if (index % 2 === 0) {
+  if (randomNumber < 0.5) {
     imgElement.src = "./images/tasking-racing-youtube.gif";
     anchorElement.href =
       "https://www.youtube.com/shorts/w0VHrrXANQY?feature=share";
