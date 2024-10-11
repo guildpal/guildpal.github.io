@@ -63,7 +63,7 @@ const ADS = {
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: [ADS.smartyads],
+    allocation: [ADS.showPGA],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
@@ -75,37 +75,37 @@ const pgaAdsConfigs = {
   },
   tasks: {
     rotation: false,
-    allocation: [ADS.smartyads],
+    allocation: [ADS.hypelab],
     adRotationPeriod: 30,
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
   timer: {
     rotation: false,
-    allocation: [ADS.smartyads],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
   },
   storage: {
     rotation: false,
-    allocation: [ADS.smartyads],
+    allocation: [ADS.hypelab],
     adRotationPeriod: 30,
     personaUnitId: "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4",
   },
   note: {
     rotation: false,
-    allocation: [ADS.smartyads],
+    allocation: [ADS.hypelab],
     adRotationPeriod: 30,
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
   guild: {
-    rotation: true,
-    allocation: [ADS.smartyads],
+    rotation: false,
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
   },
   market: {
     rotation: false,
-    allocation: [ADS.smartyads],
+    allocation: [ADS.hypelab],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
@@ -200,6 +200,8 @@ async function showAd(slot, index) {
       return;
     } else if (result.subject.includes("agent/persona-regional")) {
       showPersonaRegional(regionalPersonaAdUnitId, slot, index, result.subject);
+    } else if (result.subject === ADS.hypelab) {
+      showHypelab(slot, index);
     }
   } catch (err) {
     console.error(err);
@@ -428,10 +430,6 @@ function showPersona(adUnitId, slot, index) {
     processDeimpression(domainDisplay, "agent/persona", slot);
 
     showHypelab(slot, index);
-    // showPGA(slot, index);
-
-    //if (errorMessage === "daily limit reached") {}
-    // return;
   });
 
   processImpression(domainDisplay, "agent/persona", slot);
@@ -488,15 +486,13 @@ function showPrebid(slot, index) {
   });
   pbjs.onEvent("bidRejected", (data) => {
     console.log("prebid adRenderFailed", data);
-    showADS();
+    showPGA();
   });
   pbjs.onEvent("adRenderFailed", (data) => {
     console.log("prebid bidRejected", data);
-    showADS();
   });
   pbjs.onEvent("bidTimeout", (data) => {
     console.log("prebid timeout", data);
-    showADS();
   });
 
   pbjs.removeAdUnit();
@@ -611,8 +607,7 @@ function showHypelab(slot, index) {
     });
 
     bannerElement.addEventListener("error", function () {
-      showADS(slot, index);
-      // showPGA(slot, index);
+      showPGA(slot, index);
     });
 
     containerDiv.appendChild(bannerElement);
@@ -709,20 +704,21 @@ function showADS(slot, index) {
 function showSmartyAds(slot, index) {
   currentAd = ADS.smartyads;
 
-  const containerDiv = document.querySelector("div#block_4543");
+  let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
-  const adUnits = [
+  var adUnits = [
     {
-      code: "block_4543",
+      code: "pga-banner-ad",
       placement_id: 4543,
-      ip: "192.168.1.1",
-      gdpr: "1",
-      gdpr_consent:
-        "BOSSotLOSSotLAPABAENBc-AAAAgR7_______9______9uz_Gv_v_f__33e8__9v_l_7_-___u_-33d4-_1vX99yfm1-7ftr3t",
-      gpp: "DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN",
-      gpp_sid: "2",
-      coppa: "0",
+      sizes: [320, 100],
+      // ip: "192.168.1.1",
+      // gdpr: "1",
+      // gdpr_consent:
+      //   "BOSSotLOSSotLAPABAENBc-AAAAgR7_______9______9uz_Gv_v_f__33e8__9v_l_7_-___u_-33d4-_1vX99yfm1-7ftr3t",
+      // gpp: "DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN",
+      // gpp_sid: "2",
+      // coppa: "0",
       refreshable: true,
       refreshIntervalSec: 30,
     },
