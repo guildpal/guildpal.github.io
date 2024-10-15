@@ -633,7 +633,7 @@ function showPGA(slot, index) {
     anchorElement.href =
       "https://www.youtube.com/shorts/w0VHrrXANQY?feature=share";
   } else {
-    imgElement.src = "./images/pga-youtube-banner.gif";
+    imgElement.src = "./images/pga-buy-helper-banner.gif";
     anchorElement.href = "https://www.youtube.com/shorts/Iq_wnkVyRQI";
   }
   imgElement.width = 320;

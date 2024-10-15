@@ -630,15 +630,16 @@ function showPGA(slot, index) {
   let imgElement = document.createElement("img");
   if (randomNumber < 0.5) {
     imgElement.src = "./images/tasking-racing-youtube.gif";
+    imgElement.alt = "Task Racing YouTube Video Thumbnail"
     anchorElement.href =
       "https://www.youtube.com/shorts/w0VHrrXANQY?feature=share";
   } else {
-    imgElement.src = "./images/pga-youtube-banner.gif";
+    imgElement.src = "./images/pga-buy-helper-banner.gif";
+    imgElement.alt = "PGA Buy Helper Promotional Banner";
     anchorElement.href = "https://www.youtube.com/shorts/Iq_wnkVyRQI";
   }
   imgElement.width = 320;
   imgElement.height = 100;
-  imgElement.alt = "pixels.guildpal.com";
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
