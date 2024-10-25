@@ -635,13 +635,13 @@ function showPGA(slot, index) {
 
   let imgElement = document.createElement("img");
   if (randomNumber < 0.5) {
-    imgElement.src = "./images/tasking-racing-youtube.gif";
-    imgElement.alt = "Task Racing YouTube Video Thumbnail";
-    anchorElement.href = "https://www.youtube.com/shorts/8uY5RDstbRo";
+    imgElement.src = "./images/pga-task_chaos.gif";
+    imgElement.alt = "Let PGA save you!";
+    anchorElement.href = "https://youtu.be/WEx4VQdYv0c?si=WYkEHKyfyEhMCO9B";
   } else {
-    imgElement.src = "./images/pga-buy-helper-banner.gif";
-    imgElement.alt = "PGA Buy Helper Promotional Banner";
-    anchorElement.href = "https://www.youtube.com/shorts/bsRSL20-a5s";
+    imgElement.src = "./images/pga_advertise.gif";
+    imgElement.alt = "Request for Affiliate Ads in PGA";
+    anchorElement.href = "https://forms.gle/UrU9tcmwe3LF9qgN8";
   }
   imgElement.width = 320;
   imgElement.height = 100;
@@ -832,7 +832,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: { path },
+      payload: {path},
     },
     "*"
   );
@@ -843,7 +843,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
@@ -854,7 +854,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
