@@ -58,54 +58,55 @@ const ADS = {
   aads: "aads",
   lootrush: "lootrush",
   prebid: "prebid",
+  smaato: "smaato",
 };
 
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: [ADS.showPGA],
+    allocation: [ADS.smaato],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   order: {
     rotation: false,
-    allocation: [ADS.smartyads],
+    allocation: [ADS.smaato],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   tasks: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.smaato],
     adRotationPeriod: 30,
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
   timer: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.smaato],
     adRotationPeriod: 30,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
   },
   storage: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.smaato],
     adRotationPeriod: 30,
     personaUnitId: "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4",
   },
   note: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.smaato],
     adRotationPeriod: 30,
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
   guild: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.smaato],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
   },
   market: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.smaato],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
@@ -202,6 +203,8 @@ async function showAd(slot, index) {
       showPersonaRegional(regionalPersonaAdUnitId, slot, index, result.subject);
     } else if (result.subject === ADS.hypelab) {
       showHypelab(slot, index);
+    } else if (result.subject === ADS.smaato) {
+      showSmaato();
     }
   } catch (err) {
     console.error(err);
@@ -731,6 +734,47 @@ function showSmartyAds(slot, index) {
   // to-do: measure actual impressions
   // issue
   processImpression(domainDisplay, "agent/smartyads", slot);
+}
+
+function showSmaato(slot, index) {
+  currentAd = ADS.smaato;
+  const containerDiv = document.querySelector("div#pga-banner-ad");
+  containerDiv.innerHTML = "";
+
+  // Create and load Smaato script
+  const scriptElement = document.createElement("script");
+  scriptElement.defer = true;
+  scriptElement.src = "https://soma-assets.smaato.net/js/smaatoAdTag.js";
+  containerDiv.appendChild(scriptElement);
+
+  scriptElement.onload = function () {
+    const smaatoContainer = document.createElement("div");
+    smaatoContainer.id = "smt-138185351";
+    smaatoContainer.style.padding = "0px";
+    containerDiv.appendChild(smaatoContainer);
+  };
+
+  function callBackForSmaato(status) {
+    console.log("smaato status", status);
+    if (status === "SUCCESS") {
+    } else if (status === "ERROR") {
+    }
+  }
+
+  // Load Smaato ad
+  SomaJS.loadAd(
+    {
+      adDivId: "smt-138185351",
+      publisherId: 1100058058,
+      adSpaceId: 138185351,
+      format: "all",
+      formatstrict: true,
+      width: 320,
+      height: 100,
+      sync: false,
+    },
+    callBackForSmaato
+  );
 }
 
 // -----------------------------------------------------
