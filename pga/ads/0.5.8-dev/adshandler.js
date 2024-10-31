@@ -751,29 +751,29 @@ function showSmaato(slot, index) {
     smaatoContainer.id = "smt-138185351";
     smaatoContainer.style.padding = "0px";
     containerDiv.appendChild(smaatoContainer);
-  };
 
-  function callBackForSmaato(status) {
-    console.log("smaato status", status);
-    if (status === "SUCCESS") {
-    } else if (status === "ERROR") {
+    function callBackForSmaato(status) {
+      console.log("smaato status", status);
+      if (status === "SUCCESS") {
+      } else if (status === "ERROR") {
+      }
     }
-  }
 
-  // Load Smaato ad
-  SomaJS.loadAd(
-    {
-      adDivId: "smt-138185351",
-      publisherId: 1100058058,
-      adSpaceId: 138185351,
-      format: "all",
-      formatstrict: true,
-      width: 320,
-      height: 100,
-      sync: false,
-    },
-    callBackForSmaato
-  );
+    // Load Smaato ad
+    SomaJS.loadAd(
+      {
+        adDivId: "smt-138185351",
+        publisherId: 1100058058,
+        adSpaceId: 138185351,
+        format: "all",
+        formatstrict: true,
+        width: 320,
+        height: 100,
+        sync: false,
+      },
+      callBackForSmaato
+    );
+  };
 }
 
 // -----------------------------------------------------
