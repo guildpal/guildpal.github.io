@@ -203,9 +203,8 @@ async function showAd(slot, index) {
       showPersonaRegional(regionalPersonaAdUnitId, slot, index, result.subject);
     } else if (result.subject === ADS.hypelab) {
       showHypelab(slot, index);
-    } else if (result.subject === ADS.smaato) {
-      showSmaato();
     }
+    showSmaato();
   } catch (err) {
     console.error(err);
   }
