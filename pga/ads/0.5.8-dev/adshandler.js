@@ -204,7 +204,6 @@ async function showAd(slot, index) {
     } else if (result.subject === ADS.hypelab) {
       showHypelab(slot, index);
     }
-    showSmaato();
   } catch (err) {
     console.error(err);
   }
@@ -240,6 +239,9 @@ async function showAd(slot, index) {
         break;
       case ADS.prebid:
         showPrebid(slot, index);
+        break;
+      case ADS.smaato:
+        showSmaato(slot, index);
         break;
       default:
         showPGA(slot, index);
