@@ -750,7 +750,7 @@ function showSmaato(slot, index) {
 
   scriptElement.onload = function () {
     const smaatoContainer = document.createElement("div");
-    smaatoContainer.id = "smt-138185351";
+    smaatoContainer.id = "smt-138204349";
     smaatoContainer.style.padding = "0px";
     containerDiv.appendChild(smaatoContainer);
 
@@ -766,8 +766,8 @@ function showSmaato(slot, index) {
     // Load Smaato ad
     SomaJS.loadAd(
       {
-        adDivId: "smt-138185351",
-        publisherId: 1100042525,
+        adDivId: "smt-138204349",
+        publisherId: 1100058058,
         adSpaceId: 138204349,
         format: "display",
         // adSpaceId: 130626424,
