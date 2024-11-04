@@ -58,7 +58,6 @@ const ADS = {
   aads: "aads",
   lootrush: "lootrush",
   prebid: "prebid",
-  smaato: "smaato"
 };
 
 const pgaAdsConfigs = {
@@ -100,7 +99,7 @@ const pgaAdsConfigs = {
   },
   guild: {
     rotation: false,
-    allocation: [ADS.smaato],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
   },
@@ -245,9 +244,6 @@ async function showAd(slot, index) {
         break;
       case ADS.prebid:
         showPrebid(slot, index);
-        break;
-      case ADS.smaato:
-        showSmaato(slot, index)
         break;
       default:
         showPGA(slot, index);
@@ -741,47 +737,6 @@ function showSmartyAds(slot, index) {
   // to-do: measure actual impressions
   // issue
   processImpression(domainDisplay, "agent/smartyads", slot);
-}
-
-function showSmaato(slot, index) {
-  currentAd = ADS.smaato;
-  const containerDiv = document.querySelector("div#pga-banner-ad");
-  containerDiv.innerHTML = "";
-
-  // Create and load Smaato script
-  const scriptElement = document.createElement("script");
-  scriptElement.defer = true;
-  scriptElement.src = "https://soma-assets.smaato.net/js/smaatoAdTag.js";
-  document.body.appendChild(scriptElement);
-
-  scriptElement.onload = function () {
-    const smaatoContainer = document.createElement("div");
-    smaatoContainer.id = "smt-138185351";
-    smaatoContainer.style.padding = "0px";
-    containerDiv.appendChild(smaatoContainer);
-
-    function callBackForSmaato(status) {
-      console.log("smaato status", status);
-      if (status === "SUCCESS") {
-      } else if (status === "ERROR") {
-      }
-    }
-
-    // Load Smaato ad
-    SomaJS.loadAd(
-      {
-        adDivId: "smt-138185351",
-        publisherId: 1100058058,
-        adSpaceId: 138185351,
-        format: "display",
-        formatstrict: true,
-        width: 320,
-        height: 100,
-        sync: false,
-      },
-      callBackForSmaato
-    );
-  };
 }
 
 // -----------------------------------------------------
