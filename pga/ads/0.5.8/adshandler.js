@@ -58,7 +58,6 @@ const ADS = {
   aads: "aads",
   lootrush: "lootrush",
   prebid: "prebid",
-  smaato: "smaato",
 };
 
 const pgaAdsConfigs = {
@@ -100,7 +99,7 @@ const pgaAdsConfigs = {
   },
   guild: {
     rotation: false,
-    allocation: [ADS.smaato],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
   },
@@ -245,9 +244,6 @@ async function showAd(slot, index) {
         break;
       case ADS.prebid:
         showPrebid(slot, index);
-        break;
-      case ADS.smaato:
-        showSmaato(slot, index);
         break;
       default:
         showPGA(slot, index);
@@ -743,49 +739,6 @@ function showSmartyAds(slot, index) {
   processImpression(domainDisplay, "agent/smartyads", slot);
 }
 
-function showSmaato(slot, index) {
-  currentAd = ADS.smaato;
-  const containerDiv = document.querySelector("div#pga-banner-ad");
-  containerDiv.innerHTML = "";
-
-  // Create and load Smaato script
-  const scriptElement = document.createElement("script");
-  scriptElement.defer = true;
-  scriptElement.src = "https://soma-assets.smaato.net/js/smaatoAdTag.js";
-  containerDiv.appendChild(scriptElement);
-
-  scriptElement.onload = function () {
-    const smaatoContainer = document.createElement("div");
-    smaatoContainer.id = "smt-138204349";
-    smaatoContainer.style.padding = "0px";
-    containerDiv.appendChild(smaatoContainer);
-
-    function callBackForSmaato(status) {
-      console.log("smaato status", status);
-      if (status === "SUCCESS") {
-      } else if (status === "ERROR") {
-      }
-    }
-
-    // Load Smaato ad
-    SomaJS.loadAd(
-      {
-        adDivId: "smt-138204349",
-        publisherId: 1100058058,
-        adSpaceId: 138204349,
-        format: "display",
-        // adSpaceId: 130626424,
-        // format: "richmedia",
-        formatstrict: true,
-        width: 320,
-        height: 100,
-        sync: false,
-      },
-      callBackForSmaato
-    );
-  };
-}
-
 // -----------------------------------------------------
 // utils
 // -----------------------------------------------------
@@ -879,7 +832,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: { path },
+      payload: {path},
     },
     "*"
   );
@@ -890,7 +843,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
@@ -901,7 +854,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
