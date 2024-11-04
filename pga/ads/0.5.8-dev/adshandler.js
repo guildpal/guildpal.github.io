@@ -744,7 +744,7 @@ function showSmaato(slot, index) {
   const scriptElement = document.createElement("script");
   scriptElement.defer = true;
   scriptElement.src = "https://soma-assets.smaato.net/js/smaatoAdTag.js";
-  containerDiv.appendChild(scriptElement);
+  document.body.appendChild(scriptElement);
 
   scriptElement.onload = function () {
     const smaatoContainer = document.createElement("div");
