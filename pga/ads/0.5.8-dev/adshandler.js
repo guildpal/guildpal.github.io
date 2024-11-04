@@ -761,12 +761,14 @@ function showSmaato(slot, index) {
       }
     }
 
+    
+
     // Load Smaato ad
     SomaJS.loadAd(
       {
         adDivId: "smt-138185351",
         publisherId: 1100042525,
-        adSpaceId: 130635694,
+        adSpaceId: 138204349,
         format: "display",
         // adSpaceId: 130626424,
         // format: "richmedia",
