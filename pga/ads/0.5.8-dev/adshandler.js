@@ -763,9 +763,9 @@ function showSmaato(slot, index) {
     SomaJS.loadAd(
       {
         adDivId: "smt-138185351",
-        publisherId: 1100058058,
-        adSpaceId: 138185351,
-        format: "display",
+        publisherId: 1100042525,
+        adSpaceId: 130626424,
+        format: "richmedia",
         formatstrict: true,
         width: 320,
         height: 100,
