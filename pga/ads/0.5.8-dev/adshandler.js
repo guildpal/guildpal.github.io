@@ -618,7 +618,23 @@ function showHypelab(slot, index) {
   };
 }
 
-// pga
+const pgaBannerConfigs = [
+  {
+    src: "./images/pwa-banner1.gif",
+    alt: "PWA Banner 1",
+    href: "https://pixels.guildpal.com/",
+  },
+  {
+    src: "./images/pwa-banner2.gif",
+    alt: "PWA Banner 2",
+    href: "https://pixels.guildpal.com/",
+  },
+  {
+    src: "./images/pwa-banner3.gif",
+    alt: "PWA Banner 3",
+    href: "https://pixels.guildpal.com/",
+  },
+];
 
 function showPGA(slot, index) {
   currentAd = ADS.pga;
@@ -629,20 +645,16 @@ function showPGA(slot, index) {
   let anchorElement = document.createElement("a");
   anchorElement.target = "_blank";
 
-  const randomNumber = Math.random();
+  const randomIndex = Math.floor(Math.random() * pgaBannerConfigs.length);
+  const selectedBanner = pgaBannerConfigs[randomIndex];
 
-  let imgElement = document.createElement("img");
-  if (randomNumber < 0.5) {
-    imgElement.src = "./images/tasking-racing-youtube.gif";
-    anchorElement.href =
-      "https://www.youtube.com/shorts/w0VHrrXANQY?feature=share";
-  } else {
-    imgElement.src = "./images/pga-buy-helper-banner.gif";
-    anchorElement.href = "https://www.youtube.com/shorts/Iq_wnkVyRQI";
-  }
+  const imgElement = document.createElement("img");
+  imgElement.src = selectedBanner.src;
+  imgElement.alt = selectedBanner.alt;
   imgElement.width = 320;
   imgElement.height = 100;
-  imgElement.alt = "pixels.guildpal.com";
+
+  anchorElement.href = selectedBanner.href;
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
@@ -653,8 +665,6 @@ function showPGA(slot, index) {
     showHypelab(slot);
   }, 30000);
 }
-
-//
 
 function showLootRush(slot, index) {
   currentAd = ADS.lootrush;
