@@ -622,17 +622,17 @@ const pgaBannerConfigs = [
   {
     src: "./images/pwa-banner1.gif",
     alt: "PWA Banner 1",
-    href: "https://pixels.guildpal.com/",
+    href: "https://pixels.guildpal.com?popup=false",
   },
   {
     src: "./images/pwa-banner2.gif",
     alt: "PWA Banner 2",
-    href: "https://pixels.guildpal.com/",
+    href: "https://pixels.guildpal.com/market/raw-materials?popup=false",
   },
   {
     src: "./images/pwa-banner3.gif",
     alt: "PWA Banner 3",
-    href: "https://pixels.guildpal.com/",
+    href: "https://pixels.guildpal.com?popup=false",
   },
 ];
 
