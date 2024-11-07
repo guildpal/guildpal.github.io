@@ -777,7 +777,7 @@ function showSmaato(slot, index) {
         adDivId: "smt-138218268",
         publisherId: 1100058058,
         adSpaceId: 138218268,
-        format: "richmedia",
+        format: "display",
         formatstrict: true,
         width: 320,
         height: 50,
