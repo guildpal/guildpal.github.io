@@ -636,6 +636,11 @@ const pgaBannerConfigs = [
     alt: "PWA Banner 3",
     href: "https://pixels.guildpal.com?popup=false",
   },
+  {
+    src: "./images/follower-banner.gif",
+    alt: "PWA Banner 4",
+    href: "https://x.com/GuildPal/status/1854930696965332996",
+  },
 ];
 
 function showPGA(slot, index) {
@@ -842,7 +847,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: {path},
+      payload: { path },
     },
     "*"
   );
@@ -853,7 +858,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
@@ -864,7 +869,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
