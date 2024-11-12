@@ -760,7 +760,7 @@ function showSmaato(slot, index) {
 
   scriptElement.onload = function () {
     const smaatoContainer = document.createElement("div");
-    smaatoContainer.id = "smt-138218268";
+    smaatoContainer.id = "smaatoad";
     smaatoContainer.style.padding = "0px";
     containerDiv.appendChild(smaatoContainer);
 
