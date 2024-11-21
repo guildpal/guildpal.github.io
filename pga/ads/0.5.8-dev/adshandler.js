@@ -125,7 +125,6 @@ const timeSecond = 1000;
 const domainDisplay = "display";
 const domainAffiliate = "affiliate";
 const allAdsSubject = "ALL-ADS";
-const pgaSelfAdsSubject = "pga";
 const prebidAdUnits = [
   {
     code: "pga-banner-ad",
@@ -675,7 +674,7 @@ function showPGA(slot, index) {
 }
 
 function showPlotsFinance(slot, index) {
-  currentAd = ADS.pga;
+  currentAd = ADS.plotsfinance;
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
