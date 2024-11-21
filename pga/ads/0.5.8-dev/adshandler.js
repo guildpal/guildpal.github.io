@@ -250,7 +250,8 @@ async function showAd(slot, index) {
         showSmaato(slot, index);
         break;
       case ADS.plotsfinance:
-      showPlotsFinance(slot, index);
+        showPlotsFinance(slot, index);
+        break;
       default:
         showPGA(slot, index);
     }
