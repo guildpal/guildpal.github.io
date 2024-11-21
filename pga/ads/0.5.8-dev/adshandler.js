@@ -59,6 +59,7 @@ const ADS = {
   lootrush: "lootrush",
   prebid: "prebid",
   smaato: "smaato",
+  plotsfinance: "plotsfinance"
 };
 
 const pgaAdsConfigs = {
@@ -106,7 +107,7 @@ const pgaAdsConfigs = {
   },
   market: {
     rotation: false,
-    allocation: [ADS.pga],
+    allocation: [ADS.plotsfinance],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
@@ -120,6 +121,7 @@ const domainDisplay = "display";
 const domainAffiliate = "affiliate";
 const allAdsSubject = "ALL-ADS";
 const pgaSelfAdsSubject = "pga";
+const plotsFinanceAdsSubject = "plotsfinance";
 const prebidAdUnits = [
   {
     code: "pga-banner-ad",
@@ -664,6 +666,28 @@ function showPGA(slot, index) {
   setTimeout(() => {
     showHypelab(slot);
   }, 30000);
+}
+
+function showPlotsFinance() {
+  currentAd = ADS.pga;
+
+  let containerDiv = document.querySelector("div#pga-banner-ad");
+  containerDiv.innerHTML = "";
+
+  let anchorElement = document.createElement("a");
+  anchorElement.target = "_blank";
+
+  const imgElement = document.createElement("img");
+  imgElement.src = "https://promo.plots.finance/";
+  imgElement.alt = "plots finance";
+  imgElement.width = 320;
+  imgElement.height = 100;
+
+  anchorElement.href = selectedBanner.href;
+
+  anchorElement.appendChild(imgElement);
+  containerDiv.appendChild(anchorElement);
+  processImpression(domainDisplay, plotsFinanceAdsSubject, slot);
 }
 
 function showLootRush(slot, index) {
