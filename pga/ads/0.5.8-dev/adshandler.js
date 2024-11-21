@@ -59,7 +59,7 @@ const ADS = {
   lootrush: "lootrush",
   prebid: "prebid",
   smaato: "smaato",
-  plotsfinance: "plotsfinance",
+  plots: "plots",
 };
 
 const pgaAdsConfigs = {
@@ -209,6 +209,8 @@ async function showAd(slot, index) {
       showPersonaRegional(regionalPersonaAdUnitId, slot, index, result.subject);
     } else if (result.subject === ADS.hypelab) {
       showHypelab(slot, index);
+    } else if (result.sub === ADS.plots) {
+      showPlotsFinance(slot, index)
     }
   } catch (err) {
     console.error(err);
@@ -694,7 +696,7 @@ function showPlotsFinance(slot, index) {
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
-  processImpression(domainDisplay, plotsFinanceConfig.subject, slot);
+  processImpression(domainDisplay, "direct/plots", slot);
 }
 
 function showLootRush(slot, index) {
