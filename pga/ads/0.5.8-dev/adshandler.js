@@ -59,7 +59,7 @@ const ADS = {
   lootrush: "lootrush",
   prebid: "prebid",
   smaato: "smaato",
-  plotsfinance: "plotsfinance"
+  plotsfinance: "plotsfinance",
 };
 
 const pgaAdsConfigs = {
@@ -112,6 +112,11 @@ const pgaAdsConfigs = {
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
 };
+const plotsFinanceConfig = {
+  imgSrc: "./images/how_to_get_1000_plots.png",
+  href: "https://promo.plots.finance/",
+  subject: "plotsfinance",
+};
 
 const adsServer = "https://api-pixels.guildpal.com";
 
@@ -121,7 +126,6 @@ const domainDisplay = "display";
 const domainAffiliate = "affiliate";
 const allAdsSubject = "ALL-ADS";
 const pgaSelfAdsSubject = "pga";
-const plotsFinanceAdsSubject = "plotsfinance";
 const prebidAdUnits = [
   {
     code: "pga-banner-ad",
@@ -680,16 +684,16 @@ function showPlotsFinance(slot, index) {
   anchorElement.target = "_blank";
 
   const imgElement = document.createElement("img");
-  imgElement.src = "https://promo.plots.finance/";
+  imgElement.src = plotsFinanceConfig.imgSrc;
   imgElement.alt = "plots finance";
   imgElement.width = 320;
   imgElement.height = 100;
 
-  anchorElement.href = selectedBanner.href;
+  anchorElement.href = plotsFinanceConfig.href;
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
-  processImpression(domainDisplay, plotsFinanceAdsSubject, slot);
+  processImpression(domainDisplay, plotsFinanceConfig.subject, slot);
 }
 
 function showLootRush(slot, index) {
