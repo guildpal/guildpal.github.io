@@ -125,6 +125,7 @@ const timeSecond = 1000;
 const domainDisplay = "display";
 const domainAffiliate = "affiliate";
 const allAdsSubject = "ALL-ADS";
+const pgaSelfAdsSubject = "pga";
 const prebidAdUnits = [
   {
     code: "pga-banner-ad",
@@ -249,7 +250,7 @@ async function showAd(slot, index) {
         showSmaato(slot, index);
         break;
       case ADS.plotsfinance:
-        showPlotsFinance(slot, index);
+      showPlotsFinance(slot, index);
       default:
         showPGA(slot, index);
     }
