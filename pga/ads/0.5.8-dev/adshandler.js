@@ -245,6 +245,8 @@ async function showAd(slot, index) {
       case ADS.smaato:
         showSmaato(slot, index);
         break;
+      case ADS.plotsfinance:
+        showPlotsFinance(slot, index);
       default:
         showPGA(slot, index);
     }
@@ -668,7 +670,7 @@ function showPGA(slot, index) {
   }, 30000);
 }
 
-function showPlotsFinance() {
+function showPlotsFinance(slot, index) {
   currentAd = ADS.pga;
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
