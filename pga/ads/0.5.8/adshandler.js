@@ -285,7 +285,7 @@ async function processImpression(domain, subject, slot) {
       body: JSON.stringify({
         player_id: playerId,
         domain: domain, // "display",
-        subject: subject, // "RUBY_REWARDS",
+        subject: subject, 
         slot: `pga/${slot}`,
         ts: new Date().getTime(),
       }),
@@ -694,6 +694,10 @@ function showPlotsFinance(slot, index) {
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
   processImpression(domainDisplay, "direct/plots", slot);
+
+  setTimeout(() => {
+    showPlotsFinance(slot, index);
+  }, 30000);
 }
 
 function showLootRush(slot, index) {
