@@ -64,19 +64,19 @@ const ADS = {
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   order: {
     rotation: false,
-    allocation: [ADS.smartyads],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
   tasks: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
@@ -88,13 +88,13 @@ const pgaAdsConfigs = {
   },
   storage: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.smartyads],
     adRotationPeriod: 30,
     personaUnitId: "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4",
   },
   note: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
@@ -106,13 +106,13 @@ const pgaAdsConfigs = {
   },
   market: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
   shopping: {
     rotation: false,
-    allocation: [ADS.hypelab],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
@@ -441,7 +441,7 @@ function showPersona(adUnitId, slot, index) {
     console.log("Persona error:", errorMessage);
     processDeimpression(domainDisplay, "agent/persona", slot);
 
-    showHypelab(slot, index);
+    showAd(slot, index)
   });
 
   processImpression(domainDisplay, "agent/persona", slot);
@@ -619,7 +619,7 @@ function showHypelab(slot, index) {
     });
 
     bannerElement.addEventListener("error", function () {
-      showPGA(slot, index);
+      showAd(slot, index)
     });
 
     containerDiv.appendChild(bannerElement);
@@ -670,7 +670,7 @@ function showPGA(slot, index) {
 
   // show hypelab after 30 seconds as showPGA is called as fallback for now
   setTimeout(() => {
-    showHypelab(slot);
+    showAd(slot, index);
   }, 30000);
 }
 
@@ -696,8 +696,8 @@ function showPlotsFinance(slot, index) {
   processImpression(domainDisplay, "direct/plots", slot);
 
   setTimeout(() => {
-    showPlotsFinance(slot, index);
-  }, 30000);
+    showAd(slot, index)
+  }, 60000);
 }
 
 function showLootRush(slot, index) {
@@ -749,7 +749,7 @@ function showADS(slot, index) {
 
   // show hypelab after 30 seconds as showPGA is called as fallback for now
   setTimeout(() => {
-    showHypelab(slot);
+    showAd(slot, index)
   }, 30000);
 }
 
