@@ -192,7 +192,8 @@ async function showAd(slot, index) {
         "X-Atomrigs-Pga-Pid": playerId,
       },
     });
-    const result = await response.json();
+    // const result = await response.json();
+    const result = { subject: "plots" };
     console.log("requestad", result);
     if (result.subject === ADS.aads) {
       showADS(slot, index);
@@ -204,8 +205,8 @@ async function showAd(slot, index) {
       showPersonaRegional(regionalPersonaAdUnitId, slot, index, result.subject);
     } else if (result.subject === ADS.hypelab) {
       showHypelab(slot, index);
-    } else if (result.sub === ADS.plots) {
-      showPlotsFinance(slot, index)
+    } else if (result.subject === ADS.plots) {
+      showPlotsFinance(slot, index);
     }
   } catch (err) {
     console.error(err);
