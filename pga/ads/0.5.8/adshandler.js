@@ -58,6 +58,7 @@ const ADS = {
   aads: "aads",
   lootrush: "lootrush",
   prebid: "prebid",
+  plots: "plots",
 };
 
 const pgaAdsConfigs = {
@@ -208,6 +209,8 @@ async function showAd(slot, index) {
       showPersonaRegional(regionalPersonaAdUnitId, slot, index, result.subject);
     } else if (result.subject === ADS.hypelab) {
       showHypelab(slot, index);
+    } else if (result.sub === ADS.plots) {
+      showPlotsFinance(slot, index)
     }
   } catch (err) {
     console.error(err);
@@ -666,6 +669,28 @@ function showPGA(slot, index) {
   setTimeout(() => {
     showHypelab(slot);
   }, 30000);
+}
+
+function showPlotsFinance(slot, index) {
+  currentAd = ADS.plotsfinance;
+
+  let containerDiv = document.querySelector("div#pga-banner-ad");
+  containerDiv.innerHTML = "";
+
+  let anchorElement = document.createElement("a");
+  anchorElement.target = "_blank";
+
+  const imgElement = document.createElement("img");
+  imgElement.src = "./images/how_to_get_1000_plots.png";
+  imgElement.alt = "plots finance";
+  imgElement.width = 320;
+  imgElement.height = 100;
+
+  anchorElement.href = "https://promo.plots.finance/";
+
+  anchorElement.appendChild(imgElement);
+  containerDiv.appendChild(anchorElement);
+  processImpression(domainDisplay, "direct/plots", slot);
 }
 
 function showLootRush(slot, index) {

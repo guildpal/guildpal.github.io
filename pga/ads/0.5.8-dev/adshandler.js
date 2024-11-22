@@ -112,11 +112,6 @@ const pgaAdsConfigs = {
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
 };
-const plotsFinanceConfig = {
-  imgSrc: "./images/how_to_get_1000_plots.png",
-  href: "https://promo.plots.finance/",
-  subject: "plotsfinance",
-};
 
 const adsServer = "https://api-pixels.guildpal.com";
 
@@ -687,12 +682,12 @@ function showPlotsFinance(slot, index) {
   anchorElement.target = "_blank";
 
   const imgElement = document.createElement("img");
-  imgElement.src = plotsFinanceConfig.imgSrc;
+  imgElement.src = "./images/how_to_get_1000_plots.png";
   imgElement.alt = "plots finance";
   imgElement.width = 320;
   imgElement.height = 100;
 
-  anchorElement.href = plotsFinanceConfig.href;
+  anchorElement.href = "https://promo.plots.finance/";
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
