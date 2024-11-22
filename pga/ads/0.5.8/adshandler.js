@@ -211,7 +211,7 @@ async function showAd(slot, index) {
     } else if (result.subject === ADS.hypelab) {
       showHypelab(slot, index);
       return;
-    } else if (result.sub === ADS.plots) {
+    } else if (result.subject === ADS.plots) {
       showPlotsFinance(slot, index)
       return;
     }

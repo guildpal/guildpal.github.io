@@ -192,9 +192,7 @@ async function showAd(slot, index) {
         "X-Atomrigs-Pga-Pid": playerId,
       },
     });
-    // const result = await response.json();
-    const result = { subject: "plots" };
-    console.log("requestad", result);
+    const result = await response.json();
     if (result.subject === ADS.aads) {
       showADS(slot, index);
       return;
