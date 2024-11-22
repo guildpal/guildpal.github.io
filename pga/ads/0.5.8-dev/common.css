@@ -18,6 +18,10 @@ body {
 #pga-banner-ad {
   width: 100%;
   height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  bottom: 0px
 }
 
 #pga-banner-cover {
