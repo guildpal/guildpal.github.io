@@ -207,10 +207,13 @@ async function showAd(slot, index) {
       return;
     } else if (result.subject.includes("agent/persona-regional")) {
       showPersonaRegional(regionalPersonaAdUnitId, slot, index, result.subject);
+      return;
     } else if (result.subject === ADS.hypelab) {
       showHypelab(slot, index);
+      return;
     } else if (result.sub === ADS.plots) {
       showPlotsFinance(slot, index)
+      return;
     }
   } catch (err) {
     console.error(err);
