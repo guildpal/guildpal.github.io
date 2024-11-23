@@ -76,13 +76,13 @@ const pgaAdsConfigs = {
   },
   tasks: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
   timer: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
   },
@@ -106,7 +106,7 @@ const pgaAdsConfigs = {
   },
   market: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
