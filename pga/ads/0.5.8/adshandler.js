@@ -155,6 +155,7 @@ let pendingEvent = null;
 let pendingEventTarget = null;
 let clickTarget = null;
 let currentAd = null;
+let currentSubject = "";
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
@@ -359,7 +360,7 @@ async function processClick(e) {
       body: JSON.stringify({
         player_id: playerId,
         domain: "display",
-        subject: "RUBY_REWARDS",
+        subject: currentSubject || "RUBY_REWARDS",
         slot: `pga/${slot}`,
         ts: new Date().getTime(),
       }),
@@ -421,6 +422,7 @@ const PERSONA_SDK_CONFIG = {
 
 function showPersona(adUnitId, slot, index) {
   currentAd = ADS.persona;
+  currentSubject = "agent/persona"
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -439,16 +441,17 @@ function showPersona(adUnitId, slot, index) {
 
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
     console.log("Persona error:", errorMessage);
-    processDeimpression(domainDisplay, "agent/persona", slot);
+    processDeimpression(domainDisplay, currentSubject, slot);
 
     showAd(slot, index)
   });
 
-  processImpression(domainDisplay, "agent/persona", slot);
+  processImpression(domainDisplay, currentSubject, slot);
 }
 
 function showPersonaRegional(adUnitId, slot, index, subject) {
   currentAd = ADS.persona;
+  currentSubject = subject;
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -481,6 +484,7 @@ function showPersonaRegional(adUnitId, slot, index, subject) {
 
 function showPrebid(slot, index) {
   currentAd = ADS.prebid;
+  currentSubject = "agent/prebid"
 
   const containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -494,7 +498,7 @@ function showPrebid(slot, index) {
         data.cpm +
         " CPM"
     );
-    processImpression(domainDisplay, "agent/prebid", slot);
+    processImpression(domainDisplay, currentSubject, slot);
   });
   pbjs.onEvent("bidRejected", (data) => {
     console.log("prebid adRenderFailed", data);
@@ -559,6 +563,7 @@ function renderOne(winningBid) {
 
 function showCointraffic(slot, index) {
   currentAd = ADS.cointraffic;
+  currentSubject = "agent/cointraffic"
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -576,7 +581,7 @@ function showCointraffic(slot, index) {
 
   // to-do: measure actual impressions
   // issue
-  processImpression(domainDisplay, "agent/cointraffic", slot);
+  processImpression(domainDisplay, currentSubject, slot);
 
   // if (window['ctbkz3FU91fH']) {
   //   window['ctbkz3FU91fH'].reload();
@@ -592,6 +597,7 @@ function showCointraffic(slot, index) {
 
 function showHypelab(slot, index) {
   currentAd = ADS.hypelab;
+  currentSubject = "agent/hypelab"
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -615,7 +621,7 @@ function showHypelab(slot, index) {
 
     bannerElement.addEventListener("ready", function () {
       // call processImpression where an actual impression occurs
-      processImpression(domainDisplay, "agent/hypelab", slot);
+      processImpression(domainDisplay, currentSubject, slot);
     });
 
     bannerElement.addEventListener("error", function () {
@@ -646,6 +652,7 @@ const pgaBannerConfigs = [
 
 function showPGA(slot, index) {
   currentAd = ADS.pga;
+  currentSubject = pgaSelfAdsSubject;
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -676,6 +683,7 @@ function showPGA(slot, index) {
 
 function showPlotsFinance(slot, index) {
   currentAd = ADS.plotsfinance;
+  currentSubject = "direct/plots";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -693,7 +701,7 @@ function showPlotsFinance(slot, index) {
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
-  processImpression(domainDisplay, "direct/plots", slot);
+  processImpression(domainDisplay, currentSubject, slot);
 
   setTimeout(() => {
     showAd(slot, index)
@@ -702,6 +710,7 @@ function showPlotsFinance(slot, index) {
 
 function showLootRush(slot, index) {
   currentAd = ADS.lootrush;
+  currentSubject = "affiliate/lootrush";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -720,13 +729,14 @@ function showLootRush(slot, index) {
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
-  processImpression(domainDisplay, "affiliate/lootrush", slot);
+  processImpression(domainDisplay, currentSubject, slot);
 }
 
 // ads
 
 function showADS(slot, index) {
   currentAd = ADS.aads;
+  currentSubject = "agent/aads"
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -745,7 +755,7 @@ function showADS(slot, index) {
 
   // to-do: measure actual impressions
   // issue
-  processImpression(domainDisplay, "agent/aads", slot);
+  processImpression(domainDisplay, currentSubject, slot);
 
   // show hypelab after 30 seconds as showPGA is called as fallback for now
   setTimeout(() => {
@@ -755,6 +765,7 @@ function showADS(slot, index) {
 
 function showSmartyAds(slot, index) {
   currentAd = ADS.smartyads;
+  currentSubject = "agent/smartyads"
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -778,7 +789,7 @@ function showSmartyAds(slot, index) {
   smarty.buildUnits(adUnits);
   // to-do: measure actual impressions
   // issue
-  processImpression(domainDisplay, "agent/smartyads", slot);
+  processImpression(domainDisplay, currentSubject, slot);
 }
 
 // -----------------------------------------------------
