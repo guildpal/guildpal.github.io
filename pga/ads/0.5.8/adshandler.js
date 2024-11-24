@@ -252,6 +252,9 @@ async function showAd(slot, index) {
       case ADS.prebid:
         showPrebid(slot, index);
         break;
+      case ADS.plots:
+        showPlotsFinance(slot, index);
+        break;
       default:
         showPGA(slot, index);
     }
