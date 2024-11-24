@@ -82,8 +82,8 @@ const pgaAdsConfigs = {
   },
   timer: {
     rotation: false,
-    allocation: [ADS.pga],
-    adRotationPeriod: 30,
+    allocation: [ADS.plots],
+    adRotationPeriod: 60,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
   },
   storage: {
@@ -213,7 +213,7 @@ async function showAd(slot, index) {
       showHypelab(slot, index);
       return;
     } else if (result.subject === ADS.plots) {
-      showPlotsFinance(slot, index)
+      showPlotsFinance(slot, index);
       return;
     }
   } catch (err) {
@@ -286,7 +286,7 @@ async function processImpression(domain, subject, slot) {
       body: JSON.stringify({
         player_id: playerId,
         domain: domain, // "display",
-        subject: subject, 
+        subject: subject,
         slot: `pga/${slot}`,
         ts: new Date().getTime(),
       }),
@@ -422,7 +422,7 @@ const PERSONA_SDK_CONFIG = {
 
 function showPersona(adUnitId, slot, index) {
   currentAd = ADS.persona;
-  currentSubject = "agent/persona"
+  currentSubject = "agent/persona";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -443,7 +443,7 @@ function showPersona(adUnitId, slot, index) {
     console.log("Persona error:", errorMessage);
     processDeimpression(domainDisplay, currentSubject, slot);
 
-    showAd(slot, index)
+    showAd(slot, index);
   });
 
   processImpression(domainDisplay, currentSubject, slot);
@@ -484,7 +484,7 @@ function showPersonaRegional(adUnitId, slot, index, subject) {
 
 function showPrebid(slot, index) {
   currentAd = ADS.prebid;
-  currentSubject = "agent/prebid"
+  currentSubject = "agent/prebid";
 
   const containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -563,7 +563,7 @@ function renderOne(winningBid) {
 
 function showCointraffic(slot, index) {
   currentAd = ADS.cointraffic;
-  currentSubject = "agent/cointraffic"
+  currentSubject = "agent/cointraffic";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -597,7 +597,7 @@ function showCointraffic(slot, index) {
 
 function showHypelab(slot, index) {
   currentAd = ADS.hypelab;
-  currentSubject = "agent/hypelab"
+  currentSubject = "agent/hypelab";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -625,7 +625,7 @@ function showHypelab(slot, index) {
     });
 
     bannerElement.addEventListener("error", function () {
-      showAd(slot, index)
+      showAd(slot, index);
     });
 
     containerDiv.appendChild(bannerElement);
@@ -704,7 +704,7 @@ function showPlotsFinance(slot, index) {
   processImpression(domainDisplay, currentSubject, slot);
 
   setTimeout(() => {
-    showAd(slot, index)
+    showAd(slot, index);
   }, 60000);
 }
 
@@ -736,7 +736,7 @@ function showLootRush(slot, index) {
 
 function showADS(slot, index) {
   currentAd = ADS.aads;
-  currentSubject = "agent/aads"
+  currentSubject = "agent/aads";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -759,13 +759,13 @@ function showADS(slot, index) {
 
   // show hypelab after 30 seconds as showPGA is called as fallback for now
   setTimeout(() => {
-    showAd(slot, index)
+    showAd(slot, index);
   }, 30000);
 }
 
 function showSmartyAds(slot, index) {
   currentAd = ADS.smartyads;
-  currentSubject = "agent/smartyads"
+  currentSubject = "agent/smartyads";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -885,7 +885,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: { path },
+      payload: {path},
     },
     "*"
   );
@@ -896,7 +896,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
@@ -907,7 +907,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
