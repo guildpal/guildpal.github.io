@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (compareSemver(pgaVersion, "0.5.8") >= 0) {
     clickTarget = document.querySelector("#pga-banner-ad");
-    clickTarget?.addEventListener("click", processClick);
+    clickTarget?.addEventListener("click", processClick, { capture: true });
   }
 
   showAd(slot, index);
@@ -406,11 +406,11 @@ async function showResult(message, duration, success) {
 
 function dispatchPendingEvent() {
   if (pendingEventTarget && pendingEvent) {
-    clickTarget?.removeEventListener("click", processClick);
+    clickTarget?.removeEventListener("click", processClick, { capture: true });
     pendingEventTarget.dispatchEvent(pendingEvent);
     pendingEventTarget = null;
     pendingEvent = null;
-    clickTarget?.addEventListener("click", processClick);
+    clickTarget?.addEventListener("click", processClick, { capture: true });
   }
 }
 
