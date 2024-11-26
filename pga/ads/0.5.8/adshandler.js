@@ -653,6 +653,19 @@ const pgaBannerConfigs = [
   },
 ];
 
+const plotsBannerConfigs = [
+  {
+    src: "./images/plots-1.png",
+    alt: "Plots Banner 1",
+    href: "https://promo.plots.finance/",
+  },
+  {
+    src: "./images/plots-2.png",
+    alt: "Plots Banner 2",
+    href: "https://promo.plots.finance/",
+  },
+];
+
 function showPGA(slot, index) {
   currentAd = ADS.pga;
   currentSubject = pgaSelfAdsSubject;
@@ -694,13 +707,16 @@ function showPlotsFinance(slot, index) {
   let anchorElement = document.createElement("a");
   anchorElement.target = "_blank";
 
+  const randomIndex = Math.floor(Math.random() * plotsBannerConfigs.length);
+  const selectedBanner = plotsBannerConfigs[randomIndex];
+
   const imgElement = document.createElement("img");
-  imgElement.src = "./images/how_to_get_1000_plots.png";
-  imgElement.alt = "plots finance";
+  imgElement.src = selectedBanner.src
+  imgElement.alt = selectedBanner.alt;
   imgElement.width = 320;
   imgElement.height = 100;
 
-  anchorElement.href = "https://promo.plots.finance/";
+  anchorElement.href = selectedBanner.href;
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
