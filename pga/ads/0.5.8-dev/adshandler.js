@@ -58,7 +58,6 @@ const ADS = {
   aads: "aads",
   lootrush: "lootrush",
   prebid: "prebid",
-  smaato: "smaato",
   plots: "plots",
 };
 
@@ -77,14 +76,14 @@ const pgaAdsConfigs = {
   },
   tasks: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.plots],
     adRotationPeriod: 30,
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
   timer: {
     rotation: false,
-    allocation: [ADS.cointraffic],
-    adRotationPeriod: 30,
+    allocation: [ADS.plots],
+    adRotationPeriod: 60,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
   },
   storage: {
@@ -107,7 +106,7 @@ const pgaAdsConfigs = {
   },
   market: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
@@ -156,10 +155,10 @@ let pendingEvent = null;
 let pendingEventTarget = null;
 let clickTarget = null;
 let currentAd = null;
+let currentSubject = "";
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
-  console.log("search:", search);
 
   const searchParams = new URLSearchParams(search);
   const index = Number(searchParams.get("index")) || 0;
@@ -251,10 +250,7 @@ async function showAd(slot, index) {
       case ADS.prebid:
         showPrebid(slot, index);
         break;
-      case ADS.smaato:
-        showSmaato(slot, index);
-        break;
-      case ADS.plotsfinance:
+      case ADS.plots:
         showPlotsFinance(slot, index);
         break;
       default:
@@ -291,13 +287,12 @@ async function processImpression(domain, subject, slot) {
       body: JSON.stringify({
         player_id: playerId,
         domain: domain, // "display",
-        subject: subject, // "RUBY_REWARDS",
+        subject: subject,
         slot: `pga/${slot}`,
         ts: new Date().getTime(),
       }),
     });
     const result = await response.json();
-    console.log("processImpression", result);
   } catch (err) {
     console.error(err);
   }
@@ -322,7 +317,6 @@ async function processDeimpression(domain, subject, slot) {
       }),
     });
     const result = await response.json();
-    console.log("processDeimpression", result);
   } catch (err) {
     console.error(err);
   }
@@ -342,7 +336,6 @@ function isBannerLoaded() {
 async function processClick(e) {
   if (!isBannerLoaded()) {
     e.preventDefault();
-    console.log("no ads");
     return;
   }
 
@@ -365,7 +358,7 @@ async function processClick(e) {
       body: JSON.stringify({
         player_id: playerId,
         domain: "display",
-        subject: "RUBY_REWARDS",
+        subject: currentSubject || "RUBY_REWARDS",
         slot: `pga/${slot}`,
         ts: new Date().getTime(),
       }),
@@ -406,11 +399,11 @@ async function showResult(message, duration, success) {
 
 function dispatchPendingEvent() {
   if (pendingEventTarget && pendingEvent) {
-    clickTarget?.removeEventListener("click", processClick, { capture: true });
+    clickTarget?.removeEventListener("click", processClick);
     pendingEventTarget.dispatchEvent(pendingEvent);
     pendingEventTarget = null;
     pendingEvent = null;
-    clickTarget?.addEventListener("click", processClick, { capture: true });
+    clickTarget?.addEventListener("click", processClick);
   }
 }
 
@@ -427,6 +420,7 @@ const PERSONA_SDK_CONFIG = {
 
 function showPersona(adUnitId, slot, index) {
   currentAd = ADS.persona;
+  currentSubject = "agent/persona";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -439,22 +433,21 @@ function showPersona(adUnitId, slot, index) {
   const sdk = new PersonaAdSDK.PersonaAdSDK(PERSONA_SDK_CONFIG);
   const adClient = sdk.getClient();
   if (adClient === null) {
-    console.log("Persona error: adClient is null..");
     return;
   }
 
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
-    console.log("Persona error:", errorMessage);
-    processDeimpression(domainDisplay, "agent/persona", slot);
+    processDeimpression(domainDisplay, currentSubject, slot);
 
-    showHypelab(slot, index);
+    showAd(slot, index);
   });
 
-  processImpression(domainDisplay, "agent/persona", slot);
+  processImpression(domainDisplay, currentSubject, slot);
 }
 
 function showPersonaRegional(adUnitId, slot, index, subject) {
   currentAd = ADS.persona;
+  currentSubject = subject;
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -467,12 +460,10 @@ function showPersonaRegional(adUnitId, slot, index, subject) {
   const sdk = new PersonaAdSDK.PersonaAdSDK(PERSONA_SDK_CONFIG);
   const adClient = sdk.getClient();
   if (adClient === null) {
-    console.log("Persona error: adClient is null..");
     return;
   }
 
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
-    console.log("Persona error:", errorMessage);
     processDeimpression(domainDisplay, subject, slot);
 
     // showHypelab(slot, index);
@@ -487,30 +478,20 @@ function showPersonaRegional(adUnitId, slot, index, subject) {
 
 function showPrebid(slot, index) {
   currentAd = ADS.prebid;
+  currentSubject = "agent/prebid";
 
   const containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
   pbjs.onEvent("bidWon", (data) => {
-    console.log(
-      data.bidderCode +
-        " won the ad server auction for ad unit " +
-        data.adUnitCode +
-        " at " +
-        data.cpm +
-        " CPM"
-    );
-    processImpression(domainDisplay, "agent/prebid", slot);
+    processImpression(domainDisplay, currentSubject, slot);
   });
   pbjs.onEvent("bidRejected", (data) => {
-    console.log("prebid adRenderFailed", data);
     showPGA();
   });
   pbjs.onEvent("adRenderFailed", (data) => {
-    console.log("prebid bidRejected", data);
   });
   pbjs.onEvent("bidTimeout", (data) => {
-    console.log("prebid timeout", data);
   });
 
   pbjs.removeAdUnit();
@@ -565,6 +546,7 @@ function renderOne(winningBid) {
 
 function showCointraffic(slot, index) {
   currentAd = ADS.cointraffic;
+  currentSubject = "agent/cointraffic";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -582,7 +564,7 @@ function showCointraffic(slot, index) {
 
   // to-do: measure actual impressions
   // issue
-  processImpression(domainDisplay, "agent/cointraffic", slot);
+  processImpression(domainDisplay, currentSubject, slot);
 
   // if (window['ctbkz3FU91fH']) {
   //   window['ctbkz3FU91fH'].reload();
@@ -598,6 +580,7 @@ function showCointraffic(slot, index) {
 
 function showHypelab(slot, index) {
   currentAd = ADS.hypelab;
+  currentSubject = "agent/hypelab";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -621,11 +604,11 @@ function showHypelab(slot, index) {
 
     bannerElement.addEventListener("ready", function () {
       // call processImpression where an actual impression occurs
-      processImpression(domainDisplay, "agent/hypelab", slot);
+      processImpression(domainDisplay, currentSubject, slot);
     });
 
     bannerElement.addEventListener("error", function () {
-      showPGA(slot, index);
+      showAd(slot, index);
     });
 
     containerDiv.appendChild(bannerElement);
@@ -650,8 +633,22 @@ const pgaBannerConfigs = [
   },
 ];
 
+const plotsBannerConfigs = [
+  {
+    src: "./images/plots-1.png",
+    alt: "Plots Banner 1",
+    href: "https://promo.plots.finance/",
+  },
+  {
+    src: "./images/plots-2.png",
+    alt: "Plots Banner 2",
+    href: "https://promo.plots.finance/",
+  },
+];
+
 function showPGA(slot, index) {
   currentAd = ADS.pga;
+  currentSubject = pgaSelfAdsSubject;
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -676,12 +673,13 @@ function showPGA(slot, index) {
 
   // show hypelab after 30 seconds as showPGA is called as fallback for now
   setTimeout(() => {
-    showHypelab(slot);
+    showAd(slot, index);
   }, 30000);
 }
 
 function showPlotsFinance(slot, index) {
   currentAd = ADS.plotsfinance;
+  currentSubject = "direct/plots";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -689,21 +687,29 @@ function showPlotsFinance(slot, index) {
   let anchorElement = document.createElement("a");
   anchorElement.target = "_blank";
 
+  const randomIndex = Math.floor(Math.random() * plotsBannerConfigs.length);
+  const selectedBanner = plotsBannerConfigs[randomIndex];
+
   const imgElement = document.createElement("img");
-  imgElement.src = "./images/how_to_get_1000_plots.png";
-  imgElement.alt = "plots finance";
+  imgElement.src = selectedBanner.src
+  imgElement.alt = selectedBanner.alt;
   imgElement.width = 320;
   imgElement.height = 100;
 
-  anchorElement.href = "https://promo.plots.finance/";
+  anchorElement.href = selectedBanner.href;
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
-  processImpression(domainDisplay, "direct/plots", slot);
+  processImpression(domainDisplay, currentSubject, slot);
+
+  setTimeout(() => {
+    showAd(slot, index);
+  }, 60000);
 }
 
 function showLootRush(slot, index) {
   currentAd = ADS.lootrush;
+  currentSubject = "affiliate/lootrush";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -722,13 +728,14 @@ function showLootRush(slot, index) {
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
-  processImpression(domainDisplay, "affiliate/lootrush", slot);
+  processImpression(domainDisplay, currentSubject, slot);
 }
 
 // ads
 
 function showADS(slot, index) {
   currentAd = ADS.aads;
+  currentSubject = "agent/aads";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -747,16 +754,17 @@ function showADS(slot, index) {
 
   // to-do: measure actual impressions
   // issue
-  processImpression(domainDisplay, "agent/aads", slot);
+  processImpression(domainDisplay, currentSubject, slot);
 
   // show hypelab after 30 seconds as showPGA is called as fallback for now
   setTimeout(() => {
-    showHypelab(slot);
+    showAd(slot, index);
   }, 30000);
 }
 
 function showSmartyAds(slot, index) {
   currentAd = ADS.smartyads;
+  currentSubject = "agent/smartyads";
 
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
@@ -780,48 +788,7 @@ function showSmartyAds(slot, index) {
   smarty.buildUnits(adUnits);
   // to-do: measure actual impressions
   // issue
-  processImpression(domainDisplay, "agent/smartyads", slot);
-}
-
-function showSmaato(slot, index) {
-  currentAd = ADS.smaato;
-  const containerDiv = document.querySelector("div#pga-banner-ad");
-  containerDiv.innerHTML = "";
-
-  // Create and load Smaato script
-  const scriptElement = document.createElement("script");
-  scriptElement.defer = true;
-  scriptElement.src = "https://soma-assets.smaato.net/js/smaatoAdTag.js";
-  containerDiv.appendChild(scriptElement);
-
-  scriptElement.onload = function () {
-    const smaatoContainer = document.createElement("div");
-    smaatoContainer.id = "smt-138218268";
-    smaatoContainer.style.padding = "0px";
-    containerDiv.appendChild(smaatoContainer);
-
-    function callBackForSmaato(status) {
-      console.log("smaato status", status);
-      if (status === "SUCCESS") {
-      } else if (status === "ERROR") {
-      }
-    }
-
-    // Load Smaato ad
-    SomaJS.loadAd(
-      {
-        adDivId: "smt-138218268",
-        publisherId: 1100058058,
-        adSpaceId: 138218268,
-        format: "display",
-        formatstrict: true,
-        width: 320,
-        height: 50,
-        sync: false,
-      },
-      callBackForSmaato
-    );
-  };
+  processImpression(domainDisplay, currentSubject, slot);
 }
 
 // -----------------------------------------------------
@@ -917,7 +884,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: { path },
+      payload: {path},
     },
     "*"
   );
@@ -928,7 +895,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
@@ -939,7 +906,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: { type: success ? "success" : "warning", message, duration },
+      payload: {type: success ? "success" : "warning", message, duration},
     },
     "*"
   );
