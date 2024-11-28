@@ -337,10 +337,10 @@ function isBannerLoaded() {
 }
 
 async function processClick(e) {
-  if (!isBannerLoaded()) {
-    e.preventDefault();
-    return;
-  }
+  // if (!isBannerLoaded()) {
+  //   e.preventDefault();
+  //   return;
+  // }
 
   // console.log("event", e);
   // pendingEvent = clonePointerEvent(e);
@@ -492,10 +492,8 @@ function showPrebid(slot, index) {
   pbjs.onEvent("bidRejected", (data) => {
     showPGA();
   });
-  pbjs.onEvent("adRenderFailed", (data) => {
-  });
-  pbjs.onEvent("bidTimeout", (data) => {
-  });
+  pbjs.onEvent("adRenderFailed", (data) => {});
+  pbjs.onEvent("bidTimeout", (data) => {});
 
   pbjs.removeAdUnit();
 
@@ -562,6 +560,28 @@ function showCointraffic(slot, index) {
   scriptElement.src =
     "https://appsha-prm.ctengine.io/js/script.js?wkey=bkz3FU91fH";
 
+  // Note: Cointraffic ad clicks cannot be captured by global event listeners
+  // We use a wrapper div with absolute positioning as a workaround to capture clicks
+  const existingWrapper = document.getElementById("cointraffic-wrapper");
+  if (existingWrapper) {
+    existingWrapper.removeEventListener("click", processClick);
+    existingWrapper.parentElement?.removeChild(existingWrapper);
+  }
+
+  const wrapperDiv = document.createElement("div");
+  wrapperDiv.id = "cointraffic-wrapper";
+  wrapperDiv.style.cssText = `
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    `;
+  wrapperDiv.addEventListener("click", (e) => {
+    processClick(e);
+  });
+
+  containerDiv.appendChild(wrapperDiv);
   containerDiv.appendChild(spanElement);
   containerDiv.appendChild(scriptElement);
 
@@ -694,7 +714,7 @@ function showPlotsFinance(slot, index) {
   const selectedBanner = plotsBannerConfigs[randomIndex];
 
   const imgElement = document.createElement("img");
-  imgElement.src = selectedBanner.src
+  imgElement.src = selectedBanner.src;
   imgElement.alt = selectedBanner.alt;
   imgElement.width = 320;
   imgElement.height = 100;
@@ -887,7 +907,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: {path},
+      payload: { path },
     },
     "*"
   );
@@ -898,7 +918,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
@@ -909,7 +929,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
