@@ -159,7 +159,6 @@ let currentSubject = "";
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = removeTabParameterFromUrl(window.location.search);
-  console.log("search:", search);
 
   const searchParams = new URLSearchParams(search);
   const index = Number(searchParams.get("index")) || 0;
@@ -199,7 +198,6 @@ async function showAd(slot, index) {
       },
     });
     const result = await response.json();
-    console.log("requestad", result);
     if (result.subject === ADS.aads) {
       showADS(slot, index);
       return;
@@ -295,7 +293,6 @@ async function processImpression(domain, subject, slot) {
       }),
     });
     const result = await response.json();
-    console.log("processImpression", result);
   } catch (err) {
     console.error(err);
   }
@@ -320,7 +317,6 @@ async function processDeimpression(domain, subject, slot) {
       }),
     });
     const result = await response.json();
-    console.log("processDeimpression", result);
   } catch (err) {
     console.error(err);
   }
@@ -340,7 +336,6 @@ function isBannerLoaded() {
 async function processClick(e) {
   if (!isBannerLoaded()) {
     e.preventDefault();
-    console.log("no ads");
     return;
   }
 
@@ -438,12 +433,10 @@ function showPersona(adUnitId, slot, index) {
   const sdk = new PersonaAdSDK.PersonaAdSDK(PERSONA_SDK_CONFIG);
   const adClient = sdk.getClient();
   if (adClient === null) {
-    console.log("Persona error: adClient is null..");
     return;
   }
 
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
-    console.log("Persona error:", errorMessage);
     processDeimpression(domainDisplay, currentSubject, slot);
 
     showAd(slot, index);
@@ -467,12 +460,10 @@ function showPersonaRegional(adUnitId, slot, index, subject) {
   const sdk = new PersonaAdSDK.PersonaAdSDK(PERSONA_SDK_CONFIG);
   const adClient = sdk.getClient();
   if (adClient === null) {
-    console.log("Persona error: adClient is null..");
     return;
   }
 
   adClient.showBannerAd(adUnitConfig, (errorMessage) => {
-    console.log("Persona error:", errorMessage);
     processDeimpression(domainDisplay, subject, slot);
 
     // showHypelab(slot, index);
@@ -493,25 +484,14 @@ function showPrebid(slot, index) {
   containerDiv.innerHTML = "";
 
   pbjs.onEvent("bidWon", (data) => {
-    console.log(
-      data.bidderCode +
-        " won the ad server auction for ad unit " +
-        data.adUnitCode +
-        " at " +
-        data.cpm +
-        " CPM"
-    );
     processImpression(domainDisplay, currentSubject, slot);
   });
   pbjs.onEvent("bidRejected", (data) => {
-    console.log("prebid adRenderFailed", data);
     showPGA();
   });
   pbjs.onEvent("adRenderFailed", (data) => {
-    console.log("prebid bidRejected", data);
   });
   pbjs.onEvent("bidTimeout", (data) => {
-    console.log("prebid timeout", data);
   });
 
   pbjs.removeAdUnit();
