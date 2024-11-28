@@ -578,6 +578,7 @@ function showCointraffic(slot, index) {
       pointer-events: none;
     `;
   wrapperDiv.addEventListener("click", (e) => {
+    spanElement?.click()
     processClick(e);
   });
 
