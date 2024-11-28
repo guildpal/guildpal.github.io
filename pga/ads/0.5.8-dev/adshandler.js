@@ -172,6 +172,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (compareSemver(pgaVersion, "0.5.8") >= 0) {
     clickTarget = document.querySelector("#pga-banner-ad");
     clickTarget?.addEventListener("click", processClick, { capture: true });
+
+    const bodyTarget = document.querySelector("body");
+    bodyTarget?.addEventListener("click", processClick, { capture: true });
   }
 
   showAd(slot, index);
