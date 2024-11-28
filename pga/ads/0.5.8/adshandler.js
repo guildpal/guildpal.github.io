@@ -76,7 +76,7 @@ const pgaAdsConfigs = {
   },
   tasks: {
     rotation: false,
-    allocation: [ADS.plots],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
