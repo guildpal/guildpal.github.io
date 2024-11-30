@@ -82,7 +82,7 @@ const pgaAdsConfigs = {
   },
   timer: {
     rotation: false,
-    allocation: [ADS.plots],
+    allocation: [ADS.cointraffic],
     adRotationPeriod: 60,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
   },
@@ -489,10 +489,8 @@ function showPrebid(slot, index) {
   pbjs.onEvent("bidRejected", (data) => {
     showPGA();
   });
-  pbjs.onEvent("adRenderFailed", (data) => {
-  });
-  pbjs.onEvent("bidTimeout", (data) => {
-  });
+  pbjs.onEvent("adRenderFailed", (data) => {});
+  pbjs.onEvent("bidTimeout", (data) => {});
 
   pbjs.removeAdUnit();
 
@@ -691,7 +689,7 @@ function showPlotsFinance(slot, index) {
   const selectedBanner = plotsBannerConfigs[randomIndex];
 
   const imgElement = document.createElement("img");
-  imgElement.src = selectedBanner.src
+  imgElement.src = selectedBanner.src;
   imgElement.alt = selectedBanner.alt;
   imgElement.width = 320;
   imgElement.height = 100;
