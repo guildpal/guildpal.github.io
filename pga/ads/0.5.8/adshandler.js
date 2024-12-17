@@ -615,19 +615,19 @@ function showHypelab(slot, index) {
 
 const pgaBannerConfigs = [
   {
-    src: "./images/pwa-banner1.gif",
-    alt: "PWA Banner 1",
-    href: "https://pixels.guildpal.com?popup=false",
+    src: "./images/industry-search.gif",
+    alt: "industry search",
+    href: "https://pixels.guildpal.com/guide/industry-search?popup=false",
   },
   {
-    src: "./images/pwa-banner2.gif",
-    alt: "PWA Banner 2",
-    href: "https://pixels.guildpal.com/market/raw-materials?popup=false",
+    src: "./images/pga-ruby-store.gif",
+    alt: "ruby store",
+    href: "https://pixels.guildpal.com/guide/ruby-store?popup=false",
   },
   {
-    src: "./images/pwa-banner3.gif",
-    alt: "PWA Banner 3",
-    href: "https://pixels.guildpal.com?popup=false",
+    src: "./images/pga-mo-android-open-test.gif",
+    alt: "pga mobile android",
+    href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
   },
 ];
 
