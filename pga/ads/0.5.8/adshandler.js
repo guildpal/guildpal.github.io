@@ -64,7 +64,7 @@ const ADS = {
 const pgaAdsConfigs = {
   home: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "d126cd27-d130-425e-a332-6b33a0b947b4",
   },
@@ -82,25 +82,25 @@ const pgaAdsConfigs = {
   },
   timer: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.pga],
     adRotationPeriod: 60,
     personaUnitId: "dadceda3-345b-4bb2-be73-72fb4af12165",
   },
   storage: {
     rotation: false,
-    allocation: [ADS.smartyads],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4",
   },
   note: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "99db66bb-d1cb-41dd-a9a6-4710173d41b3",
   },
   guild: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "e7b6f005-3d79-4e74-bf6d-6729f33262a1",
   },
@@ -112,7 +112,7 @@ const pgaAdsConfigs = {
   },
   shopping: {
     rotation: false,
-    allocation: [ADS.cointraffic],
+    allocation: [ADS.pga],
     adRotationPeriod: 30,
     personaUnitId: "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594",
   },
@@ -614,19 +614,19 @@ function showHypelab(slot, index) {
 }
 
 const pgaBannerConfigs = [
+  // {
+  //   src: "./images/industry-search.gif",
+  //   alt: "industry search",
+  //   href: "https://pixels.guildpal.com/guide/industry-search?popup=false",
+  // },
+  // {
+  //   src: "./images/pga-ruby-store.gif",
+  //   alt: "ruby store",
+  //   href: "https://pixels.guildpal.com/guide/ruby-store?popup=false",
+  // },
   {
-    src: "./images/industry-search.gif",
-    alt: "industry search",
-    href: "https://pixels.guildpal.com/guide/industry-search?popup=false",
-  },
-  {
-    src: "./images/pga-ruby-store.gif",
-    alt: "ruby store",
-    href: "https://pixels.guildpal.com/guide/ruby-store?popup=false",
-  },
-  {
-    src: "./images/pga-mo-android-open-test.gif",
-    alt: "pga mobile android",
+    src: "./images/pga-mo_open_test_start.gif",
+    alt: "pga mobile open test start",
     href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
   },
 ];
@@ -670,9 +670,9 @@ function showPGA(slot, index) {
   processImpression(domainDisplay, pgaSelfAdsSubject, slot);
 
   // show hypelab after 30 seconds as showPGA is called as fallback for now
-  setTimeout(() => {
-    showAd(slot, index);
-  }, 30000);
+  // setTimeout(() => {
+  //   showAd(slot, index);
+  // }, 30000);
 }
 
 function showPlotsFinance(slot, index) {
