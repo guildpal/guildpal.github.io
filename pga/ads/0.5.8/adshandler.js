@@ -615,19 +615,14 @@ function showHypelab(slot, index) {
 
 const pgaBannerConfigs = [
   // {
-  //   src: "./images/industry-search.gif",
-  //   alt: "industry search",
-  //   href: "https://pixels.guildpal.com/guide/industry-search?popup=false",
-  // },
-  // {
-  //   src: "./images/pga-ruby-store.gif",
-  //   alt: "ruby store",
-  //   href: "https://pixels.guildpal.com/guide/ruby-store?popup=false",
+  //   src: "./images/pga-mo_open_test_start.gif",
+  //   alt: "pga mobile open test start",
+  //   href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
   // },
   {
-    src: "./images/pga-mo_open_test_start.gif",
-    alt: "pga mobile open test start",
-    href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
+    src: "./images/vote-banner.gif",
+    alt: "vote banner",
+    href: "https://voting.guildpal.work",
   },
 ];
 
