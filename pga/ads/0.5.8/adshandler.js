@@ -614,15 +614,10 @@ function showHypelab(slot, index) {
 }
 
 const pgaBannerConfigs = [
-  // {
-  //   src: "./images/pga-mo_open_test_start.gif",
-  //   alt: "pga mobile open test start",
-  //   href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
-  // },
   {
-    src: "./images/vote-banner.gif",
-    alt: "vote banner",
-    href: "https://voting.guildpal.work",
+    src: "./images/pga-mo_open_test_start.gif",
+    alt: "pga mobile open test start",
+    href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
   },
 ];
 
