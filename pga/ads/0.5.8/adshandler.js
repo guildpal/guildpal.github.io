@@ -619,6 +619,11 @@ const pgaBannerConfigs = [
     alt: "pga mobile open test start",
     href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
   },
+  {
+    src: "./images/2025_newyear.gif",
+    alt: "2025 new year",
+    href: "https://pixels.guildpal.com",
+  },
 ];
 
 const plotsBannerConfigs = [
