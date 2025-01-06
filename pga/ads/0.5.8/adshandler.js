@@ -619,6 +619,11 @@ const pgaBannerConfigs = [
     alt: "pga mobile open test start",
     href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
   },
+  {
+    src: "./images/ruby_event.gif",
+    alt: "ruby event",
+    href: "https://pixels.guildpal.com",
+  },
 ];
 
 const plotsBannerConfigs = [
