@@ -617,7 +617,7 @@ const pgaBannerConfigs = [
   {
     src: "./images/buy-ruby-with-pixels.gif",
     alt: "Buy Ruby With Pixels",
-    href: "https://pixels.guildpal.com/pga/guides/ruby-payment",
+    href: "https://pixels.guildpal.com/pga/guides/ruby-payment?popup=true&showAd=false",
   },
 ];
 
