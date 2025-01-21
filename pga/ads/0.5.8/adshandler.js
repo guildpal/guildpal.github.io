@@ -615,9 +615,9 @@ function showHypelab(slot, index) {
 
 const pgaBannerConfigs = [
   {
-    src: "./images/pga-mo_open_test_start.gif",
-    alt: "pga mobile open test start",
-    href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
+    src: "./images/buy-ruby-with-pixels.gif",
+    alt: "Buy Ruby With Pixels",
+    href: "https://pixels.guildpal.com/pga/guides/ruby-payment?popup=true&showAd=false",
   },
 ];
 
@@ -637,7 +637,6 @@ const plotsBannerConfigs = [
 function showPGA(slot, index) {
   currentAd = ADS.pga;
   currentSubject = pgaSelfAdsSubject;
-
   let containerDiv = document.querySelector("div#pga-banner-ad");
   containerDiv.innerHTML = "";
 
@@ -653,16 +652,17 @@ function showPGA(slot, index) {
   imgElement.width = 320;
   imgElement.height = 100;
 
-  anchorElement.href = selectedBanner.href;
+  anchorElement.onclick = function (e) {
+    e.preventDefault(); // Prevent default anchor behavior
+    window.open(selectedBanner.href, "_blank", "width=400,height=800");
+    return false;
+  };
 
+  anchorElement.href = selectedBanner.href;
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
-  processImpression(domainDisplay, pgaSelfAdsSubject, slot);
 
-  // show hypelab after 30 seconds as showPGA is called as fallback for now
-  // setTimeout(() => {
-  //   showAd(slot, index);
-  // }, 30000);
+  processImpression(domainDisplay, pgaSelfAdsSubject, slot);
 }
 
 function showPlotsFinance(slot, index) {
@@ -872,7 +872,7 @@ function requestNavigate(path) {
     {
       protocol: "iframe-to-app",
       method: "navigate-to",
-      payload: {path},
+      payload: { path },
     },
     "*"
   );
@@ -883,7 +883,7 @@ function requestDisplayToast(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-toast",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
@@ -894,7 +894,7 @@ function requestDisplayAlert(message, duration, success) {
     {
       protocol: "iframe-to-app",
       method: "display-alert",
-      payload: {type: success ? "success" : "warning", message, duration},
+      payload: { type: success ? "success" : "warning", message, duration },
     },
     "*"
   );
