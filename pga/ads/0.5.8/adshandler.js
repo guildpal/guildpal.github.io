@@ -615,9 +615,9 @@ function showHypelab(slot, index) {
 
 const pgaBannerConfigs = [
   {
-    src: "./images/pga-mo_open_test_start.gif",
-    alt: "pga mobile open test start",
-    href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
+    src: "./images/buy-ruby-with-pixels.gif",
+    alt: "Buy Ruby With Pixels",
+    href: "https://pixels.guildpal.com/pga/guides/ruby-payment?popup=true&showAd=false",
   },
 ];
 
@@ -652,11 +652,11 @@ function showPGA(slot, index) {
   imgElement.width = 320;
   imgElement.height = 100;
 
-  // anchorElement.onclick = function (e) {
-  //   e.preventDefault(); // Prevent default anchor behavior
-  //   window.open(selectedBanner.href, "_blank", "width=400,height=800");
-  //   return false;
-  // };
+  anchorElement.onclick = function (e) {
+    e.preventDefault(); // Prevent default anchor behavior
+    window.open(selectedBanner.href, "_blank", "width=400,height=800");
+    return false;
+  };
 
   anchorElement.href = selectedBanner.href;
   anchorElement.appendChild(imgElement);
