@@ -615,9 +615,14 @@ function showHypelab(slot, index) {
 
 const pgaBannerConfigs = [
   {
-    src: "./images/buy-ruby-with-pixels.gif",
-    alt: "Buy Ruby With Pixels",
-    href: "https://pixels.guildpal.com/pga/guides/ruby-payment?popup=true&showAd=false",
+    src: "./images/PGA_lootpay-320x100.png",
+    alt: "PGA_lootpay-320x100",
+    href: "https://www.lootrush.com/tokens/sell?utm_campaign=lootpay&utm_medium=questionbanner&utm_source=pga",
+  },
+  {
+    src: "./images/PGA_lootpay-320x100_2.png",
+    alt: "PGA_lootpay-320x100_2",
+    href: "https://www.lootrush.com/tokens/sell?utm_campaign=lootpay&utm_medium=joinbanner&utm_source=pga",
   },
 ];
 
@@ -651,12 +656,6 @@ function showPGA(slot, index) {
   imgElement.alt = selectedBanner.alt;
   imgElement.width = 320;
   imgElement.height = 100;
-
-  anchorElement.onclick = function (e) {
-    e.preventDefault(); // Prevent default anchor behavior
-    window.open(selectedBanner.href, "_blank", "width=400,height=800");
-    return false;
-  };
 
   anchorElement.href = selectedBanner.href;
   anchorElement.appendChild(imgElement);
