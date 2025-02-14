@@ -76,7 +76,7 @@ const pgaAdsConfigs = {
   },
   tasks: {
     rotation: false,
-    allocation: [ADS.pga],
+    allocation: [ADS.lootrush],
     adRotationPeriod: 30,
     personaUnitId: "e371ad57-f708-4a48-8a4c-58f89762b6e6",
   },
@@ -615,6 +615,14 @@ function showHypelab(slot, index) {
 
 const pgaBannerConfigs = [
   {
+    src: "./images/buy-ruby-with-pixels.gif",
+    alt: "Buy Ruby With Pixels",
+    href: "https://pixels.guildpal.com/pga/guides/ruby-payment?popup=true&showAd=false",
+  },
+];
+
+const lootrushBannerConfigs = [
+  {
     src: "./images/PGA_lootpay-320x100.png",
     alt: "PGA_lootpay-320x100",
     href: "https://www.lootrush.com/tokens/sell?utm_campaign=lootpay&utm_medium=questionbanner&utm_source=pga",
@@ -702,19 +710,21 @@ function showLootRush(slot, index) {
   containerDiv.innerHTML = "";
 
   let anchorElement = document.createElement("a");
-  anchorElement.href =
-    "https://www.lootrush.com/collections/pixels---farm-land807754?ref=6755d3f7&utm_campaign=land_rental&utm_medium=banner&utm_source=pga";
   anchorElement.target = "_blank";
 
-  let imgElement = document.createElement("img");
-  imgElement.src = "./images/lootrush-ad.gif";
+  const randomIndex = Math.floor(Math.random() * lootrushBannerConfigs.length);
+  const selectedBanner = lootrushBannerConfigs[randomIndex];
 
+  const imgElement = document.createElement("img");
+  imgElement.src = selectedBanner.src;
+  imgElement.alt = selectedBanner.alt;
   imgElement.width = 320;
   imgElement.height = 100;
-  imgElement.alt = "www.lootrush.com";
 
+  anchorElement.href = selectedBanner.href;
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
+
   processImpression(domainDisplay, currentSubject, slot);
 }
 
