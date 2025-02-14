@@ -665,6 +665,12 @@ function showPGA(slot, index) {
   imgElement.width = 320;
   imgElement.height = 100;
 
+  anchorElement.onclick = function (e) {
+    e.preventDefault(); // Prevent default anchor behavior
+    window.open(selectedBanner.href, "_blank", "width=400,height=800");
+    return false;
+  };
+
   anchorElement.href = selectedBanner.href;
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
