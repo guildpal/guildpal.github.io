@@ -615,9 +615,9 @@ function showHypelab(slot, index) {
 
 const pgaBannerConfigs = [
   {
-    src: "./images/buy-ruby-with-pixels.gif",
-    alt: "Buy Ruby With Pixels",
-    href: "https://pixels.guildpal.com/pga/guides/ruby-payment?popup=true&showAd=false",
+    src: "./images/divergence.gif",
+    alt: "Enter Divergence",
+    href: "https://divergence.openrpg.ai/",
   },
 ];
 
