@@ -667,7 +667,7 @@ function showPGA(slot, index) {
 
   anchorElement.onclick = function (e) {
     e.preventDefault(); // Prevent default anchor behavior
-    window.open(selectedBanner.href, "_blank", "width=400,height=800");
+    window.open(selectedBanner.href, "_blank");
     return false;
   };
 
