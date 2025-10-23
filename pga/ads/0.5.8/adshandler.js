@@ -613,7 +613,6 @@ function showHypelab(slot, index) {
   };
 }
 
-
 const pgaBannerConfigs = [
   {
     src: "./images/buy-ruby-with-pixels.gif",
@@ -621,7 +620,6 @@ const pgaBannerConfigs = [
     href: "https://pixels.guildpal.com/pga/guides/ruby-payment?popup=true&showAd=false",
   },
 ];
-
 
 // const pgaBannerConfigs = [
 //   {
@@ -677,7 +675,17 @@ function showPGA(slot, index) {
 
   anchorElement.onclick = function (e) {
     e.preventDefault(); // Prevent default anchor behavior
-    window.open(selectedBanner.href, "_blank");
+    if (isEdgeBrowser()) {
+      const w = Math.min(screen.width * 0.5, 1200);
+      const h = Math.min(screen.height * 0.6, 800);
+      window.open(
+        selectedBanner.href,
+        "_blank",
+        `width=${w},height=${h},toolbar=yes,location=yes,menubar=yes,scrollbars=yes,resizable=yes`
+      );
+    } else {
+      window.open(selectedBanner.href, "_blank");
+    }
     return false;
   };
 
@@ -1031,4 +1039,13 @@ function clonePointerEvent(originalEvent) {
   });
 
   return clonedEvent;
+}
+
+function isEdgeBrowser() {
+  const ua = navigator.userAgent || "";
+  if (navigator.userAgentData) {
+    const brands = navigator.userAgentData.brands.map((b) => b.brand);
+    if (brands.some((b) => b.includes("Edge"))) return true;
+  }
+  return /Edg/i.test(ua);
 }
