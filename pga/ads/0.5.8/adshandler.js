@@ -186,39 +186,10 @@ async function showAd(slot, index) {
     return;
   }
 
-  /////// add requestAd call
-  // to-do: refactoring
-  try {
-    const response = await fetch(`${adsServer}/ads-api/requestad`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "X-Atomrigs-Pga-Pid": playerId,
-      },
-    });
-    const result = await response.json();
-    if (result.subject === ADS.aads) {
-      showADS(slot, index);
-      return;
-    } else if (result.subject === ADS.persona) {
-      showPersona(pgaAdConfig.personaUnitId, slot, index);
-      return;
-    } else if (result.subject.includes("agent/persona-regional")) {
-      showPersonaRegional(regionalPersonaAdUnitId, slot, index, result.subject);
-      return;
-    } else if (result.subject === ADS.hypelab) {
-      showHypelab(slot, index);
-      return;
-    } else if (result.subject === ADS.plots) {
-      showPlotsFinance(slot, index);
-      return;
-    }
-  } catch (err) {
-    console.error(err);
-  }
-
-  /////// add requestAd call - end
+  /////// requestAd server-side override disabled — always fall through
+  /////// to local allocation (pga-only) so paid networks never appear.
+  /////// Re-enable by restoring the fetch/branch block once the ad
+  /////// server stops returning paid subjects.
 
   // to see # of all possible impressions
   // moved into each ad ftns
