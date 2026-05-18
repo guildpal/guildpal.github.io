@@ -2,43 +2,43 @@ const pgaAdsConfigs = `
 {
   "home": {
     "rotation": true,
-    "allocation": ["pga", "pga"],
+    "allocation": ["pga", "pga", "pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "d126cd27-d130-425e-a332-6b33a0b947b4"
   },
   "tasks": {
-    "rotation": false,
-    "allocation": ["persona"],
+    "rotation": true,
+    "allocation": ["pga", "pga", "pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "e371ad57-f708-4a48-8a4c-58f89762b6e6"
   },
   "timer": {
     "rotation": true,
-    "allocation": ["persona", "pga", "pga"],
+    "allocation": ["pga", "pga", "pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "dadceda3-345b-4bb2-be73-72fb4af12165"
   },
   "storage": {
     "rotation": true,
-    "allocation": ["pga", "pga", "cointraffic"],
+    "allocation": ["pga", "pga", "pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "157d8bb8-eb2b-443e-80f0-1f2a5977a4c4"
   },
   "note": {
-    "rotation": false,
-    "allocation": ["smartyads"],
+    "rotation": true,
+    "allocation": ["pga", "pga", "pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "99db66bb-d1cb-41dd-a9a6-4710173d41b3"
   },
   "guild": {
-    "rotation": false,
-    "allocation": ["cointraffic"],
+    "rotation": true,
+    "allocation": ["pga", "pga", "pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "e7b6f005-3d79-4e74-bf6d-6729f33262a1"
   },
   "market": {
     "rotation": true,
-    "allocation": ["aads", "pga", "pga", "persona"],
+    "allocation": ["pga", "pga", "pga", "pga"],
     "adRotationPeriod": 30,
     "personaUnitId": "fe24a1b0-9d34-4cd4-ab42-aeaf5836f594"
   }
@@ -192,19 +192,20 @@ function showPGA(slot, index) {
   containerDiv.innerHTML = "";
 
   let anchorElement = document.createElement("a");
-  // anchorElement.href = 'https://pixels.guildpal.com';
-  anchorElement.href = "https://pixels.guildpal.com/pga";
+  anchorElement.href = "https://forms.gle/usZT3iwp6v4CZEPt6";
   anchorElement.target = "_blank";
 
+  const pgaBannerImages = [
+    "./images/banner_12_8_8fps_hq_nodither.gif",
+    "./images/banner_13_7_8fps_hq_nodither.gif",
+    "./images/banner_14_8fps_hq_nodither.gif",
+    "./images/banner_15_8fps_hq_nodither.gif",
+  ];
   let imgElement = document.createElement("img");
-  if (index % 2 === 0) {
-    imgElement.src = "./images/three-mins-pga-guide01.gif";
-  } else {
-    imgElement.src = "./images/three-mins-pga-guide02.gif";
-  }
+  imgElement.src = pgaBannerImages[index % pgaBannerImages.length];
   imgElement.width = 320;
   imgElement.height = 100;
-  imgElement.alt = "pixels.guildpal.com";
+  imgElement.alt = "pga banner";
 
   anchorElement.appendChild(imgElement);
   containerDiv.appendChild(anchorElement);
