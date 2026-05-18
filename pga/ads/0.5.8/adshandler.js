@@ -615,9 +615,24 @@ function showHypelab(slot, index) {
 
 const pgaBannerConfigs = [
   {
-    src: "./images/buy-ruby-with-pixels.gif",
-    alt: "Buy Ruby With Pixels",
-    href: "https://pixels.guildpal.com/pga/guides/ruby-payment?popup=true&showAd=false",
+    src: "./images/banner_12_8_8fps_hq_nodither.gif",
+    alt: "PGA Closed Beta Tester",
+    href: "https://forms.gle/usZT3iwp6v4CZEPt6",
+  },
+  {
+    src: "./images/banner_13_7_8fps_hq_nodither.gif",
+    alt: "PGA Closed Beta Tester",
+    href: "https://forms.gle/usZT3iwp6v4CZEPt6",
+  },
+  {
+    src: "./images/banner_14_8fps_hq_nodither.gif",
+    alt: "PGA Closed Beta Tester",
+    href: "https://forms.gle/usZT3iwp6v4CZEPt6",
+  },
+  {
+    src: "./images/banner_15_8fps_hq_nodither.gif",
+    alt: "PGA Closed Beta Tester",
+    href: "https://forms.gle/usZT3iwp6v4CZEPt6",
   },
 ];
 
