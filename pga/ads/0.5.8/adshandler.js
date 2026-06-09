@@ -586,14 +586,9 @@ function showHypelab(slot, index) {
 
 const pgaBannerConfigs = [
   {
-    src: "./images/banner_13_11_8fps_hq_nodither.gif",
-    alt: "Divergence CBT Open",
-    href: "https://divergence.openrpg.ai/",
-  },
-  {
-    src: "./images/banner_13_9_8fps_hq_nodither.gif",
-    alt: "Divergence CBT Open",
-    href: "https://divergence.openrpg.ai/",
+    src: "./images/pga-mo_open_test_start.gif",
+    alt: "pga mobile open test start",
+    href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
   },
 ];
 
