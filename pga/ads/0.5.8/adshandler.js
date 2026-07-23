@@ -586,11 +586,19 @@ function showHypelab(slot, index) {
 
 const pgaBannerConfigs = [
   {
-    src: "./images/pga-mo_open_test_start.gif",
-    alt: "pga mobile open test start",
-    href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
+    src: "./images/divergence-prereg-launch.gif",
+    alt: "Divergence pre-registration",
+    href: "https://divergence.openrpg.ai/?utm_source=pga&utm_medium=banner&utm_campaign=prereg_launch",
   },
 ];
+
+// const pgaBannerConfigs = [
+//   {
+//     src: "./images/pga-mo_open_test_start.gif",
+//     alt: "pga mobile open test start",
+//     href: "https://play.google.com/store/apps/details?id=com.atomrigs.pga_mobile",
+//   },
+// ];
 
 // const pgaBannerConfigs = [
 //   {
